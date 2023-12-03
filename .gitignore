@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+Wav play/.vs/
+Wav play/Wavplay/bin/
+Wav play/Wavplay/obj/
+Wav read write/Wav read write/.vs/
+Wav read write/Wav read write/Wav read write/bin/
+Wav read write/Wav read write/Wav read write/obj/
+Wav/Wav/bin/
+Wav/Wav/obj/
+Wave Generator/Wave Generator/bin/
+Wave Generator/Wave Generator/obj/
+Wave Generator/.vs/
+WaveEdit_src/bin/
+WaveEdit_src/obj/

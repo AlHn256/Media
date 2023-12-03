@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveEdit", "WaveEdit.csproj", "{A0B6CE32-C4C4-41B1-8644-5F88CF10F53D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{A0B6CE32-C4C4-41B1-8644-5F88CF10F53D}.Debug.ActiveCfg = Release|.NET
+		{A0B6CE32-C4C4-41B1-8644-5F88CF10F53D}.Debug.Build.0 = Release|.NET
+		{A0B6CE32-C4C4-41B1-8644-5F88CF10F53D}.Release.ActiveCfg = Release|.NET
+		{A0B6CE32-C4C4-41B1-8644-5F88CF10F53D}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
