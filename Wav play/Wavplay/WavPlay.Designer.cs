@@ -111,7 +111,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RTB.Location = new System.Drawing.Point(1044, 122);
             this.RTB.Name = "RTB";
-            this.RTB.Size = new System.Drawing.Size(550, 602);
+            this.RTB.Size = new System.Drawing.Size(231, 602);
             this.RTB.TabIndex = 0;
             this.RTB.Text = "";
             // 
@@ -824,7 +824,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1603, 901);
+            this.ClientSize = new System.Drawing.Size(1284, 901);
             this.Controls.Add(this.AutoScanChkBox);
             this.Controls.Add(this.GraphBtn);
             this.Controls.Add(this.CrearTextBTN);

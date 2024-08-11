@@ -54,8 +54,13 @@ namespace Wavplay
         {
             if (!string.IsNullOrEmpty(readtextbox.Text))
             {
+                string test = AppDomain.CurrentDomain.BaseDirectory;
                 string dir = Path.GetDirectoryName(readtextbox.Text);
                 if (Directory.Exists(dir))FileList = fileEdit.SearchFiles(dir, new string[] { "*.wav" }).Select(x => x.FullName).ToList();
+                else
+                {
+                    
+                }
             }
         }
 
@@ -711,7 +716,7 @@ namespace Wavplay
 
         private List<IntSumm> SUMMList = new List<IntSumm>();
         private double DrawComparisonImg()
-        {
+        {          
             double SUMM = 0;
             var dataArray = waveGenerator.GetData().shortArray;
             if (dataArray.Length != 0)

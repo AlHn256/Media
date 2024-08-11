@@ -162,8 +162,6 @@ namespace Wavplay
         }
         private string[] GetAutoSaveFilesList()
         {
-
-            string test = AppDomain.CurrentDomain.BaseDirectory;
             string ApplicationFileName = Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName.Split('\\').Last()) + ".inf";
             string[] AutoSaveFiles = new string[] { @"C:\Windows\Temp", @"D:", @"E:", @"C:" };
 
@@ -171,10 +169,8 @@ namespace Wavplay
             int i = 0;
             AutoSaveFilesList[i++] = Directory.GetCurrentDirectory() + "\\" + ApplicationFileName;
             foreach (string elem in AutoSaveFiles)
-            {
                 AutoSaveFilesList[i++] = elem + "\\" + ApplicationFileName;
-            }
-
+            
             return AutoSaveFilesList;
         }
 
