@@ -14,13 +14,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.VideoStorage2", 
 		{953EA537-E303-408C-865C-DA463E3B541F} = {953EA537-E303-408C-865C-DA463E3B541F}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Collections", "..\AlfaPribor.Collections\AlfaPribor.Collections\AlfaPribor.Collections.csproj", "{90DBD26D-04BC-4F9E-BA44-C408E263902C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Threads", "..\AlfaPribor.Threads\AlfaPribor.Threads\AlfaPribor.Threads.csproj", "{953EA537-E303-408C-865C-DA463E3B541F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Streams.2", "..\AlfaPribor.Streams.2\AlfaPribor.Streams.2.csproj", "{3CF888AA-971E-4860-A008-5FD669372157}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Player", "Player\Player.csproj", "{DA7982F3-F072-4286-83D9-3A8E3A40F73A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Collections", "AlfaPribor.Collections\AlfaPribor.Collections\AlfaPribor.Collections.csproj", "{90DBD26D-04BC-4F9E-BA44-C408E263902C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Threads", "AlfaPribor.Threads\AlfaPribor.Threads\AlfaPribor.Threads.csproj", "{953EA537-E303-408C-865C-DA463E3B541F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Streams.2", "AlfaPribor.Streams.2\AlfaPribor.Streams.2.csproj", "{3CF888AA-971E-4860-A008-5FD669372157}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +38,14 @@ Global
 		{50BCBBD5-1C71-419B-A9C4-5D749219EB6B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{50BCBBD5-1C71-419B-A9C4-5D749219EB6B}.Release|x86.ActiveCfg = Release|x86
 		{50BCBBD5-1C71-419B-A9C4-5D749219EB6B}.Release|x86.Build.0 = Release|x86
+		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Debug|x86.Build.0 = Debug|Any CPU
+		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Release|x86.ActiveCfg = Release|Any CPU
+		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Release|x86.Build.0 = Release|Any CPU
 		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Debug|x86.ActiveCfg = Debug|x86
@@ -62,14 +70,6 @@ Global
 		{3CF888AA-971E-4860-A008-5FD669372157}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3CF888AA-971E-4860-A008-5FD669372157}.Release|x86.ActiveCfg = Release|x86
 		{3CF888AA-971E-4860-A008-5FD669372157}.Release|x86.Build.0 = Release|x86
-		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Debug|x86.Build.0 = Debug|Any CPU
-		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Release|x86.ActiveCfg = Release|Any CPU
-		{DA7982F3-F072-4286-83D9-3A8E3A40F73A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

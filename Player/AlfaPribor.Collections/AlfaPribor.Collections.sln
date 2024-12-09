@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Collections", "AlfaPribor.Collections\AlfaPribor.Collections.csproj", "{90DBD26D-04BC-4F9E-BA44-C408E263902C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Collections.PropertiesDictionary.Test", "AlfaPribor.Collections.PropertiesDictionary.Test\AlfaPribor.Collections.PropertiesDictionary.Test.csproj", "{6C2542C0-B3AE-4B59-A687-C2846B239B44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{123793C8-6F61-4901-B2BB-D48D2C9FB794}"
+	ProjectSection(SolutionItems) = preProject
+		AlfaPribor.Collections.vsmdi = AlfaPribor.Collections.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = AlfaPribor.Collections.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C2542C0-B3AE-4B59-A687-C2846B239B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C2542C0-B3AE-4B59-A687-C2846B239B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C2542C0-B3AE-4B59-A687-C2846B239B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C2542C0-B3AE-4B59-A687-C2846B239B44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

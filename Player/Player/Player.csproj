@@ -81,6 +81,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AlfaPribor.Collections\AlfaPribor.Collections\AlfaPribor.Collections.csproj">
+      <Project>{90dbd26d-04bc-4f9e-ba44-c408e263902c}</Project>
+      <Name>AlfaPribor.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AlfaPribor.Streams.2\AlfaPribor.Streams.2.csproj">
+      <Project>{3cf888aa-971e-4860-a008-5fd669372157}</Project>
+      <Name>AlfaPribor.Streams.2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AlfaPribor.Threads\AlfaPribor.Threads\AlfaPribor.Threads.csproj">
+      <Project>{953ea537-e303-408c-865c-da463e3b541f}</Project>
+      <Name>AlfaPribor.Threads</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AlfaPribor.VideoStorage2\AlfaPribor.VideoStorage2.csproj">
       <Project>{50bcbbd5-1c71-419b-a9c4-5d749219eb6b}</Project>
       <Name>AlfaPribor.VideoStorage2</Name>
