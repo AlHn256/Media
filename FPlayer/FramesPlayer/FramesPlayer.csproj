@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AC863614-C8F0-4067-8BB4-E06E53031DAE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FramesPlayer</RootNamespace>
+    <AssemblyName>FramesPlayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>arhiv_mode.ico</ApplicationIcon>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>http://localhost/FramesPlayer/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\..\Release\</OutputPath>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>..\..\Release\</OutputPath>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\DLL\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\EvenrDataArgs.cs" />
+    <Compile Include="Classes\ImageSaveResizeSettings.cs" />
+    <Compile Include="Classes\SpeedFile.cs" />
+    <Compile Include="Classes\VideoImageExporter.cs" />
+    <Compile Include="FolderBrowserEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FormAutoExportSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAutoExportSettings.Designer.cs">
+      <DependentUpon>FormAutoExportSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormConnectionString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConnectionString.Designer.cs">
+      <DependentUpon>FormConnectionString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportConfiguration\CommonDataTypes.cs" />
+    <Compile Include="ExportConfiguration\CustomProvides\AskoDataProvider.cs" />
+    <Compile Include="ExportConfiguration\DatabaseConnectSettings.cs" />
+    <Compile Include="ExportConfiguration\DB\WagonDataShort.cs" />
+    <Compile Include="ExportConfiguration\DB\DBOperation.cs" />
+    <Compile Include="ExportConfiguration\DB\SQLCommandExecuter.cs" />
+    <Compile Include="ExportConfiguration\CustomProvides\AskinDataProvider.cs" />
+    <Compile Include="ExportConfiguration\SettingContainer.cs" />
+    <Compile Include="ExportConfiguration\CustomProvides\IGetWagonData.cs" />
+    <Compile Include="ExportConfiguration\ListWagonData.cs" />
+    <Compile Include="ExportConfiguration\NamingUtility.cs" />
+    <Compile Include="ExportConfiguration\WagonExporter.cs" />
+    <Compile Include="FormExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormExport.Designer.cs">
+      <DependentUpon>FormExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSpeedGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSpeedGraph.Designer.cs">
+      <DependentUpon>FormSpeedGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FramePlayerSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>FramePlayerSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="FromConnectionDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FromConnectionDB.Designer.cs">
+      <DependentUpon>FromConnectionDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraphControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GraphControl.Designer.cs">
+      <DependentUpon>GraphControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageHelper.cs" />
+    <Compile Include="Classes\FileAssociations.cs" />
+    <Compile Include="Classes\Definitions.cs" />
+    <Compile Include="Classes\DrawTelecameraFrames.cs" />
+    <Compile Include="Classes\DrawThermoFrames.cs" />
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FormSelectWagons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelectWagons.Designer.cs">
+      <DependentUpon>FormSelectWagons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleGraphViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimpleGraphViewer.Designer.cs">
+      <DependentUpon>SimpleGraphViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormThreadGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThreadGraph.Designer.cs">
+      <DependentUpon>FormThreadGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGraph.Designer.cs">
+      <DependentUpon>FormGraph.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormAutoExportSettings.resx">
+      <DependentUpon>FormAutoExportSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConnectionString.resx">
+      <DependentUpon>FormConnectionString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormExport.resx">
+      <DependentUpon>FormExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSpeedGraph.resx">
+      <DependentUpon>FormSpeedGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FromConnectionDB.resx">
+      <DependentUpon>FromConnectionDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraphControl.resx">
+      <DependentUpon>GraphControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="FormSelectWagons.resx">
+      <DependentUpon>FormSelectWagons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimpleGraphViewer.resx">
+      <DependentUpon>SimpleGraphViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormThreadGraph.resx">
+      <DependentUpon>FormThreadGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGraph.resx">
+      <DependentUpon>FormGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="FramePlayerSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>FramePlayerSettings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Beginning_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cadr_next_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cadr_prev_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\End_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pause_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Play_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Play_back_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Train_next_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\Train_prev_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="arhiv_mode.ico" />
+    <Content Include="Dll\EntityFramework.dll" />
+    <Content Include="Dll\ZedGraph.dll" />
+    <Content Include="Dll\ZedGraph.xml" />
+    <None Include="Resources\timer.png" />
+    <None Include="Resources\fast_forvard32.png" />
+    <None Include="Resources\exp32.png" />
+    <None Include="Resources\end32.png" />
+    <None Include="Resources\end_kadr32.png" />
+    <None Include="Resources\cadr_prev32.png" />
+    <None Include="Resources\cadr_next32.png" />
+    <None Include="Resources\begin32.png" />
+    <None Include="Resources\begin_kadr32.png" />
+    <None Include="Resources\rewind32.png" />
+    <None Include="Resources\play32.png" />
+    <None Include="Resources\play_back.png" />
+    <None Include="Resources\pause32.png" />
+    <None Include="Resources\kadrs.png" />
+    <None Include="Resources\PlayBack_32.png" />
+    <None Include="Resources\Play_32.png" />
+    <None Include="Resources\Pause_32.png" />
+    <None Include="Resources\NextFrame_32.png" />
+    <None Include="Resources\ToLast_32.png" />
+    <None Include="Resources\ToFirst_32.png" />
+    <None Include="Resources\PrevFrame_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль Microsoft .NET Framework 4 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Установщик Windows 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Components\AlfaPribor.Askin.DataProvider\AlfaPribor.ASKIN.DataProvider.csproj">
+      <Project>{0798c04c-d7e3-4033-9a62-855579143fba}</Project>
+      <Name>AlfaPribor.ASKIN.DataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider.csproj">
+      <Project>{2dc5ff06-ac11-4b67-9144-495925f1351a}</Project>
+      <Name>AlfaPribor.ASKO.DataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.ASKO.Data\AlfaPribor.ASKO.Data\AlfaPribor.ASKO.Data.csproj">
+      <Project>{98b1bd91-1a96-45af-a5a6-59b96a23e834}</Project>
+      <Name>AlfaPribor.ASKO.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.ASKO.Shared\AlfaPribor.ASKO.Shared\AlfaPribor.ASKO.Shared.csproj">
+      <Project>{f46b90cc-3552-4733-8a86-2958038d8a31}</Project>
+      <Name>AlfaPribor.ASKO.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\AlfaPribor.AviFile.csproj">
+      <Project>{15262a92-dc48-4239-aba3-ca242d720bce}</Project>
+      <Name>AlfaPribor.AviFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.Collections\AlfaPribor.Collections\AlfaPribor.Collections.csproj">
+      <Project>{90dbd26d-04bc-4f9e-ba44-c408e263902c}</Project>
+      <Name>AlfaPribor.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.IppInterop\AlfaPribor.IppInterop\AlfaPribor.IppInterop.csproj">
+      <Project>{4ebaae28-2942-4457-bf6c-1b442cc8fe14}</Project>
+      <Name>AlfaPribor.IppInterop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.JpegCodec\AlfaPribor.JpegCodec.csproj">
+      <Project>{79d4e0d4-96af-4d33-a4e6-53776199c8e9}</Project>
+      <Name>AlfaPribor.JpegCodec</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\AlfaPribor.SharpDXVideoRenderer.csproj">
+      <Project>{2b473b15-100f-4533-afaf-f8f7b54f846b}</Project>
+      <Name>AlfaPribor.SharpDXVideoRenderer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.Streams.2\AlfaPribor.Streams.2.csproj">
+      <Project>{3cf888aa-971e-4860-a008-5fd669372157}</Project>
+      <Name>AlfaPribor.Streams.2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.Threads\AlfaPribor.Threads\AlfaPribor.Threads.csproj">
+      <Project>{953ea537-e303-408c-865c-da463e3b541f}</Project>
+      <Name>AlfaPribor.Threads</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.VideoExport\AlfaPribor.VideoExport\AlfaPribor.VideoExport.csproj">
+      <Project>{94fad136-7e7e-47e2-bdb5-0f64f616d01a}</Project>
+      <Name>AlfaPribor.VideoExport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.VideoPanels\AlfaPribor.VideoPanels\AlfaPribor.VideoPanels.csproj">
+      <Project>{bf1618f3-ac37-47f7-b68a-6ec92d6a9c0b}</Project>
+      <Name>AlfaPribor.VideoPanels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.VideoPlayer\AlfaPribor.VideoPlayer.csproj">
+      <Project>{6e7c2d24-8692-4e6b-ac1d-0b5a4497d267}</Project>
+      <Name>AlfaPribor.VideoPlayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Components\AlfaPribor.VideoStorage.2\AlfaPribor.VideoStorage2\AlfaPribor.VideoStorage.2.csproj">
+      <Project>{f990ce7a-2163-4e67-8855-0c687aa54552}</Project>
+      <Name>AlfaPribor.VideoStorage.2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

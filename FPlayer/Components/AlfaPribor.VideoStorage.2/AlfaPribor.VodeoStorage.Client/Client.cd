@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AlfaPribor.VideoStorage.Client.VideoStorageClient" Collapsed="true">
+    <Position X="3.5" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CABAAEAACTAAAAAAQIAIAAAAAAAAAACAAAEAAAAAABQ=</HashCode>
+      <FileName>VideoStorageClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.Server.VideoStorageCommunicationObject" Collapsed="true">
+    <Position X="3.5" Y="4" Width="1.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.Client.VideoReaderClient" Collapsed="true">
+    <Position X="1.25" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAAABEAAATAAAAIAiAAAgAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoReaderClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.Client.VideoIndexClient" Collapsed="true">
+    <Position X="6" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CBAAAEAAATAAAAAACAAAAAAAAAAAAAGAAIAAAAAAAgA=</HashCode>
+      <FileName>VideoIndexClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.Client.VideoWriterClient" Collapsed="true">
+    <Position X="8.5" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAAAEBAATAAAAAACAAAAAACAgIAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoWriterClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="AlfaPribor.VideoStorage.Client.IVideoReaderClient" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IVideoReaderService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.Server.IVideoStorageCommunicationObject" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.Client.IVideoIndexClient" Collapsed="true">
+    <Position X="6" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IVideoIndexClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.Client.IVideoWriterClient" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IVideoWriterClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.Client.IVideoStorageClient" Collapsed="true">
+    <Position X="8.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IVideoStorageClient.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="9.75" />
+</ClassDiagram>

@@ -1,0 +1,508 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AlfaPribor.DataHelper</name>
+    </assembly>
+    <members>
+        <member name="T:AlfaPribor.DataHelper.DataHelper">
+            <summary>Вспомогательный класс, упрощающий взаимодействие с базой данных</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.DataHelper._Connection">
+            <summary>Представляет подключение к базе данных</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.DataHelper._Transaction">
+            <summary>Представляет транзакцию базы данных</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.#ctor(System.String)">
+            <summary>Конструктор класса</summary>
+            <param name="connection_str">Строка, описывающая параметры подключения к базе данных</param>
+            <exception cref="T:System.Exception">Ошибка соединения с базой данных</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.NewConnection">
+            <summary>Создает объект для доступа к базе данных</summary>
+            <returns>Объект, представлющий подключение к базе данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.NewCommand">
+            <summary>Создать новую команду для чтения/изменения данных в базе данных</summary>
+            <returns>Объект, представляющий команду к базе данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.BeginTransaction">
+            <summary>Начинает транзакцию базы данных.
+            Применяется уровень изоляции по умолчанию для конкретного типа используемого подключения
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.InvalidOperationException">Транзакция активна в текущий момент времени.
+            Параллельные транзакции не поддерживаются.
+            </exception>
+            <exception cref="T:System.Exception">Невозможно начать транзакцию</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>Начинает транзакцию базы данных с заданным уровнем изоляции</summary>
+            <param name="iso_level">Уровень изоляции транзакции</param>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.InvalidOperationException">Транзакция активна в текущий момент времени.
+            Параллельные транзакции не поддерживаются.
+            </exception>
+            <exception cref="T:System.Exception">Невозможно начать транзакцию</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.Commit">
+            <summary>Применить изменения, внесенные в базу данных в контексте открытой транзакции</summary>
+            <exception cref="T:System.Exception">Ошибка при попытке подтверждения транзакции</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.Rollback">
+            <summary>Отменить изменения, внесенные в базу данных в контексте открытой транзакции</summary>
+            <exception cref="T:System.Exception">Ошибка при попытке отката транзакции</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteNoneQuery(System.String,System.Data.Common.DbParameter[])">
+            <summary>Выполняет оператор SQL применительно к подключенной базе данных</summary>
+            <param name="query">Строка с текстом команды на языке SQL</param>
+            <param name="parList">Список дополнительных параметров оператора SQL</param>
+            <exception cref="T:System.ArgumentException">Не задан текст команды SQL</exception>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Число подвергшихся воздействию строк или минус 1, если данные не изменялись</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteNoneQuery(AlfaPribor.DataHelper.SqlParams)">
+            <summary>Выполняет оператор SQL применительно к подключенной базе данных</summary>
+            <param name="sql">Строка выполнения и параметры</param>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteNoneQuery(System.String,System.Collections.Generic.IList{System.Data.Common.DbParameter})">
+            <summary>Выполняет оператор SQL применительно к подключенной базе данных</summary>
+            <param name="query">Строка с текстом команды на языке SQL</param>
+            <param name="parList">Список дополнительных параметров оператора SQL</param>
+            <exception cref="T:System.ArgumentException">Не задан текст команды SQL</exception>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Число подвергшихся воздействию строк или минус 1, если данные не изменялись</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteScalar(System.String,System.Data.Common.DbParameter[])">
+            <summary>Выполняет запрос и возвращает первый столбец первой строки результирующего набора,
+            возвращаемого запросом. Все другие столбцы и строки игнорируются.
+            </summary>
+            <param name="query">Строка с текстом команды на языке SQL</param>
+            <param name="parList">Список дополнительных параметров оператора SQL</param>
+            <exception cref="T:System.ArgumentException">Не задан текст команды SQL</exception>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Первый столбец первой строки результирующего набора, возвращаемого запросом</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteScalar(System.String,System.Collections.Generic.IList{System.Data.Common.DbParameter})">
+            <summary>Выполняет запрос и возвращает первый столбец первой строки результирующего набора,
+            возвращаемого запросом. Все другие столбцы и строки игнорируются.
+            </summary>
+            <param name="query">Строка с текстом команды на языке SQL</param>
+            <param name="parList">Список дополнительных параметров оператора SQL</param>
+            <exception cref="T:System.ArgumentException">Не задан текст команды SQL</exception>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Первый столбец первой строки результирующего набора, возвращаемого запросом</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteCommand(System.Data.Common.DbCommand)">
+            <summary>Выполняет оператор SQL и возвращает результирующий набор данных</summary>
+            <param name="cmd">Оператор SQL</param>
+            <exception cref="T:System.ArgumentNullException">Не задан объект с командой SQL</exception>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Результирующий набор данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteCommand(System.String,System.Data.Common.DbParameter[])">
+            <summary>Выполняет оператор SQL и возвращает результирующий набор данных</summary>
+            <param name="query">Строка с текстом команды на языке SQL</param>
+            <param name="parList">Список дополнительных параметров оператора SQL</param>
+            <exception cref="T:System.ArgumentException">Не задан текст команды SQL</exception>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Результирующий набор данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteCommand(System.String,System.Collections.Generic.IList{System.Data.Common.DbParameter})">
+            <summary>Выполняет оператор SQL и возвращает результирующий набор данных</summary>
+            <param name="query">Строка с текстом команды на языке SQL</param>
+            <param name="parList">Список дополнительных параметров оператора SQL</param>
+            <exception cref="T:System.ArgumentException">Не задан текст команды SQL</exception>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Результирующий набор данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteCommand(System.String,System.Collections.Generic.IList{System.Data.Common.DbParameter},System.Int32)">
+            <summary>Выполняет оператор SQL и возвращает результирующий набор данных</summary>
+            <param name="query">Строка с текстом команды на языке SQL</param>
+            <param name="parList">Список дополнительных параметров оператора SQL</param>
+            <param name="TimeOut">Тайм-аут выполнения</param>
+            <exception cref="T:System.ArgumentException">Не задан текст команды SQL</exception>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Результирующий набор данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteStoredProcedure(System.String,System.Data.Common.DbParameter[])">
+            <summary>Выполняет оператор SQL и возвращает результирующий набор данных</summary>
+            <param name="proc_name">Имя хранимой процедуры в базе данных</param>
+            <param name="parList">Список дополнительных параметров хранимой процедуры</param>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.ArgumentException">Не задано имя хранимой процедуры</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Результирующий набор данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteNoneQueryStoredProcedure(System.String,System.Collections.Generic.IList{System.Data.Common.DbParameter})">
+            <summary>Выполняет хранимую процедуру SQL применительно к подключенной базе данных</summary>
+            <param name="proc_name">Строка с текстом команды на языке SQL</param>
+            <param name="parList">Список дополнительных параметров оператора SQL</param>
+            <exception cref="T:System.ArgumentException">Не задан текст команды SQL</exception>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Число подвергшихся воздействию строк или минус 1, если данные не изменялись</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.ExecuteStoredProcedure(System.String,System.Collections.Generic.IList{System.Data.Common.DbParameter})">
+            <summary>Выполняет оператор SQL и возвращает результирующий набор данных</summary>
+            <param name="proc_name">Имя хранимой процедуры в базе данных</param>
+            <param name="parList">Список дополнительных параметров хранимой процедуры</param>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+            <exception cref="T:System.ArgumentException">Не задано имя хранимой процедуры</exception>
+            <exception cref="T:System.Exception">Ошибка в процессе выполнения команды</exception>
+            <returns>Результирующий набор данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.СheckTransaction(System.String)">
+            <summary>
+            Проверяет состояние транзакции базы данных. 
+            Если транзакция завершена или не создавалась методом BeginTransaction - генерируется исключение
+            </summary>
+            <param name="descr">Строка с описанием исключительной ситуации</param>
+            <exception cref="T:System.Exception">Транзакция закрыта или не существует</exception>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.DataHelper.ConnectionTimeout">
+            <summary>Время ожидания при попытке установки подключения,
+            по истечении которого попытка подключения завершается и генерируется ошибка
+            </summary>
+            <exception cref="T:System.ObjectDisposedException">Попытка обращения к удаленному объекту</exception>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.DataHelper._disposed">
+            <summary>Признак освобождения ресурсов объекта</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.Dispose">
+            <summary>Высвобождает ресурсы объекта</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.Dispose(System.Boolean)">
+            <summary>Высвобождает ресурсы объекта</summary>
+            <param name="disposing">
+            Если равен FALSE - освобождаются только неуправляемые ресурсы,
+            иначе - освобождаются все ресурсы объекта
+            </param>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.DataHelper.Finalize">
+            <summary>Деструктор класса</summary>
+        </member>
+        <member name="T:AlfaPribor.DataHelper.SqlDataHelper">
+            <summary>Реализация класса DataHelper для подключения к базе SQL server</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlDataHelper.#ctor(System.String)">
+            <summary>Конструктор класса</summary>
+            <param name="connection_str">Строка, описывающая параметры подключения к базе данных</param>
+            <exception cref="T:System.Exception">Ошибка соединения с базой данных</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlDataHelper.NewConnection">
+            <summary>Создает объект для доступа к базе данных</summary>
+            <returns>Объект, представлющий подключение к базе данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlDataHelper.NewCommand">
+            <summary>Создать новую команду для чтения/изменения данных в базе данных</summary>
+            <returns>Объект, представляющий команду к базе данных</returns>
+        </member>
+        <member name="T:AlfaPribor.DataHelper.OleDbDataHelper">
+            <summary>Реализация класса DataHelper для подключения к базе данных посредством технологии OLE</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.OleDbDataHelper.#ctor(System.String)">
+            <summary>Конструктор класса</summary>
+            <param name="connection_str">Строка, описывающая параметры подключения к базе данных</param>
+            <exception cref="T:System.Exception">Ошибка соединения с базой данных</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.OleDbDataHelper.NewConnection">
+            <summary>Создает объект для доступа к базе данных</summary>
+            <returns>Объект, представлющий подключение к базе данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.OleDbDataHelper.NewCommand">
+            <summary>Создать новую команду для чтения/изменения данных в базе данных</summary>
+            <returns>Объект, представляющий команду к базе данных</returns>
+        </member>
+        <member name="T:AlfaPribor.DataHelper.OdbcDataHelper">
+            <summary>Реализация класса DataHelper для подключения к базе данных перез ODBC</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.OdbcDataHelper.#ctor(System.String)">
+            <summary>Конструктор класса</summary>
+            <param name="connection_str">Строка, описывающая параметры подключения к базе данных</param>
+            <exception cref="T:System.Exception">Ошибка соединения с базой данных</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.OdbcDataHelper.NewConnection">
+            <summary>Создает объект для доступа к базе данных</summary>
+            <returns>Объект, представлющий подключение к базе данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.OdbcDataHelper.NewCommand">
+            <summary>Создать новую команду для чтения/изменения данных в базе данных</summary>
+            <returns>Объект, представляющий команду к базе данных</returns>
+        </member>
+        <member name="T:AlfaPribor.DataHelper.SqlDeleteBuilder">
+            <summary>Упрощает построение SQL-запроса удаления данных из базы данных</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlDeleteBuilder._Table">
+            <summary>Имя таблицы</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlDeleteBuilder._Where">
+            <summary>Условие выборки данных</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlDeleteBuilder.NL">
+            <summary>Символ разделения строк</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlDeleteBuilder.#ctor">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса значениями по умолчанию</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlDeleteBuilder.#ctor(System.String)">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса заданными значениями</summary>
+            <param name="table">Имя таблицы</param>
+            <exception cref="T:System.ArgumentException">Не задано имя таблицы</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlDeleteBuilder.#ctor(System.String,System.String)">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса заданными значениями</summary>
+            <param name="table">Имя таблицы</param>
+            <param name="where">Условие выборки данных</param>
+            <exception cref="T:System.ArgumentException">Не задано имя таблицы</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlDeleteBuilder.ToString">
+            <summary>Представляет объект в виде строки запроса к базе данных</summary>
+            <returns>Строка запроса к серверу базы данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlDeleteBuilder.op_Explicit(AlfaPribor.DataHelper.SqlDeleteBuilder)~System.String">
+            <summary>Оператор приведения типа SqlDeleteBuilder в тип string</summary>
+            <param name="obj">Объект типа SqlDeleteBuilder</param>
+            <returns>Строка запроса к серверу базы данных</returns>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlDeleteBuilder.Table">
+            <summary>Имя таблицы</summary>
+            <exception cref="T:System.ArgumentException">Не задано имя таблицы</exception>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlDeleteBuilder.Where">
+            <summary>Условие выборки данных</summary>
+        </member>
+        <member name="T:AlfaPribor.DataHelper.SqlInsertBuilder">
+            <summary>Упрощает построение SQL-запроса занесания значений в базу данных</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlInsertBuilder._Fields">
+            <summary>Наименование полей для вставки значений</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlInsertBuilder._Table">
+            <summary>Имя таблицы</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlInsertBuilder._Values">
+            <summary>Значения полей</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlInsertBuilder.NL">
+            <summary>Символ разделения строк</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlInsertBuilder.#ctor">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса значениями по умолчанию</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlInsertBuilder.#ctor(System.String,System.String[],System.String[])">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса заданными значениями</summary>
+            <param name="table">Имя таблицы</param>
+            <param name="fields">Наименование полей для вставки значений</param>
+            <param name="values">Значения полей</param>
+            <exception cref="T:System.ArgumentException">Не задано значение аргумента</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlInsertBuilder.ToString">
+            <summary>Представляет объект в виде строки запроса к базе данных</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlInsertBuilder.op_Explicit(AlfaPribor.DataHelper.SqlInsertBuilder)~System.String">
+            <summary>Оператор приведения типа SqlInsertBuilder в тип string</summary>
+            <param name="obj">Объект типа SqlInsertBuilder</param>
+            <returns>Строка запроса к серверу базы данных</returns>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlInsertBuilder.Fields">
+            <summary>Наименование полей для вставки значений</summary>
+            <exception cref="T:System.ArgumentException">Не заданы поля для вставки значений</exception>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlInsertBuilder.Table">
+            <summary>Имя таблицы</summary>
+            <exception cref="T:System.ArgumentException">Не задано имя таблицы</exception>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlInsertBuilder.Values">
+            <summary>Значения полей</summary>
+            <exception cref="T:System.ArgumentException">Не заданы значения полей таблицы</exception>
+        </member>
+        <member name="T:AlfaPribor.DataHelper.SqlParams">
+            <summary>Класс связка строка выполнения - параметры запроса</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlParams.#ctor(System.String,System.Collections.Generic.List{System.Data.Common.DbParameter})">
+            <summary>Конструктор класса</summary>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlParams.SQL">
+            <summary>Строка выполнения</summary>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlParams.Params">
+            <summary>Параметры в строке выполнения</summary>
+        </member>
+        <member name="T:AlfaPribor.DataHelper.SqlSelectBuilder">
+            <summary>Упрощает построение SQL-запроса выборки из базы данных</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlSelectBuilder._From">
+            <summary>Источник выборки данных (таблица{ы}, вид{ы} или объединение{я})</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlSelectBuilder._OrderBy">
+            <summary>Порядок и тип сортировки выборки данных</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlSelectBuilder._Fields">
+            <summary>Наименование полей для выборки</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlSelectBuilder._Where">
+            <summary>Условие выборки данных</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlSelectBuilder._Top">
+            <summary>Ограничение числа записей, попавших в выборку</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlSelectBuilder._Distinct">
+            <summary>Признак извлечения только неповторяющихся записей</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlSelectBuilder.NL">
+            <summary>Символ разделения строк</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlSelectBuilder.#ctor">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса значениями по умолчанию</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlSelectBuilder.#ctor(System.String,System.String[])">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса заданными значениями</summary>
+            <param name="from">Источник выборки данных</param>
+            <param name="fields">Наименование полей для выборки</param>
+            <exception cref="T:System.ArgumentException">Не задан источник выборки данных</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlSelectBuilder.#ctor(System.String,System.String[],System.Int32)">
+            <param name="from">Источник выборки данных</param>
+            <param name="fields">Наименование полей для выборки</param>
+            <param name="top">Ограничение числа записей, попавших в выборку</param>
+            <exception cref="T:System.ArgumentException">Не задан источник выборки данных</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Значение аргумента вне допустимого диапазона значений</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlSelectBuilder.#ctor(System.String,System.String,System.String[])">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса заданными значениями</summary>
+            <param name="from">Источник выборки данных</param>
+            <param name="where">Условие выборки данных</param>
+            <param name="fields">Наименование полей для выборки</param>
+            <exception cref="T:System.ArgumentException">Не задан источник выборки данных</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlSelectBuilder.#ctor(System.String,System.String,System.String[],System.Int32)">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса заданными значениями</summary>
+            <param name="from">Источник выборки данных</param>
+            <param name="where">Условие выборки данных</param>
+            <param name="fields">Наименование полей для выборки</param>
+            <param name="top">Ограничение числа записей, попавших в выборку</param>
+            <exception cref="T:System.ArgumentException">Не задан источник выборки данных</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Значение аргумента вне допустимого диапазона значений</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlSelectBuilder.#ctor(System.String,System.String,System.String,System.String[])">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса заданными значениями</summary>
+            <param name="from">Источник выборки данных</param>
+            <param name="where">Условие выборки данных</param>
+            <param name="order">Порядок и тип сортировки выборки данных</param>
+            <param name="fields">Наименование полей для выборки</param>
+            <exception cref="T:System.ArgumentException">Не задан источник выборки данных</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlSelectBuilder.#ctor(System.String,System.String,System.String,System.String[],System.Int32)">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса заданными значениями</summary>
+            <param name="from">Источник выборки данных</param>
+            <param name="where">Условие выборки данных</param>
+            <param name="order">Порядок и тип сортировки выборки данных</param>
+            <param name="fields">Наименование полей для выборки</param>
+            <param name="top">Ограничение числа записей, попавших в выборку</param>
+            <exception cref="T:System.ArgumentException">Не задан источник выборки данных</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Значение аргумента вне допустимого диапазона значений</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlSelectBuilder.ToString">
+            <summary>Представляет объект в виде строки запроса к базе данных</summary>
+            <returns>Строка запроса к серверу базы данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlSelectBuilder.op_Explicit(AlfaPribor.DataHelper.SqlSelectBuilder)~System.String">
+            <summary>Оператор приведения типа SqlSelectBuilder в тип string</summary>
+            <param name="obj">Объект типа SqlSelectBuilder</param>
+            <returns>Строка запроса к серверу базы данных</returns>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlSelectBuilder.From">
+            <summary>Источник выборки данных (таблица{ы}, вид{ы} или объединение{я})</summary>
+            <exception cref="T:System.ArgumentException">Не задан источник выборки данных</exception>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlSelectBuilder.OrderBy">
+            <summary>Порядок и тип сортировки выборки данных</summary>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlSelectBuilder.Fields">
+            <summary>Наименование полей для выборки</summary>
+            <remarks>Если не задано - выбираются все поля из источника выборки данных</remarks>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlSelectBuilder.Where">
+            <summary>Условие выборки данных</summary>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlSelectBuilder.Top">
+            <summary>Ограничение числа записей, попавших в выборку</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Значение аргумента вне допустимого диапазона значений</exception>
+            <remarks>Серевер возвратит первые Top записей, вошедших в выборку</remarks>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlSelectBuilder.Distinct">
+            <summary>Признак извлечения только неповторяющихся записей</summary>
+        </member>
+        <member name="T:AlfaPribor.DataHelper.SqlUpdateBuilder">
+            <summary>Упрощает построение SQL-запроса изменения данных в базе данных</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlUpdateBuilder._Table">
+            <summary>Имя таблицы</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlUpdateBuilder._Fields">
+            <summary>Наименование полей для выборки</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlUpdateBuilder._Where">
+            <summary>Условие выборки данных</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlUpdateBuilder._Values">
+            <summary>Значения полей</summary>
+        </member>
+        <member name="F:AlfaPribor.DataHelper.SqlUpdateBuilder.NL">
+            <summary>Символ разделения строк</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlUpdateBuilder.#ctor">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса значениями по умолчанию</summary>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlUpdateBuilder.#ctor(System.String,System.String[],System.String[])">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса заданными значениями</summary>
+            <param name="table">Имя таблицы</param>
+            <param name="fields">Наименование полей для изменения значений</param>
+            <param name="values">Значения полей</param>
+            <exception cref="T:System.ArgumentException">Не задано значение аргумента</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlUpdateBuilder.#ctor(System.String,System.String[],System.String[],System.String)">
+            <summary>Конструктор класса. Инициализирует свойства объекта класса заданными значениями</summary>
+            <param name="table">Имя таблицы</param>
+            <param name="fields">Наименование полей для изменения значений</param>
+            <param name="values">Значения полей</param>
+            <param name="where">Условие выборки данных</param>
+            <exception cref="T:System.ArgumentException">Не задано значение аргумента</exception>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlUpdateBuilder.ToString">
+            <summary>Представляет объект в виде строки запроса к базе данных</summary>
+            <returns>Строка запроса к серверу базы данных</returns>
+        </member>
+        <member name="M:AlfaPribor.DataHelper.SqlUpdateBuilder.op_Explicit(AlfaPribor.DataHelper.SqlUpdateBuilder)~System.String">
+            <summary>Оператор приведения типа SqlUpdateBuilder в тип string</summary>
+            <param name="obj">Объект типа SqlUpdateBuilder</param>
+            <returns>Строка запроса к серверу базы данных</returns>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlUpdateBuilder.Fields">
+            <summary>Наименование полей для изменения значений</summary>
+            <exception cref="T:System.ArgumentException">Не заданы поля для вставки значений</exception>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlUpdateBuilder.Table">
+            <summary>Имя таблицы</summary>
+            <exception cref="T:System.ArgumentException">Не задано имя таблицы</exception>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlUpdateBuilder.Values">
+            <summary>Значения полей</summary>
+            <exception cref="T:System.ArgumentException">Не заданы значения полей таблицы</exception>
+        </member>
+        <member name="P:AlfaPribor.DataHelper.SqlUpdateBuilder.Where">
+            <summary>Условие выборки данных</summary>
+        </member>
+    </members>
+</doc>

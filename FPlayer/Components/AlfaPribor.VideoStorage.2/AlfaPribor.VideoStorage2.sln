@@ -1,0 +1,92 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DE414290-6DD4-4F07-8822-542E3258222A}"
+	ProjectSection(SolutionItems) = preProject
+		AlfaPribor.VideoStorage.vsmdi = AlfaPribor.VideoStorage.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.VideoStorage2", "AlfaPribor.VideoStorage2\AlfaPribor.VideoStorage2.csproj", "{50BCBBD5-1C71-419B-A9C4-5D749219EB6B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{953EA537-E303-408C-865C-DA463E3B541F} = {953EA537-E303-408C-865C-DA463E3B541F}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.VideoStorage2.Test", "AlfaPribor.VideoStorage2.Test\AlfaPribor.VideoStorage2.Test.csproj", "{720C2F5A-B99C-46FA-8E69-C9687DCB9A42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.VideoStorage2.Demo", "AlfaPribor.VideoStorage2.Demo\AlfaPribor.VideoStorage2.Demo.csproj", "{D9BBFFA6-401A-40C5-9EAF-6EEFFBDF9E98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Collections", "..\AlfaPribor.Collections\AlfaPribor.Collections\AlfaPribor.Collections.csproj", "{90DBD26D-04BC-4F9E-BA44-C408E263902C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Streams", "..\AlfaPribor.Streams\AlfaPribor.Streams\AlfaPribor.Streams.csproj", "{BBD917FC-263C-471A-970E-01B90ED64816}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.Threads", "..\AlfaPribor.Threads\AlfaPribor.Threads\AlfaPribor.Threads.csproj", "{953EA537-E303-408C-865C-DA463E3B541F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.VideoStorage2.Server", "AlfaPribor.VideoStorage2.Server\AlfaPribor.VideoStorage2.Server.csproj", "{AC8C1E40-6C41-495A-B6E2-9A56B541C760}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.VideoStorage2.Server.Demo", "AlfaPribor.VideoStorage2.Server.Demo\AlfaPribor.VideoStorage2.Server.Demo.csproj", "{9A0BECBA-AE5E-40AA-9088-02D6A5583004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.VideoStorage2.Client.Demo", "AlfaPribor.VideoStorage2.Client.Demo\AlfaPribor.VideoStorage2.Client.Demo.csproj", "{7D319DFA-1212-4A91-85C3-E5C3173E1678}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.VideoStorage2.Client", "AlfaPribor.VodeoStorage.Client\AlfaPribor.VideoStorage2.Client.csproj", "{5D26BA07-4A36-4615-83C2-DA2E10BD340E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.VideoStorage2.ASKO.Test", "AlfaPribor.VideoStorage2.ASKO.Test\AlfaPribor.VideoStorage2.ASKO.Test.csproj", "{6745EA70-4115-4CC7-B14A-F656CD186B0F}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = AlfaPribor.VideoStorage.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50BCBBD5-1C71-419B-A9C4-5D749219EB6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50BCBBD5-1C71-419B-A9C4-5D749219EB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50BCBBD5-1C71-419B-A9C4-5D749219EB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50BCBBD5-1C71-419B-A9C4-5D749219EB6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{720C2F5A-B99C-46FA-8E69-C9687DCB9A42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{720C2F5A-B99C-46FA-8E69-C9687DCB9A42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{720C2F5A-B99C-46FA-8E69-C9687DCB9A42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{720C2F5A-B99C-46FA-8E69-C9687DCB9A42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9BBFFA6-401A-40C5-9EAF-6EEFFBDF9E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9BBFFA6-401A-40C5-9EAF-6EEFFBDF9E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9BBFFA6-401A-40C5-9EAF-6EEFFBDF9E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9BBFFA6-401A-40C5-9EAF-6EEFFBDF9E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90DBD26D-04BC-4F9E-BA44-C408E263902C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBD917FC-263C-471A-970E-01B90ED64816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD917FC-263C-471A-970E-01B90ED64816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD917FC-263C-471A-970E-01B90ED64816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD917FC-263C-471A-970E-01B90ED64816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{953EA537-E303-408C-865C-DA463E3B541F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{953EA537-E303-408C-865C-DA463E3B541F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{953EA537-E303-408C-865C-DA463E3B541F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{953EA537-E303-408C-865C-DA463E3B541F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC8C1E40-6C41-495A-B6E2-9A56B541C760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC8C1E40-6C41-495A-B6E2-9A56B541C760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC8C1E40-6C41-495A-B6E2-9A56B541C760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC8C1E40-6C41-495A-B6E2-9A56B541C760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A0BECBA-AE5E-40AA-9088-02D6A5583004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A0BECBA-AE5E-40AA-9088-02D6A5583004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A0BECBA-AE5E-40AA-9088-02D6A5583004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A0BECBA-AE5E-40AA-9088-02D6A5583004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D319DFA-1212-4A91-85C3-E5C3173E1678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D319DFA-1212-4A91-85C3-E5C3173E1678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D319DFA-1212-4A91-85C3-E5C3173E1678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D319DFA-1212-4A91-85C3-E5C3173E1678}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D26BA07-4A36-4615-83C2-DA2E10BD340E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D26BA07-4A36-4615-83C2-DA2E10BD340E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D26BA07-4A36-4615-83C2-DA2E10BD340E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D26BA07-4A36-4615-83C2-DA2E10BD340E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6745EA70-4115-4CC7-B14A-F656CD186B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6745EA70-4115-4CC7-B14A-F656CD186B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6745EA70-4115-4CC7-B14A-F656CD186B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6745EA70-4115-4CC7-B14A-F656CD186B0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

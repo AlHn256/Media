@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AlfaPribor.DataHelper.DataHelper">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAsABACCEAAACAAgEAAAAAAAAQAQBAAAAAAAAAEA=</HashCode>
+      <FileName>DataHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.DataHelper.SqlDataHelper" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.DataHelper.OleDbDataHelper" Collapsed="true">
+    <Position X="3.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.DataHelper.OdbcDataHelper" Collapsed="true">
+    <Position X="3.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.DataHelper.SqlSelectBuilder" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AoAAAAABAAAACAAEAgwAACAAAAEKAEAAAACAAAAAgAA=</HashCode>
+      <FileName>SQLSelectBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.DataHelper.SqlInsertBuilder" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAECAQAQAAAAAAAAgAAAACgAAAAgAA=</HashCode>
+      <FileName>SQLInsertBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.DataHelper.SqlUpdateBuilder" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAECgQAQAAAAAEAAgAAAACgAAAAgAA=</HashCode>
+      <FileName>SQLUpdateBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.DataHelper.SqlDeleteBuilder" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAEAgQAQAAAAAEAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>SQLDeleteBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="9.75" />
+</ClassDiagram>

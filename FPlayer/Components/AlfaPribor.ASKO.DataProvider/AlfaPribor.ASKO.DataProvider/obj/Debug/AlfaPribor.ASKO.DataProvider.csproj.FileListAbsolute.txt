@@ -1,0 +1,28 @@
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\obj\Debug\AlfaPribor.ASKO.DataProvider.csproj.AssemblyReference.cache
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\obj\Debug\AlfaPribor.ASKO.DataProvider.csproj.CoreCompileInputs.cache
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.DataProvider.dll
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.DataProvider.pdb
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.Data.dll
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.DataHelper.dll
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.Shared.dll
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.DataHelper.pdb
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.DataHelper.xml
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.Data.pdb
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.Shared.pdb
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\obj\Debug\AlfaPribor.ASKO.DataProvider.csproj.CopyComplete
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\obj\Debug\AlfaPribor.ASKO.DataProvider.dll
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\obj\Debug\AlfaPribor.ASKO.DataProvider.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\obj\Debug\AlfaPribor.ASKO.DataProvider.csproj.AssemblyReference.cache
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\obj\Debug\AlfaPribor.ASKO.DataProvider.csproj.CoreCompileInputs.cache
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\obj\Debug\AlfaPribor.ASKO.DataProvider.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\obj\Debug\AlfaPribor.ASKO.DataProvider.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.DataProvider.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.DataProvider.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.Data.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.DataHelper.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.Shared.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.Data.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.DataHelper.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.DataHelper.xml
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\bin\Debug\AlfaPribor.ASKO.Shared.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.ASKO.DataProvider\AlfaPribor.ASKO.DataProvider\obj\Debug\AlfaPribor.ASKO.DataProvider.csproj.CopyComplete

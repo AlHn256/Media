@@ -1,0 +1,1566 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AlfaPribor.AviFile</name>
+    </assembly>
+    <members>
+        <member name="T:AlfaPribor.AviFile.AviFile">
+            <summary>Реализует чтение/запись данных в AVI-файлы</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviFile._FileName">
+            <summary>AVI-файл</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviFile.aviFile">
+            <summary>Указатель на интерфейса открытого AVI-файла</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviFile.aviStreams">
+            <summary>Список указателей на интерфейсы потоков, содержащихся в AVI-файле</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviFile.aviCmpsStreams">
+            <summary>Отображение указателей интерфейсов несжатых потоков на указатели интерфейсов их сжатых аналогов</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviFile.aviStreamsInfo">
+            <summary>Отображение указателей интерфейсов потоков на блоки данных с информацей о потоках</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviFile.aviGetFrameObjects">
+            <summary>Отображение указателей интерфейсов потоков на указатели интерфейсов декомпресии данных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviFile._Disposed">
+            <summary>Признак освобождения ресурсов объекта</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.#ctor">
+            <summary>Конструктор класса</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.#ctor(System.String,System.Int32)">
+            <summary>Конструктор класса. Открывает AVI-файл для чтени/записи</summary>
+            <param name="FileName">Имя открываемого AVI-файла, включая путь к нему</param>
+            <param name="Mode">Флаги, отвечающие за режим открытия файла (чтение/запись/создание/ограничения)</param>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для открытия файла</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">AVI-файл уде открыт</exception>
+            <exception cref="T:System.ArgumentException">Не задано имя файла</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.Finalize">
+            <summary>Деструктор класса</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.Open(System.String,System.Int32)">
+            <summary>Открывает AVI-файл для чтени/записи</summary>
+            <param name="FileName">Имя открываемого AVI-файла, включая путь к нему</param>
+            <param name="Mode">Флаги, отвечающие за режим открытия файла (чтение/запись/создание/ограничения)</param>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для открытия файла</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:System.ArgumentException">Не задано имя файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">AVI-файл уде открыт</exception>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.FindStreams(System.Int32)">
+            <summary>Ищет потоки с заданным типом содержимого и добавляет их в список aviStreams</summary>
+            <param name="fccType">Тип содержимого потока</param>
+            <returns>Результат последней выполненой операции</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.CheckAviFileResult(System.UInt32)">
+            <summary>Проверяет код результата выполнения операции с AVI-файлом</summary>
+            <param name="result">Результат выполнения операции с AVI-файлом</param>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для открытия файла</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске или ошибка чтения/записи в файл</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.CodecException">Компрессия/декомпрессия заданного формата данных не поддерживается</exception>
+            <exception cref="T:AlfaPribor.AviFile.BufferTooSmallException">Недостаточный размер буфера для чтения данных</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.Close">
+            <summary>Закрывает AVI-файл</summary>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.Read(System.Int32,System.Int32,System.Int32@)">
+            <summary>Читает из потока заданное количество сэмплов</summary>
+            <param name="stream_index">Индекс потока в списке потоков, содержащихся в AVI-файле</param>
+            <param name="start">Индекс первого читаемого сэмпла</param>
+            <param name="samples">Количество сэмплов, которое нужно прочитать</param>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока вне допустимого диапазона значений</exception>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для чтения данных</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Неверный индекс первого читаемого сэмпла или количество сэмплов</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+            <exception cref="T:AlfaPribor.AviFile.BufferTooSmallException">Размер буфера слишком мал для чтения одного сэмпла данных</exception>
+            <returns>Буфер с прочитанными данные</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.Read(System.Int32,System.Int32,System.Int32@,System.IntPtr,System.Int32@)">
+            <summary>Читает из потока заданное количество сэмплов</summary>
+            <param name="stream_index">Индекс потока в списке потоков, содержащихся в AVI-файле</param>
+            <param name="start">Индекс первого читаемого сэмпла</param>
+            <param name="samples">Количество сэмплов, которое нужно прочитать</param>
+            <param name="pBuffer">Указатель на буфер в неуправляемой памяти, куда будут помещены прочитанные данные</param>
+            <param name="count">Размер буфера/количество прочитанных байт данных</param>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока вне допустимого диапазона значений</exception>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для чтения данных</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Неверный индекс первого читаемого сэмпла, 
+            или количество сэмплов, или размер буфера данных
+            </exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+            <exception cref="T:AlfaPribor.AviFile.BufferTooSmallException">Размер буфера слишком мал для чтения одного сэмпла данных</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.Read(System.Int32,System.Int32,System.Int32@,System.IntPtr,System.Int32)">
+            <summary>Читает из потока заданное количество сэмплов</summary>
+            <param name="stream_index">Индекс потока в списке потоков, содержащихся в AVI-файле</param>
+            <param name="start">Индекс первого читаемого сэмпла</param>
+            <param name="samples">Количество сэмплов, которое нужно прочитать</param>
+            <param name="pBuffer">Указатель на буфер в неуправляемой памяти, куда будут помещены прочитанные данные</param>
+            <param name="count">Размер буфера</param>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока вне допустимого диапазона значений</exception>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для чтения данных</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Неверный индекс первого читаемого сэмпла, 
+            или количество сэмплов, или размер буфера данных
+            </exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+            <exception cref="T:AlfaPribor.AviFile.BufferTooSmallException">Размер буфера слишком мал для чтения одного сэмпла данных</exception>
+            <returns>Количество прочитанных байт данных</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.ReadDecompress(System.Int32,System.Int32,AlfaPribor.AviFile.Avi.BITMAPINFOHEADER@)">
+            <summary>Читает и декодирует видеоданные из видеопотока</summary>
+            <param name="stream_index">Индекс потока в AVI-файле</param>
+            <param name="pos">Номер позиции кадра в потоке</param>
+            <param name="biHeader">Заголовок видеоданных кадра</param>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока вне допустимого диапазона значений</exception>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">Для заданного потока не выбран декомпрессор</exception>
+            <exception cref="T:AlfaPribor.AviFile.DecompressorException">Произошла ошибка декомпрессии</exception>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+            <returns>Прочитанные декодированные видеоданные</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.BeginDecompress(System.Int32,AlfaPribor.AviFile.Avi.BITMAPINFOHEADER)">
+            <summary>Инициализирует декомпрессор для потока с заданным индексом</summary>
+            <param name="stream_index">Индекс потока в списке потоков AVI-файла</param>
+            <param name="biHeader">Заголовок видеокадра</param>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока лежит вне допустимого диапазона значений</exception>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">Декомпрессия указанного потока уже начата</exception>
+            <exception cref="T:AlfaPribor.AviFile.DecompressorException">Декомпрессор не найден</exception>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.EndDecompress(System.Int32)">
+            <summary>Деинициализирует декомпрессор для заданного потока</summary>
+            <param name="stream_index">Индекс потока в списке потоков AVI-файла</param>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока лежит вне допустимого диапазона значений</exception>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.DecompressorException">Ошибка декомпрессора данных</exception>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.Write(System.Int32,System.Int32,System.Int32@,System.Byte[],System.Int32,System.Int32)">
+            <summary>Записывает в поток заданное количество сэмплов</summary>
+            <param name="stream_index">Индекс потока в списке потоков, содержащихся в AVI-файле</param>
+            <param name="start">Индекс первого записываемого в поток сэмпла</param>
+            <param name="samples">Количество сэмплов, которое нужно записать</param>
+            <param name="buffer">Ссылка на буфер, в котором размещены записываемые данные</param>
+            <param name="offset">Смещение байтов (начиная с нуля) в buffer, с которого начинается копирование байтов в видео поток</param>
+            <param name="count">Количество байтов, которое необходимо записать в видео поток</param>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока вне допустимого диапазона значений</exception>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для записи данных</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Недопустимое сочетание параметров offset и count,
+            которое ведет к выходу за границы массива buffer</exception>
+            <exception cref="T:System.ArgumentNullException">Не задана ссылка на массив с данными для записи</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <returns>Количество записанных байт данных</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.Write(System.Int32,System.Int32,System.Int32@,System.IntPtr,System.Int32)">
+            <summary>Записывает в поток заданное количество сэмплов</summary>
+            <param name="stream_index">Индекс потока в списке потоков, содержащихся в AVI-файле</param>
+            <param name="start">Индекс первого записываемого в поток сэмпла</param>
+            <param name="samples">Количество сэмплов, которое нужно записать</param>
+            <param name="pBuffer">Адрес буфера, в котором размещены записываемые данные</param>
+            <param name="count">Количество записываемых байт данных</param>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока вне допустимого диапазона значений</exception>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для записи данных</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <returns>Количество записанных байт данных</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.WriteCompress(System.Int32,System.Int32,System.Int32@,System.Byte[],System.Int32,System.Int32)">
+            <summary>Записывает в сжатый поток заданное количество сэмплов</summary>
+            <param name="stream_index">Индекс потока в списке потоков, содержащихся в AVI-файле</param>
+            <param name="start">Индекс первого записываемого в поток сэмпла</param>
+            <param name="samples">Количество сэмплов, которое нужно записать</param>
+            <param name="buffer">Ссылка на буфер, в котором размещены записываемые данные</param>
+            <param name="offset">Смещение байтов (начиная с нуля) в buffer, с которого начинается копирование байтов в видео поток</param>
+            <param name="count">Количество байтов, которое необходимо записать в видео поток</param>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока вне допустимого диапазона значений</exception>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для записи данных</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Недопустимое сочетание параметров offset и count,
+            которое ведет к выходу за границы массива buffer</exception>
+            <exception cref="T:System.ArgumentNullException">Не задана ссылка на массив с данными для записи</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.CompressorException">Компрессия заданного формата данных не поддерживается</exception>
+            <returns>Количество записанных байт данных</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.WriteCompress(System.Int32,System.Int32,System.Int32@,System.IntPtr,System.Int32)">
+            <summary>Записывает в сжатый поток заданное количество сэмплов</summary>
+            <param name="stream_index">Индекс потока в списке потоков, содержащихся в AVI-файле</param>
+            <param name="start">Индекс первого записываемого в поток сэмпла</param>
+            <param name="samples">Количество сэмплов, которое нужно записать</param>
+            <param name="pBuffer">Адрес буфера, в котором размещены записываемые данные</param>
+            <param name="count">Количество записываемых байт данных</param>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока вне допустимого диапазона значений</exception>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для записи данных</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.CompressorException">Компрессия заданного формата данных не поддерживается</exception>
+            <returns>Количество записанных байт данных</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.CreateStream(AlfaPribor.AviFile.Avi.AVISTREAMINFO,AlfaPribor.AviFile.Avi.BITMAPINFOHEADER)">
+            <summary>Создает новый поток с заданными характеристиками</summary>
+            <param name="info">Характеристики создаваемого потока</param>
+            <param name="bmiHeader">Параметры видеоизображения, которое будет записыаться в поток</param>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для открытия файла</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске или ошибка чтения/записи в файл</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">Невозможно создать поток</exception>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+            <returns>Индекс созданного потока в общем списке потоков, содержащихся в AVI-файле</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.CreateCompressedStream(AlfaPribor.AviFile.Avi.AVISTREAMINFO,AlfaPribor.AviFile.Avi.BITMAPINFOHEADER,AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS)">
+            <summary>Создает новый видеопоток в открытом AVI-файле</summary>
+            <param name="info">Характеристики создаваемого потока</param>
+            <param name="bmiHeader">Параметры видеоизображения, которое будет записываться в поток</param>
+            <param name="options">Настройки сжатия (для компрессора)</param>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске или ошибка чтения/записи в файл</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.CompressorException">Компрессия заданного формата данных не поддерживается</exception>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">Невозможно создать поток</exception>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены. Дальнейшее использование невозможно</exception>
+            <returns>Индекс созданного потока в общем списке потоков, содержащихся в AVI-файле</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.SetStreamFormat(System.IntPtr,AlfaPribor.AviFile.Avi.BITMAPINFOHEADER)">
+            <summary>Устанавливает формат видеопотока путем записи данных в AVI-файл</summary>
+            <param name="stream">Указатель на интерфейс доступа к видеопотоку</param>
+            <param name="bmiHeader">Информация о видеоизображении, содержащемся в потоке</param>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для открытия файла</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске или ошибка чтения/записи в файл</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.CodecException">Ошибка кодека данных</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.GetStreamsInfo">
+            <summary>Получить информацию по всем потокам, содержащимся в AVI-файле</summary>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены.
+            Дальнейшее использование невозможно
+            </exception>
+            <returns>Список с информацией о всех потоках</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.GetStreamInfo(System.Int32)">
+            <summary>Получить информацию о потоке с заданным индексом</summary>
+            <param name="index">Индекс потока в общем списке потоков, содержащихся в AVI-файле</param>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены.
+            Дальнейшее использование невозможно
+            </exception>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока вне допустимого диапазона значений</exception>
+            <returns>Информация о потоке</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.GetFrameInfo(System.Int32,System.Int32)">
+            <summary>Получить заголовок изображения заданного кадра</summary>
+            <param name="stream_index">Индекс потока в общем списке потоков AVI-файла</param>
+            <param name="frame_pos">Номер кадра, заголовок изображения которого требуется получить</param>
+            <exception cref="T:System.Exception">Ошибка чтения данных из потока</exception>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены.
+            Дальнейшее использование невозможно
+            </exception>
+            <exception cref="T:System.IndexOutOfRangeException">Индекс потока вне допустимого диапозона значений</exception>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">Заданный поток не содержит видеоданных</exception>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.CodecException">Ошибка кодека данных</exception>
+            <returns>Заголовок изображения кадра</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.GetBitmap(AlfaPribor.AviFile.Avi.BITMAPINFOHEADER,System.Byte[])">
+            <summary>Создает объект Bitmap для хранения данных изображения</summary>
+            <param name="bmiHeader">Заголовок изображения</param>
+            <param name="data">Видеоданные</param>
+            <exception cref="T:System.ArgumentNullException">Не задана ссылка на объект с данными изображения</exception>
+            <returns>Объект Bitmap, содержащий изображение</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.CheckDisposed">
+            <summary>Проверка на освобождение ресурсов объекта</summary>
+            <exception cref="T:System.ObjectDisposedException">Ресурсы объекта освобождены.
+            Дальнейшее использование невозможно</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.Dispose(System.Boolean)">
+            <summary>Высвобождает ресурсы объекта</summary>
+            <param name="disposing">Если равен FALSE - освобождаются только неуправляемые ресурсы,
+            иначе - освобождаются все ресурсы объекта
+            </param>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviFile.StreamsCount">
+            <summary>Количество существующих потоков в AVI-файле</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviFile.FileName">
+            <summary>Имя открытого AVI-файла</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviFile.IsOpen">
+            <summary>Отображает состояние файла - открыт/закрыт</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFile.Dispose">
+            <summary>Высвобождает управляемые и неуправляемые ресурсы
+            <see cref="T:System.IDisposable"/>
+            </summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.Avi">
+            <summary>Класс, описывающий функции и структуры данных для работы с AVI файлами</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.StreamtypeVIDEO">
+            <summary>Видео данные</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.StreamtypeAUDIO">
+            <summary>Аудио данные</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.StreamtypeMIDI">
+            <summary>Команды для музыкальных синтезаторов</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.StreamtypeTEXT">
+            <summary>Текст</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.OF_READ">
+            <summary>Чтение</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.OF_WRITE">
+            <summary>Запись</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.OF_READWRITE">
+            <summary>Чтение или запись</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.OF_SHARE_EXCLUSIVE">
+            <summary>Эксклюзивный уровень доступа</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.OF_SHARE_DENY_WRITE">
+            <summary>Запрет записи в файл другими процессами</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.OF_SHARE_DENY_READ">
+            <summary>Запрет чтения файла другими процессами</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.OF_SHARE_DENY_NONE">
+            <summary>Нет ограничений для других процессов - могут открывать файл для чтения/записи</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.OF_CREATE">
+            <summary>Файл должен быть создан. Если файл уже существует - он будет перезаписан</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BI_RGB">
+            <summary>Несжатый формат изображения</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BI_RLE8">
+            <summary>Изображение, содержащее не более 256 цветов. Цвета содержатся в таблице индексов</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BI_RLE4">
+            <summary>Изображение, содержащее не более 128 цветов. Цвета содержатся в таблице индексов</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BI_BITFIELDS">
+            <summary>Информация о цвете закодирована в 4-х байтах на каждый цветовой канал - красный, синий, зеленый</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BI_JPEG">
+            <summary>Изображение в формате Jpeg</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BI_PNG">
+            <summary>Изображение в формате Png</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICQUALITY_LOW">
+            <summary>Самое низкое качество</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICQUALITY_HIGH">
+            <summary>Самое высокое качество</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICQUALITY_DEFAULT">
+            <summary>Качество по-умолчанию (на усмотрение компрессора данных)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BMP_MAGIC_COOKIE">
+            <summary>Тип файла для хранения bitmap</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIIF_LIST">
+            <summary>'LIST' - сэмпл</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIIF_KEYFRAME">
+            <summary>Ключевой кадр (для видеопотока)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIIF_NOTIME">
+            <summary>Кадр не привязан к определенному времени (для видеопотока)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIIF_COMPUSE">
+            <summary>Данные для использования кодеком</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIIF_FIXKEYFRAME">
+            <summary>Флаг говорит о том, что флаг ключевого кадра недействительный, хотя должен проверяться</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSF_INTERLEAVE">
+            <summary>Чередовать кадры потока через каждые AVICOMPRESSOPTIONS.dwInterleaveEvery кадров с первым потоком</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSF_DATARATE">
+            <summary>Сжимать видеопоток с учетом данных о скорости выходного видеопотока,
+            заданной AVICOMPRESSOPTIONS.dwBytesPerSecond
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSF_KEYFRAMES">
+            <summary>Сохранять поток используя ключевые кадры, которые брать из основного потока через каждые
+            AVICOMPRESSOPTIONS.dwKeyFrameEvery кадров.
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSF_VALID">
+            <summary>Определяет использование настроек по умолчанию.
+            Если этот флаг не установлен, используются установки по умолчанию
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMF_COMPVARS_VALID">
+            <summary>Установка этого флага свидетельствует о том, что структура COMPVARS была заполнена "вручную" программистом</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.VIDCF_QUALITY">
+            <summary>Поддерживается настройка качества сжатия</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.VIDCF_CRUNCH">
+            <summary>Поддерживается сжатие по размеру кадра</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.VIDCF_TEMPORAL">
+            <summary>Поддерживается внутрикадровое сжатие</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.VIDCF_COMPRESSFRAMES">
+            <summary>Драйвер запрашивает сжатие всех кадров сообщения ICM_COMPRESS_FRAMES_INFO</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.VIDCF_DRAW">
+            <summary>Поддерживается отрисовка изображения</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.VIDCF_FASTTEMPORALC">
+            <summary>При сжатии текущего кадра не требуется изображение предыдущего</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.VIDCF_FASTTEMPORALD">
+            <summary>При декомпрессии текущего кадра не требуется изображение предыдущего </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMF_CHOOSE_KEYFRAME">
+            <summary>Показать элементы, позволяющие редактировать частоту следования ключевых кадров</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMF_CHOOSE_DATARATE">
+            <summary>Показать элементы, позволяющие редактировать скорость выходного потока</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMF_CHOOSE_PREVIEW">
+            <summary>Показывать окно предварительного просмотра результатов сжатия</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMF_CHOOSE_ALLCOMPRESSORS">
+            <summary>Отображает в окне выбора компрессора все компрессоры, зарегестированные в системе.
+            Если флаг не задан, отображаются только те из зарегестрированных компрессорав, которые
+            работают с форматом данных, заданным параметром ICCompressorChoose.lpIn
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_OK">
+            <summary>Операция с AVI-файлом завершилась успешно</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_UNSUPPORTED">
+            <summary>Компрессия заданного типа данных не поддерживается</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_BADFORMAT">
+            <summary>Файл не может быть прочитан - поврежден или имеет неизвестную структуру</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_MEMORY">
+            <summary>Недостаточно свободной памяти для открытия файла</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_FILEREAD">
+            <summary>Файл не может быть прочитан из-за ошибки на диске</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_FILEWRITE">
+            <summary>Файл не может быть записан из-за ошибки на диске</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_FILEOPEN">
+            <summary>Файл не может быть открыт из-за ошибки на диске</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_NOCOMPRESSOR">
+            <summary>Подходящий компрессор данных не обнаружен</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_READONLY">
+            <summary>Невозможно записать в AVI-файл, т.к. файл открыт только для чтения</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_NODATA">
+            <summary>AVI-файл не содержит потоков с заданным типом</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVIERR_BUFFERTOOSMALL">
+            <summary>Размер буфера слишком мал</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER">
+            <summary>Описывает размеры и цифрвой формат изображения</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biSize">
+            <summary>Размер самой структуры в байтах</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biWidth">
+            <summary>Ширина изображения в пикселах</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biHeight">
+            <summary>Высота изображения в пикселах</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biPlanes">
+            <summary>Число плоскостей изображения. Должно быть равно 1</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biBitCount">
+            <summary>Число бит, необходимых для кодирования цветовой информации одного пиксела изображения</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biCompression">
+            <summary>Для сжатого видео или видео в формате YUYV - FOURCC код,
+            например FOURCC('Y','U','Y','V') = 0x56595559. Для несжатых форматов:
+            <para>0x00000000 - RGB формат</para>
+            <para>0x00000003 - RGB с цветовой маской</para>
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biSizeImage">
+            <summary>Размер изображения в байтах. Для несжатого формата RGB - долно быть равным нулю</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biXPelsPerMeter">
+            <summary>Разрешение изображение по горизонтали (пикселей на метр)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biYPelsPerMeter">
+            <summary>Разрешение изображение по вертикали (пикселей на метр)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biClrUsed">
+            <summary>Цисло цветов, присутствующих в изображении</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFOHEADER.biClrImportant">
+            <summary>Число цветов, необходимых для отрисовки изображения</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.Avi.BITMAPINFO">
+            <summary>Определяет размерность и цветовую информацию графического изображения 
+            (DIB - device-independent bitmap)
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFO.bmiHeader">
+            <summary>Описывает размеры и цифрвой формат изображения</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPINFO.bmiColors">
+            <summary>Определяет цвета, используемые в изображении</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.Avi.AVISTREAMINFO">
+            <summary>Содержит информацию об отдельном потоке в AVI файле</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.fccType">
+            <summary>Тип потока</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.fccHandler">
+            <summary>Код дескриптора компрессора (для сжатых данных)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwFlags">
+            <summary>Флаги, специфичные для содержимого потока</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwCaps">
+            <summary>Не используется</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.wPriority">
+            <summary>Приоритет потока</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.wLanguage">
+            <summary>Язык содержимого</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwScale">
+            <summary>Шкала времени. Позволяет вычислить необходимую скорость проигрывания потока</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwRate">
+            <summary>Частота, необходимая для воспроизведения содержимого</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwStart">
+            <summary>Номер первого кадра для воспроизведения</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwLength">
+            <summary>Длина потока</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwInitialFrames">
+            <summary>Отклонение аудио данных при воспроизведении видео</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwSuggestedBufferSize">
+            <summary>Рекомендуемый размер буфера при воспроизведении данных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwQuality">
+            <summary>Качество видеоданных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwSampleSize">
+            <summary>Размер одного семпла в байтах. Если равен нулю - каждый семпл имеет разный размер</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.rcFrame">
+            <summary>Размер области для отображения видео</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwEditCount">
+            <summary>Header of times the stream has been edited. The stream handler maintains this samples</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.dwFormatChangeCount">
+            <summary>Header of times the stream format has changed. The stream handler maintains this samples</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVISTREAMINFO.szName">
+            <summary>Описание содержимого потока</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.Avi.RECT">
+            <summary>Описывает прямоугольную область</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.RECT.left">
+            <summary>Горизонтальная координата левого верхнего угла</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.RECT.top">
+            <summary>Вертикальная координата левого верхнего угла</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.RECT.right">
+            <summary>Горизонтальная координата правого нижнего угла</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.RECT.bottom">
+            <summary>Вертикальная координата правого нижнего угла</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.Avi.BITMAPFILEHEADER">
+            <summary>Заголовок bitmap-файла</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPFILEHEADER.bfType">
+            <summary>Тип файла</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPFILEHEADER.bfSize">
+            <summary>Размер файла</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPFILEHEADER.bfReserved1">
+            <summary>Не используется</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPFILEHEADER.bfReserved2">
+            <summary>Не используется</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.BITMAPFILEHEADER.bfOffBits">
+            <summary>Смещение от начала струкруры до начала массива данными изображения (байт)</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS">
+            <summary>Содержит информацию о потоке и о том, как его сжимать (кодировать) и хранить</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.fccType">
+            <summary>Тип потока в AVI-файле</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.fccHandler">
+            <summary>Дескриптор компрессора (кодека), которым будет сжиматься поток</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.dwKeyFrameEvery">
+            <summary>Максимальный промежуток между ключевыми видеокадрами. Используется только в случае, если
+            установлен флаг AVICOMPRESSF_KEYFRAMES, в противном случае считается, что каждый видеокадр
+            является ключевым
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.dwQuality">
+            <summary>Качество сжатия потока (параметр не учитывается для аудиопотоков)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.dwBytesPerSecond">
+            <summary>Скорость видеопотока.
+            Учитывается только при установленном флаге AVICOMPRESSF_DATARATЕ
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.dwFlags">
+            <summary>Флаги дополнительной информации для компрессора</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.lpFormat">
+            <summary>Указатель на структуру, определяющую формат данных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.cbFormat">
+            <summary>Размер структуры данных, на которую ссылается параметр lpFormat</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.lpParms">
+            <summary>Блок вспомогательной информации, используемый компрессором для внутреннего использования</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.cbParms">
+            <summary>Размер блока данных, на который ссылается параметр lpParms</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.dwInterleaveEvery">
+            <summary>Фактор чередования данных с первым потоком (для чередующихся потоков).
+            Используется только если установлен флаг AVICOMPRESSF_INTERLEAVE
+            </summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.Load(AlfaPribor.AviFile.Avi.COMPVARS)">
+            <summary>Загружает данные из структуры COMPVARS</summary>
+            <param name="comp_v">Описывает настройки компрессора видеоизображения</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.Save(AlfaPribor.AviFile.Avi.COMPVARS@)">
+            <summary>Сохраняет данные в структуру COMPVARS</summary>
+            <param name="comp_v">Заполняемая структура</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS.Default">
+            <summary>Сбрасывает настройки сжатия в значения по умолчанию.
+            В этом случае компрессор использует свои настройки.
+            </summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.Avi.COMPVARS">
+            <summary>Описывает настройки компрессора видеоизображения</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.cbSize">
+            <summary>Размер самой стуктуры (области памяти, занимаемой структурой данных)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.dwFlags">
+            <summary>Определяет, каким именно образом были заданы настройки - вручную или вызовом метода
+            ICCompressorChoose. Если настройки задаются вручную, то флаг надо выставлять
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.hic">
+            <summary>Указатель на интерфейс выбранного компрессора видеоданных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.fccType">
+            <summary>Тип используемого компрессора. На данный момент поддерживается только ICTYPE_VIDEO (VIDC).
+            Должно быть равно нулю
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.fccHandler">
+            <summary>Код используемого компрессора</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.lpbiIn">
+            <summary>Зарезервировано. Не используется</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.lpbiOut">
+            <summary>Указатель на структуру данных BITMAPINFO с информацией о результирующем видеоизображении</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.lpBitsOut">
+            <summary>Зарезервировано. Не используется</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.lpBitsPrev">
+            <summary>Зарезервировано. Не используется</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.lFrame">
+            <summary>Зарезервировано. Не используется</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.lKey">
+            <summary>Частота следования ключевых кадров или ноль, если ключевые кадры не используются</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.lDataRate">
+            <summary>Скорость видеопотока (килобайт/сек)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.lQ">
+            <summary>Настройки качества. (1..10000 или  ICQUALITY_DEFAULT )</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.lKeyCount">
+            <summary>Зарезервировано. Не используется</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.lpState">
+            <summary>Зарезервировано. Не используется</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.COMPVARS.cbState">
+            <summary>Зарезервировано. Не используется</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.COMPVARS.Load(AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS)">
+            <summary>Загружает данные из структуры AVICOMPRESSOPTIONS</summary>
+            <param name="comp_opts">Содержит информацию о потоке и о том, как его сжимать (кодировать) и хранить</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.COMPVARS.Save(AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS@)">
+            <summary>Заполняет структуру данных AVICOMPRESSOPTIONS</summary>
+            <param name="comp_opts">Заполняемая структура</param>
+        </member>
+        <member name="T:AlfaPribor.AviFile.Avi.ICINFO">
+            <summary>Содержит параметры сжатия, применимые к заданному компрессору</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICINFO.dwSize">
+            <summary>Размер структуры (байт)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICINFO.fccType">
+            <summary>Тип используемого компрессора (аудио/видео)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICINFO.fccHandler">
+            <summary>Идентификационный код используемого компрессора</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICINFO.dwFlags">
+            <summary>Возможности компрессора</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICINFO.dwVersion">
+            <summary>Номер версии драйвера</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICINFO.dwVersionICM">
+            <summary>Версия VCM (Video compressor manager), поддерживаемая драйвером.
+            Будет утановлено значение ICVERSION
+            </summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICINFO.szName">
+            <summary>Кратное название компресора</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICINFO.szDescription">
+            <summary>Полное название компрессора</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICINFO.szDriver">
+            <summary>Название модуля, в котором содержится драйвер. Обычно не заполняется</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.Avi.ICMODE">
+            <summary>Возможные значения флагов использования компрессора/декомпрессора данных в методах VCM</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMODE.ICMODE_COMPRESS">
+            <summary>Использовать обычное сжатие</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMODE.ICMODE_DECOMPRESS">
+            <summary>Использовать обычную декомпрессию</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMODE.ICMODE_FASTDECOMPRESS">
+            <summary>Использовать быструю декомпрессию (в реальном времени)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMODE.ICMODE_QUERY">
+            <summary>Получить дополнительную информацию о компрессоре/декомпрессоре данных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMODE.ICMODE_FASTCOMPRESS">
+            <summary>Использовать быстрое сжатие (в реальном времени)</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.Avi.ICMODE.ICMODE_DRAW">
+            <summary>Производить декомпрессию и аппаратную отрисовку видеоданных</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIFileInit">
+            <summary>Инициализирует AVI библиотеку</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIFileOpen(System.IntPtr@,System.String,System.Int32,System.Int32)">
+            <summary>Открывает AVI файл</summary>
+            <param name="ppfile">Указатель на новый интерфейс для работы с открытым AVI файлом</param>
+            <param name="szFile">Строка с завершающим нулевым символом, содержащая имя открываемого файла</param>
+            <param name="uMode">Уровень доступа, который будет установлен на открытый файл</param>
+            <param name="pclsidHandler">Указатель на идентификатор класса для работы с AVI файлами.
+            Если равен NULL - идентификатор определяется автоматически
+            </param>
+            <returns>Ноль в случае успеха или код ошибки в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIFileGetStream(System.IntPtr,System.IntPtr@,System.Int32,System.Int32)">
+            <summary>Возвращает указатель на интерфейс потока, связанного с открытым AVI файлом</summary>
+            <param name="pfile">Дескрипрор открытого AVI файла</param>
+            <param name="ppavi">Указатель на новый интерфейс для работы с потоком в открытом AVI файле</param>
+            <param name="fccType">Тип запрашиваемого потока</param>
+            <param name="lParam">Номер потока указанного типа</param>
+            <returns>Ноль в случае успеха или код ошибки в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIFileCreateStream(System.IntPtr,System.IntPtr@,AlfaPribor.AviFile.Avi.AVISTREAMINFO@)">
+            <summary>Создает новый поток в существующем AVI-файле и интерфейс для работы с ним</summary>
+            <param name="pfile">Дескриптор открытого AVI-файла</param>
+            <param name="ppavi">Указатель на интерфейс созданного потока</param>
+            <param name="psi">Ссылка на структуру с информацией о создаваемом потоке</param>
+            <returns>Ноль в случае успеха или код ошибки в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamSetFormat(System.IntPtr,System.Int32,System.IntPtr,System.Int32)">
+            <summary>Устанавливает формат потока в заданую позицию AVI-файла</summary>
+            <param name="pAviStram">Указатель на открытый поток AVI-файла</param>
+            <param name="pos">Позиция в заданом потоке для сохранения формата</param>
+            <param name="lpFormat">Указатель на структуру, содержащую данные о новом формате</param>
+            <param name="cbFormat">Размер блока памяти, занимаемого структурой lpFormat</param>
+            <returns>Ноль в случае успеха или код ошибки в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamStart(System.Int32)">
+            <summary>Получает номер первого семпла в потоке</summary>
+            <param name="pavi">Дескриптор потока в открытом AVI файле</param>
+            <returns>Номер первого сампла в потоке в случае успеха или минус 1 в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamLength(System.Int32)">
+            <summary>Получает длину потока в кадрах</summary>
+            <param name="pavi">Дескриптор потока в открытом AVI файле</param>
+            <returns>Возвращает длину заданного потока в семплах в случае успеха или минус 1 в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamInfo(System.IntPtr,AlfaPribor.AviFile.Avi.AVISTREAMINFO@,System.Int32)">
+            <summary>Получает информацию о заголовке потока</summary>
+            <param name="pAVIStream">Дескриптор открытого потока</param>
+            <param name="psi">Указатель на структуру, содержащую данные заголовка потока</param>
+            <param name="lSize">Длина заданной структуры в байтах </param>
+            <returns>Ноль в случае успеха или код ошибки в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamReadFormat(System.IntPtr,System.Int32,System.IntPtr,System.Int32@)">
+            <summary>Получает информацию о формате данных потока открытого AVI файла</summary>
+            <param name="pavi">Дескриптор открытого потока</param>
+            <param name="lPos">Позиция в потоке, используемая для получения формата данных</param>
+            <param name="lpFormat">Указатель на буфер, содержащий информацию о формате данных</param>
+            <param name="lpcbFormat">Указатель на длину используемого буфера.После выполнения функции
+            параметр содержит длину прочитанного блока данных</param>
+            <returns>Ноль в случае успеха или код ошибки в противном случае</returns>
+            <remarks>В случае, если lpFormat равен нулевому указателю, функция запишет в параметр lpcbFormat
+            требуемую длину буфера данных</remarks>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamRead(System.IntPtr,System.Int32,System.Int32,System.IntPtr,System.Int32,System.Int32@,System.Int32@)">
+            <summary>Читает данные, содержащиеся в потоке</summary>
+            <param name="pavi">Дескриптор открытого потока</param>
+            <param name="lStart">Номер первого читаемого сэмпла</param>
+            <param name="lSamples">Количиство читаемых сэмплов</param>
+            <param name="lpBuffer">Указатель на буфер с прочитанными данными</param>
+            <param name="cbBuffer">Длина буфера с прочитанными данными в байтах</param>
+            <param name="plBytes">Количество прочитанных из потока байт</param>
+            <param name="plSamples">Количество прочитанных из потока семплов</param>
+            <returns>Ноль в случае успеха или код ошибки в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamWrite(System.IntPtr,System.Int32,System.Int32,System.IntPtr,System.Int32,System.Int32,System.Int32@,System.Int32@)">
+            <summary>Записывает данные в поток</summary>
+            <param name="pavi">Дескриптор открытого потока</param>
+            <param name="lStart">Номер первого записываемого сэмпла</param>
+            <param name="lSamples">Количиство записываемых сэмплов</param>
+            <param name="lpBuffer">Указатель на буфер с записываемыми данными</param>
+            <param name="cbBuffer">Длина буфера с записываемыми данными в байтах</param>
+            <param name="dwFlag">Флаг, описывающий тип записываемых данных (см. Флаги для индексации кадров в потоке)</param>
+            <param name="plSamples">Количество записанных в поток семплов</param>
+            <param name="plBytes">Количество записанных в поток байт</param>
+            <returns>Ноль в случае успеха или код ошибки в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamRelease(System.IntPtr)">
+            <summary>Уменьшает количество ссылок на дескриптор потока 
+            и закрывает поток, если количество ссылок на него равно нулю
+            </summary>
+            <param name="pavi">Дескриптор потока открытого AVI файла</param>
+            <returns>Оставшееся число действующих ссылок на указанный дескриптор потока</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIFileRelease(System.IntPtr)">
+            <summary>Уменьшает количество ссылок на дескриптор открытого AVI файла 
+            и закрывает файл, если количество ссылок на него равно нулю
+            </summary>
+            <param name="pfile">Дескриптор открытого AVI файла</param>
+            <returns>Оставшееся число действующих ссылок на указанный дескриптор AVI файла</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIFileExit">
+            <summary>Закрывает AVI библиотеку</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamGetFrameOpen(System.IntPtr,AlfaPribor.AviFile.Avi.BITMAPINFOHEADER@)">
+            <summary>Подготавливает декомпрессор для заданного потока</summary>
+            <param name="pAVIStream">Дескриптор потока в открытом avi-файле</param>
+            <param name="bih">Сылка на структуру с данными о декомпрессируемых данных</param>
+            <returns>Указатель на декомпрессор данных</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamGetFrameClose(System.IntPtr)">
+            <summary>Освобождает ресурсы, связанные с декомпрессией потока</summary>
+            <param name="pGetFrameObj">Дескриптор декомпрессора данных</param>
+            <returns>Ноль в случае успеха или код ошибки в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIStreamGetFrame(System.IntPtr,System.Int32)">
+            <summary>Декомпрессия видеоизображения</summary>
+            <param name="pGetFrameObj">Дескриптор декомпрессора видеоданных</param>
+            <param name="lPos">Позиция кадра в потоке открытого avi-файла</param>
+            <returns>Указатель на упакованный DIB в случае успеха. Ноль - в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.AVIMakeCompressedStream(System.IntPtr@,System.IntPtr,AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS@,System.IntPtr)">
+            <summary>Создает сжатый поток на основе несжатого. Поддерживает аудио и видео компрессию</summary>
+            <param name="psCompressed">Ссылка на сжатый поток</param>
+            <param name="psSource">Ссылка на исходный поток для сжатия</param>
+            <param name="lpOptions">Структура с параметрами сжатия для компрессора</param>
+            <param name="clsidHandler">Ссылка на идентификатор класса, используемая для создания сжатого потока</param>
+            <returns></returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.ICCompressorChoose(System.IntPtr,System.UInt32,System.IntPtr,System.IntPtr,AlfaPribor.AviFile.Avi.COMPVARS@,System.Char[])">
+            <summary>Отображает окно для выбора пользователем параметров сжатия видеоданных</summary>
+            <param name="hwnd">Дескриптор родительского окна</param>
+            <param name="uiFalgs">Настройки содержимого окна</param>
+            <param name="lpIn">Указатель на входной формат несжатых видеоданных</param>
+            <param name="lpData">Указатель на интерфейс AVI-потока, используемого для отображения предпросмотра
+            результатов сжатия
+            </param>
+            <param name="pc">Указатель на структуру с результатами выбранных пользователем настроек</param>
+            <param name="Title">Заголовок окна</param>
+            <returns>TRUE - в случае подтрерждения пользователем заданных настроек, FALSE - в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.ICCompressorFree(AlfaPribor.AviFile.Avi.COMPVARS@)">
+            <summary>Освобождает ресурсы, выделенные ранее другими функциями 
+            (ICCompressorChoose, ICSeqCompressFrameStart, ICSeqCompressFrame, and ICSeqCompressFrameEnd )
+            </summary>
+            <param name="pc">Настройки кодека</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.ICInfo(System.UInt32,System.UInt32,System.IntPtr)">
+            <summary>Получает информацию об установленном компрессоре/декомпрессоре</summary>
+            <param name="fccType">Тип данных (аудио/видео)</param>
+            <param name="fccHandler">Идентификационный код компрессора данных</param>
+            <param name="info">Информация о компрессоре</param>
+            <returns>TRUE если компрессор установлен в системе и информация о нем получена, FALSE - в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.ICOpen(System.UInt32,System.UInt32,AlfaPribor.AviFile.Avi.ICMODE)">
+            <summary>Открывает компрессор</summary>
+            <param name="fccType">Тип данных (аудио/видео)</param>
+            <param name="fccHandler">Идентификационный код компрессора данных</param>
+            <param name="wMode">Режим открытия компрессора</param>
+            <returns>HIC кодека</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.ICGetInfo(System.Int32,System.IntPtr,System.Int32)">
+            <summary>Получает информацию об установленном компрессоре/декомпрессоре</summary>
+            <param name="hic">HIC кодека</param>
+            <param name="lpicinfo">Указатель на структуру ICINFO параметров кодека</param>
+            <param name="cb">Размер структуры ICINFO</param>
+            <returns>Число байт, скопированных в структуру</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.ICClose(System.Int32)">
+            <summary>Закрытие кодека</summary>
+            <param name="hic">HIC кодека</param>
+            <returns>Возвращает ICERR_OK в случае успешного завершения или код ошибки</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.ICSendMessage(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Отправка сообщения кодеку</summary>
+            <param name="hic">HIC кодека</param>
+            <param name="wMsg">Сообщение</param>
+            <param name="dw1">Параметр сообщения 1</param>
+            <param name="dw2">Параметр сообщения 2</param>
+            <returns></returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.GetFourCC(System.Char[],System.Int32)">
+            <summary>Вычисляет FCC код (FourCC)</summary>
+            <param name="buffer">Массив байт, содержащий последовательность для вычисления FCC</param>
+            <param name="index">Индекс первого элемента массива, с которого начинать вычисление FCC</param>
+            <exception cref="T:System.ArgumentNullException">Не задан массив данных</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Индекс первого элемента последовательности для вычисления FCC выходит за границы массива</exception>
+            <exception cref="T:System.ArgumentException">Недопустимое значение аргумента</exception>
+            <returns>FCC-код</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.GetFourCC(System.Byte[],System.Int32)">
+            <summary>Вычисляет FCC код (FourCC)</summary>
+            <param name="buffer">Массив байт, содержащий последовательность для вычисления FCC</param>
+            <param name="index">Индекс первого элемента массива, с которого начинать вычисление FCC</param>
+            <exception cref="T:System.ArgumentNullException">Не задан массив данных</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Индекс первого элемента последовательности для вычисления FCC выходит за границы массива</exception>
+            <exception cref="T:System.ArgumentException">Недопустимое значение аргумента</exception>
+            <returns>FCC-код</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.GetFourCC(System.String)">
+            <summary>Вычисляет FCC код (FourCC)</summary>
+            <param name="fcc">Символьное представление FCC</param>
+            <exception cref="T:System.ArgumentNullException">Не задано символьное представление FCC-кода</exception>
+            <returns>FCC-код</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.GetFourCCstr(System.UInt32)">
+            <summary>Возвращает символьное представление FCC-кода (FourCC)</summary>
+            <param name="fcc">FCC-код</param>
+            <returns>Символьное представление FCC-кода</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.GetCodecs">
+            <summary>Получение списка кодеков, доступных в системе</summary>
+            <returns>Список структур Avi.ICINFO информаций о кодеках</returns>
+            <exception cref="T:System.OutOfMemoryException">Не достаточно памяти</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.IsConfig(System.UInt32)">
+            <summary>Запрос есть ли у кодека окно конфигурации</summary>
+            <param name="fccHandler">Дескриптор видеокодека</param>
+            <returns>TRUE - для заданного кодека имеется окно конфигурации, FALSE - в противном случае</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.Avi.ConfigCodec(System.UInt32)">
+            <summary>Вызов окна конфигурации кодека</summary>
+            <param name="fccHandler">Дескриптор видеокодека</param>
+        </member>
+        <member name="T:AlfaPribor.AviFile.AviFileException">
+            <summary>Базовое исключение классов, работающих с AVI-файлами</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileException.#ctor">
+            <summary>Конструктор класса</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileException.#ctor(System.String)">
+            <summary>Конструктор класса.
+            Инициализирует объект класса сообщением об исключительной ситуации.
+            </summary>
+            <param name="message">Тексторое сообщение о возникшей исключительной ситуации</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileException.#ctor(System.String,System.Exception)">
+            <summary>Конструктор класса.
+            Инициализирует объект класса данными о возникшей исключительной ситуации
+            </summary>
+            <param name="message">Описание исключительной ситуации</param>
+            <param name="innerException">Ссылка на объект класса возникшего исключения</param>
+        </member>
+        <member name="T:AlfaPribor.AviFile.BadAviFormatException">
+            <summary>Класс исключения, возникающего в случае неизвестного формата у открываемого AVI-файла</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.BadAviFormatException.#ctor">
+            <summary>Конструктор класса</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.BadAviFormatException.#ctor(System.String)">
+            <summary>Конструктор класса.
+            Инициализирует экземпляр класса сообщением о возникшем исключении
+            </summary>
+            <param name="message">Текстовое сообщение с описанием возникшей исключительной ситуации</param>
+        </member>
+        <member name="T:AlfaPribor.AviFile.CodecException">
+            <summary>Класс исключения, возникающего в случае неизвестного типа требуемого кодека данных</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.CodecException.#ctor(System.String)">
+            <summary>Конструктор класса.
+            Инициализирует экземпляр класса сообщением о возникшем исключении
+            </summary>
+            <param name="message">Текстовое сообщение с описанием возникшей исключительной ситуации</param>
+        </member>
+        <member name="T:AlfaPribor.AviFile.CompressorException">
+            <summary>Класс исключения, возникающего в случае неизвестного типа требуемого кодека при сжатии данных</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.CompressorException.#ctor(System.String)">
+            <summary>Конструктор класса.
+            Инициализирует экземпляр класса сообщением о возникшем исключении
+            </summary>
+            <param name="message">Текстовое сообщение с описанием возникшей исключительной ситуации</param>
+        </member>
+        <member name="T:AlfaPribor.AviFile.DecompressorException">
+            <summary>Класс исключения, возникающего в случае неизвестного типа требуемого кодека при расжатии данных</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.DecompressorException.#ctor(System.String)">
+            <summary>Конструктор класса.
+            Инициализирует экземпляр класса сообщением о возникшем исключении
+            </summary>
+            <param name="message">Текстовое сообщение с описанием возникшей исключительной ситуации</param>
+        </member>
+        <member name="T:AlfaPribor.AviFile.AbortException">
+            <summary>Класс исключения, используемого для отмены дальнейших действий сторонним кодом</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.BufferTooSmallException">
+            <summary>Класс исключения, возникающего при попытке чтения данных в буфер, размер которого недостаточен 
+            для размещения хотябы одного сэмпла данных
+            </summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.BufferTooSmallException.#ctor">
+            <summary>Конструктор класса</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.BufferTooSmallException.#ctor(System.String)">
+            <summary>Конструктор класса.
+            Инициализирует экземпляр класса сообщением о возникшем исключении
+            </summary>
+            <param name="message">Текстовое сообщение с описанием возникшей исключительной ситуации</param>
+        </member>
+        <member name="T:AlfaPribor.AviFile.AviFileCopier">
+            <summary>Выполняет копирование информации между avi-файлами в соответствии с заданными правилами</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviFileCopier._SampleBufferSize">
+            <summary>Размер буфера для хранения данных одного сэмпла</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviFileCopier._Buffer">
+            <summary>Указатель на буфер в неуправляемой памяти</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviFileCopier._Disposed">
+            <summary>Признак освобождения ресурсов объекта</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileCopier.#ctor(System.Int32)">
+            <summary>Конструктор объектов класса</summary>
+            <param name="buffer_size">Размер буфера для хранения данных</param>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileCopier.#ctor">
+            <summary>Конструктор объектов класса.
+            Устанавливает свойства объекта в значения по умолчанию
+            </summary>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileCopier.Finalize">
+            <summary>Деструктор объекта</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileCopier.Copy(System.Collections.Generic.IList{AlfaPribor.AviFile.CopyRule})">
+            <summary>Копирует данные между avi-файлами в соответствии с заданными правилами</summary>
+            <param name="rules">Правила копирования</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileCopier.RaiseReadSampleEvent(AlfaPribor.AviFile.CopyRule,System.Int32,System.Object@,System.Byte[]@)">
+            <summary>Генерирует событие "Чтение сэмпла данных"</summary>
+            <param name="rule">Правило копирования</param>
+            <param name="number">Порядковый номер прочитанного сэмпла данных</param>
+            <param name="data_info">Информация о прочитанных данных</param>
+            <param name="data">Данные</param>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">Ошибка в обработчике события</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileCopier.RaiseCopySampleEvent(AlfaPribor.AviFile.CopyRule,System.Int32)">
+            <summary>Генерирует событие "Копирование экземпляра данных"</summary>
+            <param name="rule">Правило копирования</param>
+            <param name="number">Порядковый номер прочитанного сэмпла данных</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileCopier.CheckRule(AlfaPribor.AviFile.CopyRule)">
+            <summary>Проверяет правило копирования</summary>
+            <param name="rule">Правило копирования</param>
+            <exception cref="T:System.ArgumentNullException">Не задан источник или приемник данных</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Индекс потока в источнике или приемнике указан неверно</exception>
+            <exception cref="T:System.IO.IOException">Файл-источник или файл-приемник не открыты</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileCopier.RaiseCopyExceptionEvent(AlfaPribor.AviFile.CopyRule,System.Exception)">
+            <summary>Генерирует событие "Исключение при копировании данных"</summary>
+            <param name="rule">Правило копирования данных</param>
+            <param name="except">ВОзникшее исключение</param>
+            <exception cref="T:AlfaPribor.AviFile.AbortException">Пользователь прервал процесс копирования</exception>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviFileCopier.SampleBufferSize">
+            <summary>Размер буфера для хранения данных</summary>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти</exception>
+        </member>
+        <member name="E:AlfaPribor.AviFile.AviFileCopier.CopyException">
+            <summary>Событие "Исключение при копировании данных"</summary>
+        </member>
+        <member name="E:AlfaPribor.AviFile.AviFileCopier.CopySample">
+            <summary>Событие "Копирование экземпляра данных"</summary>
+        </member>
+        <member name="E:AlfaPribor.AviFile.AviFileCopier.ReadSample">
+            <summary>Событие "Чтение экземпляра данных"</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileCopier.Dispose">
+            <summary>Освобождает используемые объектом ресурсы</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviFileCopier.Dispose(System.Boolean)">
+            <summary>Освобождает ресурсы объекта</summary>
+            <param name="disposing">Определяет, какие ресурсы освобождать.
+            Если установлено значение TRUE - освобождаются все ресурсы (управляемые/неуправляемые),
+            если FALSE - только неуправляемые ресурсы
+            </param>
+        </member>
+        <member name="T:AlfaPribor.AviFile.CopyRule">
+            <summary>Описывает правило копирования</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyRule.SourceStreamIndex">
+            <summary>Индекс потока в файле-источнике</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyRule.DestStreamIndex">
+            <summary>Индекс потока в файле-приемнике</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyRule.StartSample">
+            <summary>Индекс первого сэмпла, с которого начинается копирование</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyRule.SamplesCount">
+            <summary>Количество копируемых сэмплов</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyRule.SourceFile">
+            <summary>Копируемый файл</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyRule.DestFile">
+            <summary>Целевой файл</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyRule.ReadMode">
+            <summary>Режим чтения данных из файла-источника</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyRule.WriteMode">
+            <summary>Режим записи данных в файл-приемник</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.CopyRule.#ctor(AlfaPribor.AviFile.AviFile,AlfaPribor.AviFile.AviFile,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Конструктор объекта</summary>
+            <param name="source">Файл-источник</param>
+            <param name="dest">Файл-приемник</param>
+            <param name="src_stream_index">Индекс потока в файле-источнике</param>
+            <param name="dst_stream_index">Индекс потока в файле-приемнике</param>
+            <param name="start_sample">Индекс первого сэмпла, с которого начинается копирование</param>
+            <param name="samples_count">Количество копируемых сэмплов</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.CopyRule.#ctor(AlfaPribor.AviFile.AviFile,AlfaPribor.AviFile.AviFile,System.Int32,System.Int32,System.Int32,System.Int32,AlfaPribor.AviFile.CopyMode,AlfaPribor.AviFile.CopyMode)">
+            <summary>Конструктор объекта</summary>
+            <param name="source">Файл-источник</param>
+            <param name="dest">Файл-приемник</param>
+            <param name="src_stream_index">Индекс потока в файле-источнике</param>
+            <param name="dst_stream_index">Индекс потока в файле-приемнике</param>
+            <param name="start_sample">Индекс первого сэмпла, с которого начинается копирование</param>
+            <param name="samples_count">Количество копируемых сэмплов</param>
+            <param name="read_mode">Режим чтения данных из файла-источника</param>
+            <param name="write_mode">Режим записи данных в файл-приемник</param>
+        </member>
+        <member name="T:AlfaPribor.AviFile.CopyMode">
+            <summary>Режим копирования данных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyMode.Original">
+            <summary>Оставить данные без изменений</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyMode.Encode">
+            <summary>Кодировать данные</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyMode.Decode">
+            <summary>Декодировать данные</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.CopySampleEventArgs">
+            <summary>Содержит дополнительные сведения события "Копирование экземпляра данных"</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopySampleEventArgs._Number">
+            <summary>Номер копируемого экземпляра данных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopySampleEventArgs._Rule">
+            <summary>Правило копирования</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.CopySampleEventArgs.#ctor(AlfaPribor.AviFile.CopyRule,System.Int32)">
+            <summary>Конструктор объектов класса</summary>
+            <param name="rule">Правило копирования</param>
+            <param name="number">Номер копируемого экземпляра данных</param>
+        </member>
+        <member name="P:AlfaPribor.AviFile.CopySampleEventArgs.Rule">
+            <summary>Правило копирования</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.CopySampleEventArgs.Number">
+            <summary>Номер копируемого экземпляра данных</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.CopyExceptionEventArgs">
+            <summary>Описывает сведения о возникшем исключении в процессе копирования данных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyExceptionEventArgs._Rule">
+            <summary>Правило копирования данных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.CopyExceptionEventArgs._InnerException">
+            <summary>Ссылка на возникшее исключение</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.CopyExceptionEventArgs.#ctor(AlfaPribor.AviFile.CopyRule,System.Exception)">
+            <summary>Конструктор объектов класса</summary>
+            <param name="rule">Правило копирования данных</param>
+            <param name="except">Ссылка на возникшее исключение</param>
+        </member>
+        <member name="P:AlfaPribor.AviFile.CopyExceptionEventArgs.Rule">
+            <summary>Правило копирования данных, вызвавшее исключение</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.CopyExceptionEventArgs.InnerException">
+            <summary>Ссылка на возникшее исключение</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.ReadSampleEventArgs">
+            <summary>Содержит дополнительные сведения события "Чтение экземпляра данных"</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.ReadSampleEventArgs._Info">
+            <summary>Дополнительная информация</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.ReadSampleEventArgs._Data">
+            <summary>Блок данных</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.ReadSampleEventArgs.#ctor(AlfaPribor.AviFile.CopyRule,System.Int32)">
+            <summary>Конструктор объектов класса</summary>
+            <param name="rule">Правило копирования</param>
+            <param name="number">Номер копируемого экземпляра данных</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.ReadSampleEventArgs.#ctor(AlfaPribor.AviFile.CopyRule,System.Int32,System.Object,System.Byte[])">
+            <summary>Конструктор объектов класса</summary>
+            <param name="rule">Правило копирования</param>
+            <param name="number">Номер копируемого экземпляра данных</param>
+            <param name="info">Дополнительная информация о прочитанных данных</param>
+            <param name="data">Блок данных</param>
+        </member>
+        <member name="P:AlfaPribor.AviFile.ReadSampleEventArgs.Info">
+            <summary>Дополнительная информация о прочитанных данных</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.ReadSampleEventArgs.Data">
+            <summary>Блок данных</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.AviVideoExporter">
+            <summary>Экспортирует все/часть видеоданных из одного AVI-файла в другой</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._SourceFileName">
+            <summary>Имя файла-источника</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._DestFileName">
+            <summary>Имя файла-приемника</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._FirstFrame">
+            <summary>Индекс первого экспортируемого видеокадра</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._FramesCount">
+            <summary>Количество экспортируемых видеокадров</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._UseCompressor">
+            <summary>Признак использования компрессора данных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._CompressOptions">
+            <summary>Настройки компрессора данных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._ExportException">
+            <summary>Ссылка на исключение, произошедшее в процессе экспорта видеоданных</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._UseTransformation">
+            <summary>Признак использования трансформации исходных изображений кадров</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._FrameDestHeight">
+            <summary>Высота трансформированного видеокадра</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._FrameDestWidth">
+            <summary>Ширина трансформированного видеокадра</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter.fccDIB">
+            <summary>Код несжатого изображения</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._UseFpsCorrection">
+            <summary>Признак изменения частоты следования кадров в целевом видеофайле</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.AviVideoExporter._FPS">
+            <summary>Частота следования кадров в файле-приемнике с точностью до тысячных долей</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.#ctor">
+            <summary>Конструктор объектов класса</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.Export">
+            <summary>Экспортирует видеоданные из файла-источника в файл-приемник</summary>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для открытия файла</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">AVI-файл уде открыт</exception>
+            <exception cref="T:System.ArgumentException">Не задано имя файла</exception>
+            <exception cref="T:System.InvalidOperationException">Файл-источник не содержит видеоданных</exception>
+            <exception cref="T:AlfaPribor.AviFile.CompressorException">Компрессия данных в заданный формат не поддерживается</exception>
+            <exception cref="T:AlfaPribor.AviFile.DecompressorException">Декомпрессия данных из заданного формата не поддерживается</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.CreateAviFileCopier(System.Int32)">
+            <summary>Создает объект копирования видеопотоков</summary>
+            <param name="buffer_size">Размер буфера для хранения несжатого изображения</param>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для создания буфера</exception>
+            <returns>Объект копирования</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.ReadSampleHandler(System.Object,AlfaPribor.AviFile.ReadSampleEventArgs)">
+            <summary>Обработчик события "Чтение сэмпла данных"</summary>
+            <param name="sender">Объект, породивший событие</param>
+            <param name="e">Дополнительные данные о событии</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.CopyExceptionHandler(System.Object,AlfaPribor.AviFile.CopyExceptionEventArgs)">
+            <summary>Обработчик исключительных ситуаций в процессе копирования данных</summary>
+            <param name="sender">Объект, породивший событие</param>
+            <param name="e">Дополнительные данные о событии</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.CopySampleHandler(System.Object,AlfaPribor.AviFile.CopySampleEventArgs)">
+            <summary>Обработчик события "Копирование сэмпла данных"</summary>
+            <param name="sender">Объект, породивший событие</param>
+            <param name="e">Дополнительные данные о событии</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.RaiseExportFrameEvent(System.Int32)">
+            <summary>Генерирует событие "Экспорт видеокадра"</summary>
+            <param name="number">Номер экспортируемого видеокадра</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.RaiseTransformFrameEvent(System.Int32,AlfaPribor.AviFile.Avi.BITMAPINFOHEADER@,System.Byte[]@)">
+            <summary>Генерирует событие "Трансформация видеокадра"</summary>
+            <param name="number">Номер видеокадра</param>
+            <param name="header">Заголовок данных изображения</param>
+            <param name="data">Данные изображения видеокадра</param>
+            <exception cref="T:System.Exception">Ошибка трансформации данных</exception>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.RaiseStreamOpenEvent(AlfaPribor.AviFile.Avi.AVISTREAMINFO@)">
+            <summary>Генерирует событие "Открыт видеопоток в файле-источнике"</summary>
+            <param name="info">Детальная информация о видеопотоке</param>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.GetFirstFrameIndex(System.String)">
+            <summary>Получить индекс первого видеокадра</summary>
+            <param name="file_name">Имя AVI-файла</param>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для открытия файла</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">AVI-файл уде открыт</exception>
+            <exception cref="T:System.ArgumentException">Не задано имя файла</exception>
+            <exception cref="T:System.InvalidOperationException">Файл не содержит потока с видеоданными</exception>
+            <returns>Индекс первого видеокадра</returns>
+        </member>
+        <member name="M:AlfaPribor.AviFile.AviVideoExporter.GetFramesCount(System.String)">
+            <summary>Получить длину видеопотока в кадрах</summary>
+            <param name="file_name">Имя AVI-файла</param>
+            <exception cref="T:System.OutOfMemoryException">Недостаточно свободной памяти для открытия файла</exception>
+            <exception cref="T:System.IO.IOException">Ошибка на диске</exception>
+            <exception cref="T:System.Exception">Неизвестная ошибка</exception>
+            <exception cref="T:AlfaPribor.AviFile.BadAviFormatException">Неизвестный формат AVI-файла</exception>
+            <exception cref="T:AlfaPribor.AviFile.AviFileException">AVI-файл уде открыт</exception>
+            <exception cref="T:System.ArgumentException">Не задано имя файла</exception>
+            <exception cref="T:System.InvalidOperationException">Файл не содержит потока с видеоданными</exception>
+            <returns>Длина видеопотока</returns>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.SourceFileName">
+            <summary>Полное имя файла-источника, включая путь к нему</summary>
+            <exception cref="T:System.ArgumentException">Недопустимое значение свойства</exception>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.DestFileName">
+            <summary>Полное имя файла-приемника, включая путь к нему</summary>
+            <exception cref="T:System.ArgumentException">Недопустимое значение свойства</exception>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.FirstFrame">
+            <summary>Индекс первого экспортируемого видеокадра</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Значение свойства вне допустимого диапазона значение</exception>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.FramesCount">
+            <summary>Количество экспортируемых видеокадров</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Значение свойства вне допустимого диапазона значение</exception>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.UseCompressor">
+            <summary>Признак использования компрессора данных при сохранении данных в файл-приемник</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.CompressOptions">
+            <summary>Настройки компрессора данных</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.UseTransformation">
+            <summary>Признак использования трансформации исходных видеокадров</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.FrameDestHeight">
+            <summary>Высота трансформированного видеокадра</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Значение свойства вне допустимого диапазона значение</exception>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.FrameDestWidth">
+            <summary>Ширина трансформированного видеокадра</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Значение свойства вне допустимого диапазона значение</exception>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.UseFpsCorrection">
+            <summary>Признак изменения частоты следования кадров в целевом видеофайле</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.AviVideoExporter.FPS">
+            <summary>Частота следования кадров в файле-приемнике с точностью до тысячных долей</summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Значение аргумента вне допустимого диапазона значений</exception>
+        </member>
+        <member name="E:AlfaPribor.AviFile.AviVideoExporter.ExportFrame">
+            <summary>Событие "Экспорт видеокадра"</summary>
+        </member>
+        <member name="E:AlfaPribor.AviFile.AviVideoExporter.TransformFrame">
+            <summary>Событие "Трансформация видеокадра"</summary>
+        </member>
+        <member name="E:AlfaPribor.AviFile.AviVideoExporter.StreamOpen">
+            <summary>Событие "Открыт видеопоток в файле-источнике"</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.ExportFrameEventArgs">
+            <summary>Содержит дополнительные сведения о событии "Экспорт видеокадра"</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.ExportFrameEventArgs._FrameNumber">
+            <summary>Порядковый номер экспортируемого кадра</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.ExportFrameEventArgs.#ctor(System.Int32)">
+            <summary>Конструктор объектов класса</summary>
+            <param name="number">Порядковый номер экспортируемого кадра</param>
+        </member>
+        <member name="P:AlfaPribor.AviFile.ExportFrameEventArgs.FrameNumber">
+            <summary>Порядковый номер экспортируемого кадра</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.TransformFrameEventArgs">
+            <summary>Содержит дополнительные сведения о событии "Трансформация видеокадра"</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.TransformFrameEventArgs._Number">
+            <summary>Номер видеокадра</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.TransformFrameEventArgs._Header">
+            <summary>Заголовок данных изображения</summary>
+        </member>
+        <member name="F:AlfaPribor.AviFile.TransformFrameEventArgs._Data">
+            <summary>Данные изображения кадра</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.TransformFrameEventArgs.#ctor(System.Int32,AlfaPribor.AviFile.Avi.BITMAPINFOHEADER,System.Byte[])">
+            <param name="number">Номер видеокадра</param>
+            <param name="header">Заголовок данных изображения</param>
+            <param name="data">Данные изображения кадра</param>
+        </member>
+        <member name="P:AlfaPribor.AviFile.TransformFrameEventArgs.Data">
+            <summary>Данные изображения кадра</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.TransformFrameEventArgs.Header">
+            <summary>Заголовок данных изображения</summary>
+        </member>
+        <member name="P:AlfaPribor.AviFile.TransformFrameEventArgs.Number">
+            <summary>Номер видеокадра</summary>
+        </member>
+        <member name="T:AlfaPribor.AviFile.StreamEventArgs">
+            <summary>Содержит детальную информацию о видеопотоке</summary>
+        </member>
+        <member name="M:AlfaPribor.AviFile.StreamEventArgs.#ctor(AlfaPribor.AviFile.Avi.AVISTREAMINFO)">
+            <summary>Конструктор объектов класса. Инициализирует свойство класса детальной информацией о видеопотоке</summary>
+            <param name="info">Информация о видеопотоке</param>
+        </member>
+        <member name="P:AlfaPribor.AviFile.StreamEventArgs.Info">
+            <summary>Информация о видеопотоке</summary>
+        </member>
+        <member name="T:AlfaPribor.AviRecorder.AviRecorder">
+            <summary>Класс записи видеороликов в АВИ</summary>
+        </member>
+        <member name="M:AlfaPribor.AviRecorder.AviRecorder.#ctor">
+            <summary>Конструктор класса</summary>
+        </member>
+        <member name="M:AlfaPribor.AviRecorder.AviRecorder.CreateFile(System.String,System.Int32,System.Int32,System.UInt32,System.Boolean)">
+            <summary>Создание файла</summary>
+            <param name="path">Путь к файлу</param>
+            <param name="width">Ширина кадра</param>
+            <param name="height">Высота кадра</param>
+            <param name="fccHandler">Сигнатура сжатия</param>
+            <param name="compress">Сжимать данные при записи кадров</param>
+            <returns>Результат операции</returns>
+        </member>
+        <member name="M:AlfaPribor.AviRecorder.AviRecorder.WriteFrame(System.Byte[],System.Boolean)">
+            <summary>Запись кадра</summary>
+            <param name="buff">Буфер кадра</param>
+            <param name="compress">true: сжимать входной массив установленным при создании кодеком
+            false: помещать входной массив в поток файл без изменений</param>
+            <returns></returns>
+        </member>
+        <member name="M:AlfaPribor.AviRecorder.AviRecorder.CloseFile">
+            <summary>Закрыть файл</summary>
+            <returns>Результат операции</returns>
+        </member>
+    </members>
+</doc>

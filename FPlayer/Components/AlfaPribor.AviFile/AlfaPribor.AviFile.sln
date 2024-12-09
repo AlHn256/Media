@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.AviFile", "AlfaPribor.AviFile\AlfaPribor.AviFile.csproj", "{15262A92-DC48-4239-ABA3-CA242D720BCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.AviFile.Demo", "AlfaPribor.AviFile.Demo\AlfaPribor.AviFile.Demo.csproj", "{635624F5-1724-491D-9567-D46297E9C9C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.AviFile.VideoExtractorDemo", "AlfaPribor.AviFile.VideoExtractorDemo\AlfaPribor.AviFile.VideoExtractorDemo.csproj", "{6726AA7B-C937-4C28-BDC9-BDACDCC5F9AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15262A92-DC48-4239-ABA3-CA242D720BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15262A92-DC48-4239-ABA3-CA242D720BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15262A92-DC48-4239-ABA3-CA242D720BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15262A92-DC48-4239-ABA3-CA242D720BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{635624F5-1724-491D-9567-D46297E9C9C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{635624F5-1724-491D-9567-D46297E9C9C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{635624F5-1724-491D-9567-D46297E9C9C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{635624F5-1724-491D-9567-D46297E9C9C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6726AA7B-C937-4C28-BDC9-BDACDCC5F9AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6726AA7B-C937-4C28-BDC9-BDACDCC5F9AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6726AA7B-C937-4C28-BDC9-BDACDCC5F9AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6726AA7B-C937-4C28-BDC9-BDACDCC5F9AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A4A597FC-597D-4A3D-9E84-253BC119CF3D}
+	EndGlobalSection
+EndGlobal

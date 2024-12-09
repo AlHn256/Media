@@ -1,0 +1,14 @@
+D:\CVS\VS2022Projects\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\bin\Debug\AlfaPribor.AviFile.XML
+D:\CVS\VS2022Projects\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\bin\Debug\AlfaPribor.AviFile.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\bin\Debug\AlfaPribor.AviFile.pdb
+D:\CVS\VS2022Projects\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\obj\Debug\AlfaPribor.AviFile.csproj.AssemblyReference.cache
+D:\CVS\VS2022Projects\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\obj\Debug\AlfaPribor.AviFile.csproj.CoreCompileInputs.cache
+D:\CVS\VS2022Projects\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\obj\Debug\AlfaPribor.AviFile.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\obj\Debug\AlfaPribor.AviFile.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\bin\Debug\AlfaPribor.AviFile.XML
+D:\Work\C#\Player 2\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\bin\Debug\AlfaPribor.AviFile.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\bin\Debug\AlfaPribor.AviFile.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\obj\Debug\AlfaPribor.AviFile.csproj.AssemblyReference.cache
+D:\Work\C#\Player 2\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\obj\Debug\AlfaPribor.AviFile.csproj.CoreCompileInputs.cache
+D:\Work\C#\Player 2\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\obj\Debug\AlfaPribor.AviFile.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.AviFile\AlfaPribor.AviFile\obj\Debug\AlfaPribor.AviFile.pdb

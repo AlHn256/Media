@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AlfaPribor.AviFile.Avi">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="AlfaPribor.AviFile.Avi.BITMAPINFO" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AviFile.Defs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="AlfaPribor.AviFile.Avi.BITMAPFILEHEADER" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AviFile.Defs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="AlfaPribor.AviFile.Avi.AVISTREAMINFO" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AviFile.Defs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="AlfaPribor.AviFile.Avi.RECT" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AviFile.Defs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="AlfaPribor.AviFile.Avi.BITMAPINFOHEADER" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AviFile.Defs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Enum Name="AlfaPribor.AviFile.Avi.ICMODE" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AviFile.Defs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Struct Name="AlfaPribor.AviFile.Avi.COMPVARS" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AviFile.Defs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="AlfaPribor.AviFile.Avi.ICINFO" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AviFile.Defs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="AlfaPribor.AviFile.Avi.AVICOMPRESSOPTIONS" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>AviFile.Defs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gSpGkAIoZuSkgBiAXwUSQZAARA40EIeAKQRBAgCBOKA=</HashCode>
+      <FileName>AviFile.Defs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.AviFile">
+    <Position X="3.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAQCFoBAACAAIARAAAAAADAgACAACgQAAwCACAHAAIE=</HashCode>
+      <FileName>AviFile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.AviFile.AviFileException" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AviFile.Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.BadAviFormatException" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AviFile.Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.CodecException" Collapsed="true">
+    <Position X="8.75" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AviFile.Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.AviFileCopier" Collapsed="true">
+    <Position X="6.25" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQIACABEABCAAAAAAAAAgAAAIAAACAAAAAASBA=</HashCode>
+      <FileName>AviFileCopier.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.AviFile.CopySampleEventArgs" Collapsed="true">
+    <Position X="8.75" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAEAEAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AviFileCopier.Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.CopyExceptionEventArgs" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAAEAAAAAAACA=</HashCode>
+      <FileName>AviFileCopier.Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.AbortException" Collapsed="true">
+    <Position X="11" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AviFile.Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.BufferTooSmallException" Collapsed="true">
+    <Position X="13.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AviFile.Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.AviVideoExporter" Collapsed="true">
+    <Position X="6.25" Y="6.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEBAABECCAcEABIEAABxBAASAAIBAEAmAgACyAhAAFE=</HashCode>
+      <FileName>AviVideoExporter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.ExportFrameEventArgs" Collapsed="true">
+    <Position X="11" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AviVideoExporter.Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.ReadSampleEventArgs" Collapsed="true">
+    <Position X="8.75" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAABAAAAAEAEAAAAA=</HashCode>
+      <FileName>AviFileCopier.Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.TransformFrameEventArgs" Collapsed="true">
+    <Position X="13.25" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAEAEAAAAAAAAAFAAAAAEAAAAAAA=</HashCode>
+      <FileName>AviVideoExporter.Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.AviFile.StreamEventArgs" Collapsed="true">
+    <Position X="11" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>AviVideoExporter.Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="AlfaPribor.AviFile.CopyRule" Collapsed="true">
+    <Position X="9" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAIAAQAAAQAAAAAAAgAAQAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>AviFileCopier.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="AlfaPribor.AviFile.CopyMode" Collapsed="true">
+    <Position X="9" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQ=</HashCode>
+      <FileName>AviFileCopier.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="9.75" />
+</ClassDiagram>

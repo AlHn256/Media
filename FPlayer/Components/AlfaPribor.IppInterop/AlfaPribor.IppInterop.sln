@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.IppInterop", "AlfaPribor.IppInterop\AlfaPribor.IppInterop.csproj", "{0C714E0B-80FD-42D0-A42D-53214D70C131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlfaPribor.IppInterop.Test", "AlfaPribor.IppInterop.Test\AlfaPribor.IppInterop.Test\AlfaPribor.IppInterop.Test.csproj", "{EBFAE190-CE7C-4810-BFE9-770C35FB861F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C714E0B-80FD-42D0-A42D-53214D70C131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C714E0B-80FD-42D0-A42D-53214D70C131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C714E0B-80FD-42D0-A42D-53214D70C131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C714E0B-80FD-42D0-A42D-53214D70C131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBFAE190-CE7C-4810-BFE9-770C35FB861F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBFAE190-CE7C-4810-BFE9-770C35FB861F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBFAE190-CE7C-4810-BFE9-770C35FB861F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBFAE190-CE7C-4810-BFE9-770C35FB861F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36C1F0E6-07AA-4A8B-9515-D26EDB1CB40D}
+	EndGlobalSection
+EndGlobal

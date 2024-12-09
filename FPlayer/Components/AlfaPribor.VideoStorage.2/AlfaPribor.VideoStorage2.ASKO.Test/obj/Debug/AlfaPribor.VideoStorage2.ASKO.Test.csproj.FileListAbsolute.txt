@@ -1,0 +1,2 @@
+D:\CVS\VS2022Projects\Components\AlfaPribor.VideoStorage.2\AlfaPribor.VideoStorage2.ASKO.Test\obj\Debug\AlfaPribor.VideoStorage2.ASKO.Test.csproj.AssemblyReference.cache
+D:\CVS\VS2022Projects\Components\AlfaPribor.VideoStorage.2\AlfaPribor.VideoStorage2.ASKO.Test\obj\Debug\AlfaPribor.VideoStorage2.ASKO.Test.csproj.CoreCompileInputs.cache

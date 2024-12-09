@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AlfaPribor.VideoStorage.VideoFrame" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAEAAACAAAAAAAAAkAAAAAAAAAAAAAAAACCQAQAAAAA=</HashCode>
+      <FileName>VideoFrame.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoPartitionBase" Collapsed="true">
+    <Position X="3" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIAgAAQAAAAAAAAAAAgAAAAAAIEAAA=</HashCode>
+      <FileName>VideoPartitionBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.CircularBufferCancelEventArgs" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>VideoStorageEvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.SyncCompleteEventArgs" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABACAAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoStorageEvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoPartitionInfo" Collapsed="true">
+    <Position X="1.75" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAABAQAgAGIAAAgAAAAAAIAAAAIAAAAAEA=</HashCode>
+      <FileName>VideoStorageInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoStorageInfo" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoStorageInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoPartitionSettings" Collapsed="true">
+    <Position X="4.25" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>VideoStorageSettings.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoStorageSettings" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAABAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>VideoStorageSettings.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.MultiStreamFrameIndex" Collapsed="true">
+    <Position X="7.75" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAQAAAAAAAAAggAACABAAAAAAAAAAAA=</HashCode>
+      <FileName>MultiStreamFrameIndex.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.SingleStreamFrameIndex" Collapsed="true">
+    <Position X="7.75" Y="5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAESAAACQAAUCkAAAAAAAQgAAAABAAAAAAAAAAgA=</HashCode>
+      <FileName>SingleStreamFrameIndex.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoStreamInfo" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgABAAQAIAkgAACAEAAAAAgAAAAAAAQAIEEAAA=</HashCode>
+      <FileName>VideoStreamInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoFramesStream" Collapsed="true">
+    <Position X="1.75" Y="9" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ABIBIEAAACAgQBAAAGgUgAAgwJAEAFAIEAgAJAFIRUA=</HashCode>
+      <FileName>VideoFramesStream.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoIndexesStream" Collapsed="true">
+    <Position X="4.25" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACABAAAAACIAQAAgCAAIAABgAMAAAAAAAAAAAAkABAA=</HashCode>
+      <FileName>VideoIndexesStream.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.BaseVideoRecord" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>LgIyglkEBKEEQCTYCAgAAAAAgQEAQgABJASAAAfEk4E=</HashCode>
+      <FileName>BaseVideoRecord.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoPartition" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACAAgEQFAABAIAEAEQAAAAAAAAAEAgAgAIAAKEAEA=</HashCode>
+      <FileName>VideoPartition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoStorageException" Collapsed="true">
+    <Position X="2.75" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoStorageExceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.InvalidStreamHeaderException" Collapsed="true">
+    <Position X="0.75" Y="11.5" Width="2.75" />
+    <InheritanceLine Type="AlfaPribor.VideoStorage.VideoStorageException" ManuallyRouted="true">
+      <Path>
+        <Point X="3.875" Y="10.945" />
+        <Point X="3.875" Y="11.097" />
+        <Point X="2.125" Y="11.097" />
+        <Point X="2.125" Y="11.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoStorageExceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.InvalidStreamDataException" Collapsed="true">
+    <Position X="4.25" Y="11.5" Width="2.5" />
+    <InheritanceLine Type="AlfaPribor.VideoStorage.VideoStorageException" FixedFromPoint="true">
+      <Path>
+        <Point X="3.875" Y="10.945" />
+        <Point X="3.875" Y="11.097" />
+        <Point X="5.5" Y="11.097" />
+        <Point X="5.5" Y="11.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoStorageExceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoIndexesCache" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAgAAAAAEAAAAAAAQAAAgAIAAAgAAAAAAAAFAAAA=</HashCode>
+      <FileName>VideoIndexesCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.BaseVideoStorage" Collapsed="true">
+    <Position X="10.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hIAAAEjABCiAABAhAEASCOCAAElkEBIhKAAwAsSQEhg=</HashCode>
+      <FileName>BaseVideoStorage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.CircularBufferEventArgs" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>VideoStorageEvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.Streams.StreamWithHeader" Collapsed="true">
+    <Position X="3.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoStorageCircularBuffer" Collapsed="true">
+    <Position X="1" Y="14" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAIgAIAAAAAkAAAAACAAAAAAAAA=</HashCode>
+      <FileName>VideoStorageCircularBuffer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoStorageSynchronizer" Collapsed="true">
+    <Position X="4.25" Y="14" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IQACAAAAQAAAAAAAAAAgAIAAAAwFACAAACAAAAABAAA=</HashCode>
+      <FileName>VideoStorageSynchronizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.Threads.TerminatedThread" Collapsed="true">
+    <Position X="3" Y="12.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoContent" Collapsed="true">
+    <Position X="13.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAABAAQBIAEgAAIAEAAAAAAAAAAAQQAAIAABBA=</HashCode>
+      <FileName>VideoContent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.SyncVideoStorage" Collapsed="true">
+    <Position X="11.5" Y="8.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="AlfaPribor.VideoStorage.VideoStorage" FixedFromPoint="true">
+      <Path>
+        <Point X="12.25" Y="7.695" />
+        <Point X="12.25" Y="8.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>SyncVideoStorage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoStorage" Collapsed="true">
+    <Position X="11.5" Y="7" Width="1.5" />
+    <InheritanceLine Type="AlfaPribor.VideoStorage.BaseVideoStorage" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="6.556" />
+        <Point X="11.25" Y="6.804" />
+        <Point X="12.25" Y="6.804" />
+        <Point X="12.25" Y="7" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoStorage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.VideoRecord" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <InheritanceLine Type="AlfaPribor.VideoStorage.BaseVideoRecord" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="3.056" />
+        <Point X="11.25" Y="3.875" />
+        <Point X="11.5" Y="3.875" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoRecord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.AskoVideoRecord" Collapsed="true">
+    <Position X="11.5" Y="4.5" Width="1.5" />
+    <InheritanceLine Type="AlfaPribor.VideoStorage.BaseVideoRecord" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="3.056" />
+        <Point X="11.25" Y="4.812" />
+        <Point X="11.5" Y="4.812" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ASKO\AskoVideoRecord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.AskoVideoStorage" Collapsed="true">
+    <Position X="13.5" Y="7" Width="2" />
+    <InheritanceLine Type="AlfaPribor.VideoStorage.BaseVideoStorage" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="6.556" />
+        <Point X="11.25" Y="6.804" />
+        <Point X="14.5" Y="6.804" />
+        <Point X="14.5" Y="7" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ASKO\AskoVideoStorage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.SyncAskoVideoStorage" Collapsed="true">
+    <Position X="13.5" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>ASKO\SyncAskoVideoStorage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoIndex" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAIgABEAAAAAAABQAAgAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>IVideoIndex.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoInterface" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAIA=</HashCode>
+      <FileName>IVideoInterface.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoReader" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAQABAAAAAAAAAACAAAAAAAgAAAAAABAAAAAAAAEAA=</HashCode>
+      <FileName>IVideoReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoStorage" Collapsed="true">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAgAACAAAAAgAAAAAACAAAEAABAhIAAgAEQAEAA=</HashCode>
+      <FileName>IVideoStorage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoWriter" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAABAAQA=</HashCode>
+      <FileName>IVideoWriter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.ISyncVideoStorage" Collapsed="true">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISyncVideoStorage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoIndexesStream" Collapsed="true">
+    <Position X="0.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAQAAoGBAAAABgAEAAAAAAAAAAAAGIACA=</HashCode>
+      <FileName>IVideoIndexesStream.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoFramesStream" Collapsed="true">
+    <Position X="0.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAQBAoGBAQAABggAAAAAAAAAAABAHIBSA=</HashCode>
+      <FileName>IVideoFramesStream.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="AlfaPribor.VideoStorage.VideoStorageResult" Collapsed="true">
+    <Position X="10.25" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAgAAAAAAAAAAAAABAAAAAAAAAAAAAAAAFAAAAAAA=</HashCode>
+      <FileName>VideoStorageTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AlfaPribor.VideoStorage.VideoStorageIntStat" Collapsed="true">
+    <Position X="7.75" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAABCCAgBAI=</HashCode>
+      <FileName>VideoStorageTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AlfaPribor.VideoStorage.VideoPartitionState" Collapsed="true">
+    <Position X="12.75" Y="10" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>VideoStorageTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="AlfaPribor.VideoStorage.EvCircularBufferDeleting" Collapsed="true">
+    <Position X="10.25" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoStorageEvents.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="AlfaPribor.VideoStorage.EvCircularBufferDeleted" Collapsed="true">
+    <Position X="7.75" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VideoStorageEvents.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="AlfaPribor.VideoStorage.EvSyncComplete" Collapsed="true">
+    <Position X="12.75" Y="11" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>VideoStorageEvents.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Tahoma" Size="9.75" />
+</ClassDiagram>

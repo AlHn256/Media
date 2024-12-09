@@ -1,0 +1,57 @@
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\ipp2010.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\ipp2016.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\ipp2016x64.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\DLL\x64\D3DX9_43.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\DLL\x86\D3DX9_43.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.SharpDXVideoRenderer.dll.config
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.SharpDXVideoRenderer.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.SharpDXVideoRenderer.pdb
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\SharpDX.Direct3D9.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\SharpDX.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.pdb
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.xml
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.dll.config
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.csproj.AssemblyReference.cache
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.csproj.CoreCompileInputs.cache
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.csproj.CopyComplete
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\ipp2010.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\ipp2016.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\ipp2016x64.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\DLL\x64\D3DX9_43.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\DLL\x86\D3DX9_43.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.SharpDXVideoRenderer.dll.config
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.SharpDXVideoRenderer.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.SharpDXVideoRenderer.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\SharpDX.Direct3D9.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\SharpDX.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.xml
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.dll.config
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.csproj.AssemblyReference.cache
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.csproj.CoreCompileInputs.cache
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.csproj.CopyComplete
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.pdb
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\ipp2010.dll
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\ipp2016.dll
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\ipp2016x64.dll
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\DLL\x64\D3DX9_43.dll
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\DLL\x86\D3DX9_43.dll
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.SharpDXVideoRenderer.dll.config
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.SharpDXVideoRenderer.dll
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.SharpDXVideoRenderer.pdb
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.dll
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\SharpDX.Direct3D9.dll
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\SharpDX.dll
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.pdb
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.xml
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\bin\Debug\AlfaPribor.IppInterop.dll.config
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.csproj.AssemblyReference.cache
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.csproj.CoreCompileInputs.cache
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.csproj.CopyComplete
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.dll
+D:\Work\C#\Media\FPlayer\Components\AlfaPribor.SharpDxVideoRender\AlfaPribor.SharpDxVideoRenderer\obj\Debug\AlfaPribor.SharpDXVideoRenderer.pdb

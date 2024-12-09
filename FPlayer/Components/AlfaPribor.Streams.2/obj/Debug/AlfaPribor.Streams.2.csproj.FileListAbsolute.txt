@@ -1,0 +1,18 @@
+D:\CVS\VS2022Projects\Components\AlfaPribor.Streams.2\bin\Debug\AlfaPribor.Streams2.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.Streams.2\bin\Debug\AlfaPribor.Streams2.pdb
+D:\CVS\VS2022Projects\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams.2.csproj.AssemblyReference.cache
+D:\CVS\VS2022Projects\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams.2.csproj.CoreCompileInputs.cache
+D:\CVS\VS2022Projects\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams2.dll
+D:\CVS\VS2022Projects\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams2.pdb
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.Streams.2\bin\Debug\AlfaPribor.Streams2.dll
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.Streams.2\bin\Debug\AlfaPribor.Streams2.pdb
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams.2.csproj.AssemblyReference.cache
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams.2.csproj.CoreCompileInputs.cache
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams2.dll
+D:\CVS\VS2022Projects\FramesPlayer\Source\1.2.0.82\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams2.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.Streams.2\bin\Debug\AlfaPribor.Streams2.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.Streams.2\bin\Debug\AlfaPribor.Streams2.pdb
+D:\Work\C#\Player 2\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams.2.csproj.AssemblyReference.cache
+D:\Work\C#\Player 2\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams.2.csproj.CoreCompileInputs.cache
+D:\Work\C#\Player 2\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams2.dll
+D:\Work\C#\Player 2\Components\AlfaPribor.Streams.2\obj\Debug\AlfaPribor.Streams2.pdb
