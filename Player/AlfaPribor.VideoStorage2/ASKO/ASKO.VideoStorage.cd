@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AlfaPribor.VideoStorage.AskoVideoIndexesStream" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACABAAAAACAAAAAAAAAAAAAgAMAAAAAAAAAAAAEIBAA=</HashCode>
+      <FileName>ASKO\AskoVideoIndexesStream.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.Streams.StreamWithHeader" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.AskoVideoFramesStream" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ARIBIEAAACAgQBEBACgQgAAgwJAGAFAIEAgABAFIRWE=</HashCode>
+      <FileName>ASKO\AskoVideoFramesStream.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.AskoVideoRecord" Collapsed="true">
+    <Position X="10" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ASKO\AskoVideoRecord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.AskoVideoStorage" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ASKO\AskoVideoStorage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.BaseVideoRecord" Collapsed="true">
+    <Position X="10" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>LgIyglkEBKEEQCTYCAgAAAAAgQEAQgABJASAAAfEk4E=</HashCode>
+      <FileName>BaseVideoRecord.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AlfaPribor.VideoStorage.SyncAskoVideoStorage" Collapsed="true">
+    <Position X="7.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>ASKO\SyncAskoVideoStorage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoIndexesStream" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAQAAoGBAAAABgAEAAAAAAAAAAAAGIACA=</HashCode>
+      <FileName>IVideoIndexesStream.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoFramesStream" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAQBAoGBAQAABggAAAAAAAAAAABAHIBSA=</HashCode>
+      <FileName>IVideoFramesStream.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.ISyncVideoStorage" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISyncVideoStorage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoStorage" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAgAACAAAAAgAAAAAACAAAEAABAhIAAgAEQAEAA=</HashCode>
+      <FileName>IVideoStorage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoReader" Collapsed="true">
+    <Position X="2" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAQABAAAAAAAAAACAAAAAAAgAAAAAABAAAAAAAAEAA=</HashCode>
+      <FileName>IVideoReader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoWriter" Collapsed="true">
+    <Position X="6.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAABAAQA=</HashCode>
+      <FileName>IVideoWriter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoIndex" Collapsed="true">
+    <Position X="4.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JAIgABEAAAAAAABQAAgAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>IVideoIndex.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AlfaPribor.VideoStorage.IVideoInterface" Collapsed="true">
+    <Position X="4.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAIA=</HashCode>
+      <FileName>IVideoInterface.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

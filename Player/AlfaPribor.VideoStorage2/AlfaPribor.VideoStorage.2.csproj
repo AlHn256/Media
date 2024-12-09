@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F990CE7A-2163-4E67-8855-0C687AA54552}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AlfaPribor.VideoStorage2</RootNamespace>
+    <AssemblyName>AlfaPribor.VideoStorage2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\AlfaPribor.VideoStorage2.xml</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\AlfaPribor.VideoStorage.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ASKO\AskoVideoRecord.cs" />
+    <Compile Include="ASKO\AskoVideoStorage.cs" />
+    <Compile Include="ASKO\AskoVideoFramesStream.cs" />
+    <Compile Include="ASKO\AskoVideoIndexesStream.cs" />
+    <Compile Include="VideoRecord\BufferedVideoRecord.cs" />
+    <Compile Include="VideoStorage\ISyncVideoStorage.cs" />
+    <Compile Include="VideoStream\IVideoFramesStream.cs" />
+    <Compile Include="VideoIndex\IVideoIndexesStream.cs" />
+    <Compile Include="VideoStorage\SyncVideoStorage.cs" />
+    <Compile Include="ASKO\SyncAskoVideoStorage.cs" />
+    <Compile Include="VideoFrame\VideoContent.cs" />
+    <Compile Include="VideoStream\VideoFramesStream.cs" />
+    <Compile Include="VideoIndex\VideoIndexesCache.cs" />
+    <Compile Include="VideoIndex\VideoIndexesStream.cs" />
+    <Compile Include="VideoRecord\IVideoInterface.cs" />
+    <Compile Include="VideoIndex\MultiStreamFrameIndex.cs" />
+    <Compile Include="VideoFrame\VideoFrame.cs" />
+    <Compile Include="VideoIndex\SingleStreamFrameIndex.cs" />
+    <Compile Include="VideoPartition\VideoPartition.cs" />
+    <Compile Include="VideoPartition\VideoPartitionBase.cs" />
+    <Compile Include="VideoRecord\BaseVideoRecord.cs" />
+    <Compile Include="VideoStorage\BaseVideoStorage.cs" />
+    <Compile Include="VideoRecord\VideoRecord.cs" />
+    <Compile Include="VideoStorage\VideoStorage.cs" />
+    <Compile Include="VideoStorage\VideoStorageCircularBuffer.cs" />
+    <Compile Include="VideoStorage\VideoStorageEvents.cs" />
+    <Compile Include="VideoStorage\VideoStorageExceptions.cs" />
+    <Compile Include="VideoStorage\VideoStorageInfo.cs" />
+    <Compile Include="VideoStorage\VideoStorageSynchronizer.cs" />
+    <Compile Include="VideoStorage\VideoStorageTypes.cs" />
+    <Compile Include="VideoStorage\VideoStorageSettings.cs" />
+    <Compile Include="VideoIndex\IVideoIndex.cs" />
+    <Compile Include="VideoRecord\IVideoReader.cs" />
+    <Compile Include="VideoStorage\IVideoStorage.cs" />
+    <Compile Include="VideoRecord\IVideoWriter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoStream\VideoStreamInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="VideoStorage\VideoStorage.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AlfaPribor.Collections\AlfaPribor.Collections\AlfaPribor.Collections.csproj">
+      <Project>{90dbd26d-04bc-4f9e-ba44-c408e263902c}</Project>
+      <Name>AlfaPribor.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AlfaPribor.Streams.2\AlfaPribor.Streams.2.csproj">
+      <Project>{8079ecd7-407a-4785-b86b-1f89dc139919}</Project>
+      <Name>AlfaPribor.Streams.2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AlfaPribor.Threads\AlfaPribor.Threads\AlfaPribor.Threads.csproj">
+      <Project>{953ea537-e303-408c-865c-da463e3b541f}</Project>
+      <Name>AlfaPribor.Threads</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
