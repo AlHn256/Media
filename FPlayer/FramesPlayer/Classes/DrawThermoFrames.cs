@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Drawing.Imaging;
 
 using AlfaPribor.SharpDXVideoRenderer;  //Отрисовщик кадров
 using AlfaPribor.IppInterop;            //Импорт функций ipp2010
@@ -219,8 +216,7 @@ namespace FramesPlayer
             }
 
             //Создание нового
-            obj_DrawFrames = new SharpDXVideoRenderer(width, height, picture_box, 
-                                                 hardware_vertex, un_fish, un_fish_coeff);
+            obj_DrawFrames = new SharpDXVideoRenderer(width, height, picture_box,   hardware_vertex, un_fish, un_fish_coeff);
 
             //Панель рисования
             pictureBox = picture_box;

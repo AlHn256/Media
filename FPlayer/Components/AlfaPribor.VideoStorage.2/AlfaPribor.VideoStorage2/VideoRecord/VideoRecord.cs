@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-using AlfaPribor.Streams2;
 
 namespace AlfaPribor.VideoStorage2
 {
@@ -20,15 +17,13 @@ namespace AlfaPribor.VideoStorage2
         /// <exception cref="System.ArgumentException">Идентификатор видеозаписи имеет недопустимое значение</exception>
         /// <exception cref="System.ArgumentNullException">Не указан раздел хранилища, к которому относится видеозапись</exception>
         /// <exception cref="AlfaPribor.VideoStorage.VideoStorageException">Возникла ошибка при создании или чтении потоков ввода/вывода</exception>
-        public VideoRecord(string id, VideoPartition partition, VideoRecordOpenMode mode)
-            : base(id, partition, mode) { }
+        public VideoRecord(string id, VideoPartition partition, VideoRecordOpenMode mode):base(id, partition, mode) { }
 
         /// <summary>Конструктор класса.
         /// Используется только для в случае, если статус запрашиваемого интерфейса заранее известен</summary>
         /// <param name="id">Идентификатор видеозаписи</param>
         /// <param name="status">Статус запрашиваемого интерфейса</param>
-        public VideoRecord(string id, VideoStorageIntStat status)
-            : base(id, status) { }
+        public VideoRecord(string id, VideoStorageIntStat status) : base(id, status) { }
 
         /// <summary>Конструктор класса.
         /// Используется только для в случае, если статус запрашиваемого интерфейса заранее известен</summary>
@@ -93,19 +88,11 @@ namespace AlfaPribor.VideoStorage2
                 switch (mode)
                 {
                     case VideoRecordOpenMode.Read:
-                        FramesStream = new BufferedStream(
-                            new FileStream(path + id + ".frames", FileMode.Open, FileAccess.Read, FileShare.Read),
-                            65536
-                        );
+                        FramesStream = new BufferedStream(new FileStream(path + id + ".frames", FileMode.Open, FileAccess.Read, FileShare.Read), 65536);
                         break;
-
                     case VideoRecordOpenMode.ReadWrite:
-                        FramesStream = new BufferedStream(
-                            new FileStream(path + id + ".frames", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite),
-                            65536
-                        );
+                        FramesStream = new BufferedStream(new FileStream(path + id + ".frames", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite), 65536);
                         break;
-
                     default:
                         FramesStream = null;
                         break;

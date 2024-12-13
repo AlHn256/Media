@@ -200,8 +200,7 @@ namespace AlfaPribor.VideoStorage2
         /// <returns>Возвращает указатель на объект для работы с видеозаписью (чтения/записи)</returns>
         BaseVideoRecord GetRecord(string id, VideoPartition partition)
         {
-            VideoRecordOpenMode mode =  VideoRecord.Exist(partition.Path, id, GetVideoStorageType()) ? 
-                                        VideoRecordOpenMode.Read : VideoRecordOpenMode.ReadWrite;
+            VideoRecordOpenMode mode =  VideoRecord.Exist(partition.Path, id, GetVideoStorageType()) ? VideoRecordOpenMode.Read : VideoRecordOpenMode.ReadWrite;
 
             BaseVideoRecord record = NewVideoRecord(id, partition, mode);
             record.OnDisposed += OnRecordDisposed;

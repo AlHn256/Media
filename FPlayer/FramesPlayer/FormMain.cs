@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Linq;
-
+﻿using AlfaPribor.JpegCodec;
+using AlfaPribor.SharpDXVideoRenderer;
 //Внешние проекты
 using AlfaPribor.VideoPlayer;
 using AlfaPribor.VideoStorage2;
-using AlfaPribor.SharpDXVideoRenderer;
-using AlfaPribor.JpegCodec;
 using FramesPlayer.ExportConfiguration;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace FramesPlayer
 {
@@ -231,7 +231,6 @@ namespace FramesPlayer
         void obj_VideoPlayer_EventFPS(int stream_id, int fps)
         {
             if (GetCameraType(stream_id) == ImageType.Unknown) return;
-
             if (GetCameraType(stream_id) == ImageType.Jpeg)
             {
                 if (this.WindowState == FormWindowState.Normal)
@@ -281,15 +280,14 @@ namespace FramesPlayer
                 }
 
             //Кнопки выбора видеопотоков
-            tsmiChannels.Visible = true;
-            tsmiChannels.DropDownItems.Clear();
+           // tsmiChannels.Visible = true;
+            //tsmiChannels.DropDownItems.Clear();
 
             //Параметры видеопотока
-            ShowChannelParams();
+            //ShowChannelParams();
 
             //Удаление кнопок выбора видеопотоков с панели
-            for (int i = toolStripMain.Items.Count - 1; i > 1; i--)
-                toolStripMain.Items.RemoveAt(i);
+            for (int i = toolStripMain.Items.Count - 1; i > 1; i--)toolStripMain.Items.RemoveAt(i);
 
             //Кнопки выбора видеопотоков
             toolStripMain.Items.Insert(2, new ToolStripSeparator());
@@ -305,7 +303,7 @@ namespace FramesPlayer
                 //Кнопка
                 ToolStripButton button = new ToolStripButton();
                 button.Text = item.Id.ToString();
-                button.Font = new Font("Arial", 8, FontStyle.Bold);
+                button.Font = new Font("Arial", 14, FontStyle.Bold);
                 button.Tag = item.Id;
                 if (item == SelectedChannel) button.Checked = true;
                 button.Click += new EventHandler(button_Click);
@@ -323,9 +321,7 @@ namespace FramesPlayer
 
             obj_VideoPlayer.Play();
             obj_VideoPlayer.ButtonDown(VideoPlayerInterface.PlayerButtonType.Play);
-
             SelectChannel(SelectedChannel.Id);
-
         }
 
         void ShowChannelParams()
@@ -433,7 +429,7 @@ namespace FramesPlayer
             obj_VideoStorage.Active = true;
             //Присвоение плееру объекта хранилища
             obj_VideoPlayer.ObjVideoStorage = obj_VideoStorage;
-            if (obj_VideoPlayer.Open(System.IO.Path.GetFileNameWithoutExtension(file), 0))
+            if (obj_VideoPlayer.Open(Path.GetFileNameWithoutExtension(file), 0))
             {
                 obj_VideoPlayer.Delta = 100;
                 obj_VideoPlayer.Position = 0;
@@ -446,15 +442,11 @@ namespace FramesPlayer
                 {
                     if (this.Created)
                     {
-                        this.Invoke((MethodInvoker)(() =>
-                        {
-                            this.Text = "FramesPlayer " + Application.ProductVersion + " состав № " + System.IO.Path.GetFileNameWithoutExtension(file);
-                        }));
+                        this.Invoke((MethodInvoker)(() =>{this.Text = "FramesPlayer " + Application.ProductVersion + " состав № " + Path.GetFileNameWithoutExtension(file);}));
                     }
                 }
                 //catch { };
                 AdjustPlayerWindow();
-
                 _imageExporter.InitData(file, obj_VideoPlayer.ObjVideoStorage.Info.Partitions[0].RecordCount, _autoSaveSettings);
             }
             else
@@ -574,8 +566,7 @@ namespace FramesPlayer
                 AlfaPribor.IppInterop.IppiSize size;
                 size.width = resX;
                 size.height = resY;
-                AlfaPribor.IppInterop.IppFunctions.ippiMirror_8u_C3R(out_data, resX * 3, img, resX * 3,
-                                                                     size, AlfaPribor.IppInterop.IppiAxis.ippAxsHorizontal);
+                AlfaPribor.IppInterop.IppFunctions.ippiMirror_8u_C3R(out_data, resX * 3, img, resX * 3, size, AlfaPribor.IppInterop.IppiAxis.ippAxsHorizontal);
                 out_data = img;
             }
             //Отрисовка декодированного кадра
@@ -593,6 +584,7 @@ namespace FramesPlayer
         /// <param name="Coeff">КОэффициент исправления искажений</param>
         void CreateDrawFramesTK(int resX, int resY, int id, bool AniFish, int Coeff, int Rotation)
         {
+            Rotation = 0;
             if (obj_DrawFrames_TK == null) obj_DrawFrames_TK = new DrawTelecameraFrames();
             if (obj_DrawFrames_TK.FrameWidth != resX ||
                 obj_DrawFrames_TK.FrameHeight != resY)
@@ -632,12 +624,8 @@ namespace FramesPlayer
         {
             try
             {
-                FileAssociation.Associate(".frames", "FramesPlayer", "Файл видеопотоков",
-                                          Application.StartupPath + "\\arhiv_mode.ico",
-                                          Application.ExecutablePath);
-                FileAssociation.Associate(".index", "FramesPlayer", "Файл индексов видеопотоков",
-                                          Application.StartupPath + "\\arhiv_mode.ico",
-                                          Application.ExecutablePath);
+                FileAssociation.Associate(".frames", "FramesPlayer", "Файл видеопотоков", Application.StartupPath + "\\arhiv_mode.ico", Application.ExecutablePath);
+                FileAssociation.Associate(".index", "FramesPlayer", "Файл индексов видеопотоков", Application.StartupPath + "\\arhiv_mode.ico", Application.ExecutablePath);
             }
             catch { };
         }
@@ -649,7 +637,6 @@ namespace FramesPlayer
                 frm.ShowDialog();
             }
         }
-
         #endregion
 
         //*
@@ -689,7 +676,7 @@ namespace FramesPlayer
                 begin = 0;
                 end = obj_VideoPlayer.Length;
             }
-            using (FormExport frm = new FormExport(System.IO.Path.GetFileNameWithoutExtension(FilePath),
+            using (FormExport frm = new FormExport(Path.GetFileNameWithoutExtension(FilePath),
                    obj_VideoStorage, begin, end))
             {
                 frm.ShowDialog();
@@ -879,6 +866,50 @@ namespace FramesPlayer
         private void AutoExportSettingsChangedHandler(object sender, AutoExprortChangeSettingsEventArgs e)
         {
             _autoSaveSettings = e.AutoExportSettings;
+        }
+
+        private async void addFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string serchingDir = "E:\\ImageArchive\\Exampels\\18";
+
+            FileEdit fileEdit = new FileEdit(); 
+            var list = fileEdit.SearchFiles(serchingDir);
+            var FileList = list.Select(f => f.FullName).ToList();
+
+            FileInfo[] fileList = fileEdit.SearchFiles(serchingDir);
+            if (fileList.Length == 0) return;
+           
+            Task<byte[]>[] byteArray = fileList.Select(async x => await ReadAsync(x.FullName)).ToArray();
+            var sfsd = byteArray[1];
+
+            Bitmap[] dataArray = fileList.Select(x => { return new Bitmap(x.FullName); }).ToArray();
+            dataArray[0].Save("asd");
+            //DrawJpegFrame(int channel_id, byte[] frame, int timestamp, int resX, int resY);
+        }
+
+
+        async Task<byte[]> ReadAsync(string path)
+        {
+            using (FileStream sourceStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))
+            {
+                byte[] buffer = new byte[sourceStream.Length];
+                //int numRead;
+                //StringBuilder sb = new StringBuilder();
+                
+                int numRead = await sourceStream.ReadAsync(buffer, 0, buffer.Length);
+
+                //while (() != 0)
+                //{
+                //    string text = Encoding.UTF8.GetString(buffer, 0, numRead);
+                //    sb.Append(text);
+                //}
+                return buffer;
+            }
+        }
+
+        private void saveFrameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveCurrentFrame();
         }
     }
 

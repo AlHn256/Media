@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Threading;
-using System.Diagnostics;
 
 using SharpDX;
-using SharpDX.Windows;
 using SharpDX.Direct3D9;
 
 using AlfaPribor.IppInterop;
-using System.CodeDom.Compiler;
 
 namespace AlfaPribor.SharpDXVideoRenderer
 {
@@ -292,9 +288,7 @@ namespace AlfaPribor.SharpDXVideoRenderer
         /// <param name="hardware_vertex">Использовать аппаратную обработку вершин</param>
         /// <param name="un_fish">Задействовать исправления искажений</param>
         /// <param name="un_fish_coeff">Коэффициент исправления искажений</param>
-        public SharpDXVideoRenderer(int width, int height, 
-                                        PictureBox picture_box, bool hardware_vertex, 
-                                        bool un_fish, int un_fish_coeff)
+        public SharpDXVideoRenderer(int width, int height,  PictureBox picture_box, bool hardware_vertex,  bool un_fish, int un_fish_coeff)
         {
             Width = width;
             Height = height;
@@ -318,9 +312,7 @@ namespace AlfaPribor.SharpDXVideoRenderer
         /// <param name="hardware_vertex">Использовать аппаратную обработку вершин</param>
         /// <param name="un_fish">Задействовать исправления искажений</param>
         /// <param name="un_fish_coeff">Коэффициент исправления искажений</param>
-        public SharpDXVideoRenderer(int width, int height,
-                                        PictureBox picture_box, bool hardware_vertex,
-                                        bool un_fish, int un_fish_coeff, bool mirror)
+        public SharpDXVideoRenderer(int width, int height, PictureBox picture_box, bool hardware_vertex, bool un_fish, int un_fish_coeff, bool mirror)
         {
             Width = width;
             Height = height;
@@ -347,8 +339,7 @@ namespace AlfaPribor.SharpDXVideoRenderer
         /// <param name="hardware_vertex">Использовать аппаратную обработку вершин</param>
         /// <param name="un_fish">Задействовать исправления искажений</param>
         /// <param name="un_fish_coeff">Коэффициент исправления искажений</param>
-        public SharpDXVideoRenderer(int width, int height,
-                                        PictureBox picture_box, PictureBox picture_max, bool hardware_vertex,
+        public SharpDXVideoRenderer(int width, int height, PictureBox picture_box, PictureBox picture_max, bool hardware_vertex,
                                         bool un_fish, int un_fish_coeff)
         {
             Width = width;
@@ -1632,23 +1623,23 @@ namespace AlfaPribor.SharpDXVideoRenderer
             {
                 dev.SetTexture(0, texture_n);
 
-                dev.SetTextureStageState(0, TextureStage.ColorOperation, TextureOperation.Modulate);
-                dev.SetTextureStageState(0, TextureStage.ColorArg1, TextureArgument.Texture);
-                dev.SetTextureStageState(0, TextureStage.ColorArg2, TextureArgument.Current);
-                dev.SetTextureStageState(0, TextureStage.AlphaOperation, TextureOperation.Disable);
-                dev.SetSamplerState(0, SamplerState.MinFilter, TextureFilter.Anisotropic);
-                dev.SetSamplerState(0, SamplerState.MagFilter, TextureFilter.Anisotropic);
-                dev.SetSamplerState(0, SamplerState.MipFilter, TextureFilter.Anisotropic);
-                dev.SetStreamSource(0, vertexBuffer, 0, Utilities.SizeOf<CustomVertex.PositionNormalTextured>());
-                dev.VertexFormat = CustomVertex.PositionNormalTextured.Format;
+                //dev.SetTextureStageState(0, TextureStage.ColorOperation, TextureOperation.Modulate);
+                //dev.SetTextureStageState(0, TextureStage.ColorArg1, TextureArgument.Texture);
+                //dev.SetTextureStageState(0, TextureStage.ColorArg2, TextureArgument.Current);
+                //dev.SetTextureStageState(0, TextureStage.AlphaOperation, TextureOperation.Disable);
+                //dev.SetSamplerState(0, SamplerState.MinFilter, TextureFilter.Anisotropic);
+                //dev.SetSamplerState(0, SamplerState.MagFilter, TextureFilter.Anisotropic);
+                //dev.SetSamplerState(0, SamplerState.MipFilter, TextureFilter.Anisotropic);
+                //dev.SetStreamSource(0, vertexBuffer, 0, Utilities.SizeOf<CustomVertex.PositionNormalTextured>());
+                //dev.VertexFormat = CustomVertex.PositionNormalTextured.Format;
 
                 int triangles_count = GridSize * 2 * GridSize + GridSize - 1;
                 dev.DrawPrimitives(PrimitiveType.TriangleStrip, 0, triangles_count);
-                if (graphics_elements)
-                {
-                    RenderText(dev);    //Отрисовка строк
-                    RenderLines(dev);   //Отрисовка линий
-                }
+                //if (graphics_elements)
+                //{
+                //    RenderText(dev);    //Отрисовка строк
+                //    RenderLines(dev);   //Отрисовка линий
+                //}
                 dev.EndScene();
             }
             catch
@@ -1658,6 +1649,7 @@ namespace AlfaPribor.SharpDXVideoRenderer
                 dev.EvictManagedResources();
                 return false;
             }
+
             try { dev.Present(); }
             catch { return false; };
             return true;

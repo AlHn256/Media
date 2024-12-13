@@ -630,7 +630,7 @@ namespace Multimedia
 
         #region IComponent Members
 
-        public event System.EventHandler Disposed;
+        public event EventHandler Disposed;
 
         public ISite Site
         {

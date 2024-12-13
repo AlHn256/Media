@@ -90,6 +90,7 @@
     <Compile Include="ASKO\AskoVideoIndexesStream.cs" />
     <Compile Include="VideoRecord\BufferedVideoRecord.cs" />
     <Compile Include="VideoStorage\ISyncVideoStorage.cs" />
+    <Compile Include="VideoStream\Bitmap.cs" />
     <Compile Include="VideoStream\IVideoFramesStream.cs" />
     <Compile Include="VideoIndex\IVideoIndexesStream.cs" />
     <Compile Include="VideoStorage\SyncVideoStorage.cs" />

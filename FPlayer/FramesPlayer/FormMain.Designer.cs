@@ -40,11 +40,13 @@
             this.tsmiSpeedMetric = new System.Windows.Forms.ToolStripMenuItem();
             this.tmsiTimeMetric = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWagonSpeed = new System.Windows.Forms.ToolStripMenuItem();
+            this.addFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiChannels = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSelectConncetionDB = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTimeStamp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDBConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSaveFrame = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxVideo = new System.Windows.Forms.PictureBox();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
@@ -60,7 +62,7 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslRotation = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelPlay = new System.Windows.Forms.Panel();
-            this.autoSaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideo)).BeginInit();
             this.toolStripMain.SuspendLayout();
@@ -92,10 +94,12 @@
             this.выходToolStripMenuItem,
             this.tsmiSpeedMetric,
             this.tmsiTimeMetric,
-            this.tsmiWagonSpeed});
+            this.tsmiWagonSpeed,
+            this.addFilesToolStripMenuItem,
+            this.saveFrameToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.файлToolStripMenuItem.Text = "Save";
             // 
             // открытьToolStripMenuItem
             // 
@@ -164,6 +168,13 @@
             this.tsmiWagonSpeed.Text = "График скорости вагонов состава";
             this.tsmiWagonSpeed.Click += new System.EventHandler(this.tsmiWagonSpeed_Click);
             // 
+            // addFilesToolStripMenuItem
+            // 
+            this.addFilesToolStripMenuItem.Name = "addFilesToolStripMenuItem";
+            this.addFilesToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.addFilesToolStripMenuItem.Text = "Add Files";
+            this.addFilesToolStripMenuItem.Click += new System.EventHandler(this.addFilesToolStripMenuItem_Click);
+            // 
             // tsmiChannels
             // 
             this.tsmiChannels.Name = "tsmiChannels";
@@ -186,23 +197,30 @@
             // 
             this.tsmiTimeStamp.CheckOnClick = true;
             this.tsmiTimeStamp.Name = "tsmiTimeStamp";
-            this.tsmiTimeStamp.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTimeStamp.Size = new System.Drawing.Size(168, 22);
             this.tsmiTimeStamp.Text = "Метка времени";
             this.tsmiTimeStamp.Click += new System.EventHandler(this.tsmiTimeStamp_Click);
             // 
             // tsmiDBConnect
             // 
             this.tsmiDBConnect.Name = "tsmiDBConnect";
-            this.tsmiDBConnect.Size = new System.Drawing.Size(180, 22);
+            this.tsmiDBConnect.Size = new System.Drawing.Size(168, 22);
             this.tsmiDBConnect.Text = "Соединение с БД";
             this.tsmiDBConnect.Click += new System.EventHandler(this.tsmiDBConnect_Click);
             // 
             // tsmiSaveFrame
             // 
             this.tsmiSaveFrame.Name = "tsmiSaveFrame";
-            this.tsmiSaveFrame.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSaveFrame.Size = new System.Drawing.Size(168, 22);
             this.tsmiSaveFrame.Text = "Сохранить кадр";
             this.tsmiSaveFrame.Click += new System.EventHandler(this.tsmiSaveFrame_Click);
+            // 
+            // autoSaveToolStripMenuItem
+            // 
+            this.autoSaveToolStripMenuItem.Name = "autoSaveToolStripMenuItem";
+            this.autoSaveToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.autoSaveToolStripMenuItem.Text = "Автосохранение";
+            this.autoSaveToolStripMenuItem.Click += new System.EventHandler(this.autoSaveToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
@@ -338,12 +356,12 @@
             this.panelPlay.Size = new System.Drawing.Size(481, 97);
             this.panelPlay.TabIndex = 6;
             // 
-            // autoSaveToolStripMenuItem
+            // saveFrameToolStripMenuItem
             // 
-            this.autoSaveToolStripMenuItem.Name = "autoSaveToolStripMenuItem";
-            this.autoSaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.autoSaveToolStripMenuItem.Text = "Автосохранение";
-            this.autoSaveToolStripMenuItem.Click += new System.EventHandler(this.autoSaveToolStripMenuItem_Click);
+            this.saveFrameToolStripMenuItem.Name = "saveFrameToolStripMenuItem";
+            this.saveFrameToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.saveFrameToolStripMenuItem.Text = "Save Frame";
+            this.saveFrameToolStripMenuItem.Click += new System.EventHandler(this.saveFrameToolStripMenuItem_Click);
             // 
             // FormMain
             // 
@@ -409,6 +427,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiDBConnect;
         private System.Windows.Forms.ToolStripMenuItem tsmiSaveFrame;
         private System.Windows.Forms.ToolStripMenuItem autoSaveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addFilesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveFrameToolStripMenuItem;
     }
 }
 

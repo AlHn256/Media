@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using AlfaPribor.ASKIN.Data;
+﻿using System.Collections.Generic;
 using FramesPlayer.DataTypes;
-using ASKIN_DP =  AlfaPribor.ASKO.DataProvider;
 using ASKO_DP = AlfaPribor.ASKIN.DataProvider;
 
 namespace FramesPlayer.ExportConfiguration
@@ -13,9 +7,7 @@ namespace FramesPlayer.ExportConfiguration
 
     public class SettingContainer
     {
-
         public static string VideoFileName { get; set; }
-
         public static string VideoFileFullName { get; set; }
 
         public static ProviderType DatabaseProviderType 

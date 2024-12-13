@@ -1,6 +1,4 @@
 ﻿using System; 
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -73,7 +71,6 @@ namespace FramesPlayer
 
         public DrawTelecameraFrames()
         {
-
             //Таймер скорости отрисовки
             TimerFPS = new System.Timers.Timer();
             TimerFPS.Interval = 1000;
@@ -85,7 +82,6 @@ namespace FramesPlayer
             TimerRedraw.Interval = 1;
             TimerRedraw.Elapsed += new System.Timers.ElapsedEventHandler(TimerRedraw_Elapsed);
             TimerRedraw.Enabled = false;
-
         }
 
         /// <summary>Инициализация устройства отрисовкм</summary>
@@ -95,8 +91,7 @@ namespace FramesPlayer
         /// <param name="hardware_vertex">Использовать аппаратный вертексный буфер (не рекомендуется для интегрированной графики)</param>
         /// <param name="un_fish">Исправлять искажения</param>
         /// <param name="un_fish_coeff">Коэффициент исправлений искажений</param>
-        public void Init(int width, int height, PictureBox picture_box, bool hardware_vertex, 
-                         bool un_fish, int un_fish_coeff)
+        public void Init(int width, int height, PictureBox picture_box, bool hardware_vertex,  bool un_fish, int un_fish_coeff)
         {
             Width = width;
             Height = height;
@@ -108,9 +103,7 @@ namespace FramesPlayer
                 obj_DrawFrames = null;
             }
 
-            obj_DrawFrames = new SharpDXVideoRenderer(width, height, picture_box,
-                                                 hardware_vertex,
-                                                 un_fish, un_fish_coeff);
+            obj_DrawFrames = new SharpDXVideoRenderer(width, height, picture_box, hardware_vertex, un_fish, un_fish_coeff);
             obj_DrawFrames.EventDeviceLost += new SharpDXVideoRenderer.DelegateEventDeviceLost(obj_DrawFrames_EventDeviceLost);
 
             picture_box.Paint -= picture_box_Paint;
@@ -201,9 +194,9 @@ namespace FramesPlayer
                 //Очистить графически элементы видеоокна
                 obj_DrawFrames.ClearStrings();
                 //Показать скорость отрисовки кадров
-                DrawFPS();
+                //DrawFPS();
                 //Показать метку времени кадра
-                DrawTimeStamp(timestamp);
+                //DrawTimeStamp(timestamp);
             }
             catch
             {
@@ -233,8 +226,6 @@ namespace FramesPlayer
                 obj_DrawFrames.ClearStrings();
                 //Показать скорость отрисовки кадров
                 DrawFPS();
-
-
             }
             catch
             {

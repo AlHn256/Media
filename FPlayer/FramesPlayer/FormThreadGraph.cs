@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using ZedGraph;
-using AlfaPribor.VideoStorage2;
 using FramesPlayer.Classes;
 using System.IO;
 
@@ -33,8 +28,7 @@ namespace FramesPlayer
             InitializeComponent();
         }
 
-        public FormThreadGraph(string videoFileName)
-            : this()
+        public FormThreadGraph(string videoFileName) : this()
         {
             _videoFileName = videoFileName;
             DrawStartStreamGraphic();

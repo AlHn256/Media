@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace FramesPlayer
 {
@@ -77,6 +73,8 @@ namespace FramesPlayer
         {
             try
             {
+                if (_currentExportSettings == null)
+                    return;
                 if (!_currentExportSettings.EnableSaveImage)
                     return;
                 if (_currentExportSettings.ChannelID != channelID)
@@ -92,10 +90,8 @@ namespace FramesPlayer
                         img.Save(_resultDirPath + marker.ToString() + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                     }
                 }
-
             }
             catch { }
-
         }
     }
 }

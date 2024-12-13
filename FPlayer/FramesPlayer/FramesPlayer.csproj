@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\EvenrDataArgs.cs" />
+    <Compile Include="Classes\FileEdit.cs" />
     <Compile Include="Classes\ImageSaveResizeSettings.cs" />
     <Compile Include="Classes\SpeedFile.cs" />
     <Compile Include="Classes\VideoImageExporter.cs" />

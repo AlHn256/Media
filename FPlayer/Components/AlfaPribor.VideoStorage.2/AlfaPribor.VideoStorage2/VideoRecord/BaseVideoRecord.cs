@@ -132,8 +132,7 @@ namespace AlfaPribor.VideoStorage2
         /// Используется только для в случае, если статус запрашиваемого интерфейса заранее известен</summary>
         /// <param name="id">Идентификатор видеозаписи</param>
         /// <param name="status">Статус запрашиваемого интерфейса</param>
-        public BaseVideoRecord(string id, VideoStorageIntStat status)
-            : this()
+        public BaseVideoRecord(string id, VideoStorageIntStat status):this()
         {
             // запрещаем использовать методы и свойства объекта...
             disposed = true;
@@ -713,16 +712,16 @@ namespace AlfaPribor.VideoStorage2
         /// <param name="path">Директория для поиска видеозаписи</param>
         /// <param name="id">Идентификатор видеозаписи</param>
         /// <param name="storage_type">Тип хранилища видеоданных</param>
-        /// <exception cref="System.ArgumentException">
+        /// <exception cref="ArgumentException">
         /// Параметр id равен пустой строке или параметр path содержит недопустимые знаки
         /// </exception>
-        /// <exception cref="System.ArgumentNullException">
+        /// <exception cref="ArgumentNullException">
         /// Параметр path или id имеет значение null
         /// </exception>
         /// <exception cref="System.Security.SecurityException">
         /// Недостаточно прав для доступа к директории
         /// </exception>
-        /// <exception cref="System.IO.PathTooLongException">
+        /// <exception cref="PathTooLongException">
         /// Длина указанного пути превышает установленный системой предел
         /// </exception>
         /// <returns>

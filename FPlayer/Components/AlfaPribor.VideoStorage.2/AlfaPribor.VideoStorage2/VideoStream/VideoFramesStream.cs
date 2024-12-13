@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Text;
 using AlfaPribor.Streams2;
+using System.Drawing;
 
 namespace AlfaPribor.VideoStorage2
 {
@@ -263,6 +264,16 @@ namespace AlfaPribor.VideoStorage2
                         throw new InvalidStreamDataException("Content length in data header not equal reading bytes count!");
                     }
                     offset += bytes_readed;
+
+                    if (video_data != null)
+                    {
+                        using (MemoryStream ms = new MemoryStream(video_data))
+                        {
+                            
+                            Bitmap bmp = new Bitmap(ms);
+                            //bmp.Save(stream, ImageFormat.png);
+                        }
+                    }
                 }
             }
             catch (IOException)

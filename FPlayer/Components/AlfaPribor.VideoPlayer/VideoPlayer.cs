@@ -891,35 +891,35 @@ namespace AlfaPribor.VideoPlayer
             //Предыдущий кадр
             if (type == PlayerButtonType.PrevFrame.ToString())
             {
-                Pause();
+                //Pause();
                 MoveToFrame(MovingDirection.Prev);
             }
             //Следующий кадр
             if (type == PlayerButtonType.NextFrame.ToString())
             {
-                Pause();
+                //Pause();
                 MoveToFrame(MovingDirection.Next);
             }
             //Первые кадры
             if (type == PlayerButtonType.FirstFrame.ToString())
             {
-                Pause();
+                //Pause();
                 MoveToFrame(MovingDirection.First);
             }
             //Последние кадры
             if (type == PlayerButtonType.LastFrame.ToString())
             {
-                Pause();
+                //Pause();
                 MoveToFrame(MovingDirection.Last);
             }
             if (type == PlayerButtonType.PrevMark.ToString())
             {
-                Pause();
+                //Pause();
                 MoveToMark(MovingDirection.Prev);
             }
             if (type == PlayerButtonType.NextMark.ToString())
             {
-                Pause();
+                //Pause();
                 MoveToMark(MovingDirection.Next);
             }
             //Марка старт экспорта
@@ -1153,6 +1153,12 @@ namespace AlfaPribor.VideoPlayer
             stopwatch.Reset();
             FOpened = false;
             if (obj_VideoStorage == null) return false;
+
+
+            //var id12 = obj_VideoReader.Id;
+            //var partition_idasd = obj_VideoReader.PartitionId;
+            //IList<VideoStreamInfo> info2 = obj_VideoReader.VideoIndex.StreamInfoList;
+
             obj_VideoReader = obj_VideoStorage.GetReader(id, partition_id);
             if (obj_VideoReader.Status != VideoStorageIntStat.Ok)
             {
@@ -1169,8 +1175,7 @@ namespace AlfaPribor.VideoPlayer
             stream_id = new int[info.Count];
             last_played_index = new int[info.Count];
             last_fps = new int[info.Count];
-            for (int i = 0; i < info.Count; i++)
-                stream_id[i] = obj_VideoReader.VideoIndex.StreamInfoList[i].Id;
+            for (int i = 0; i < info.Count; i++) stream_id[i] = obj_VideoReader.VideoIndex.StreamInfoList[i].Id;
             //Вычисление длины видеопотока
             length = obj_VideoReader.VideoIndex.GetFinishTime(0) - obj_VideoReader.VideoIndex.GetStartTime(0);
             //Корректировка мастер-канала
@@ -1195,13 +1200,13 @@ namespace AlfaPribor.VideoPlayer
             SetSpeed(s * ((Math.Abs(Speed)) / Speed));
 
             //Вывод длительности потока
-            ShowLength(length);
+            //ShowLength(length);
 
             //Сброс экспорта
             active_export = false;
 
             //Запуск таймера fps
-            TimerFPS.Start();
+            //TimerFPS.Start();
             //Событие открытия
             if (EventOpenVideo != null) EventOpenVideo(info);
             return true;
@@ -1502,8 +1507,7 @@ namespace AlfaPribor.VideoPlayer
             //Неудачное чтение кадра - выход
             if (res != VideoStorageResult.Ok) return;
             if (frame == null) return;
-            if (EventNewFrame != null) EventNewFrame(frame.ContentType.Width, frame.ContentType.Height,
-                                                     master_channel, frame.FrameData, frame.TimeStamp);
+            if (EventNewFrame != null) EventNewFrame(frame.ContentType.Width, frame.ContentType.Height, master_channel, frame.FrameData, frame.TimeStamp);
             //Сохранение метки времени мастер-канала
             TimeStamp = frame.TimeStamp;
             //Чтение кадров остальных телекамер
