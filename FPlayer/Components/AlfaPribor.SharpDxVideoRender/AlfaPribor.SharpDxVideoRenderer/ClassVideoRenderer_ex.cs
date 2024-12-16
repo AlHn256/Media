@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Threading;
-using System.Diagnostics;
 
 using SharpDX;
-using SharpDX.Windows;
 using SharpDX.Direct3D9;
-
 using AlfaPribor.IppInterop;
 
 namespace AlfaPribor.SharpDXVideoRenderer
@@ -219,9 +215,7 @@ namespace AlfaPribor.SharpDXVideoRenderer
         /// <param name="hardware_vertex">Использовать аппаратную обработку вершин</param>
         /// <param name="un_fish">Задействовать исправления искажений</param>
         /// <param name="un_fish_coeff">Коэффициент исправления искажений</param>
-        public SharpDXVideoRenderer_ex(int width, int height, 
-                                    PictureBox picture_box, bool hardware_vertex, 
-                                    bool un_fish, int un_fish_coeff)
+        public SharpDXVideoRenderer_ex(int width, int height, PictureBox picture_box, bool hardware_vertex,  bool un_fish, int un_fish_coeff)
         {
             Width = width;
             Height = height;
@@ -1112,50 +1106,50 @@ namespace AlfaPribor.SharpDXVideoRenderer
         /// <summary>Отрисовка данных текстуры обновлением текстур</summary>
         /// <param name="graphics_elements">Рисовать графические элементы</param>
         /// <returns>Результат операции</returns>
-        bool RenderInternalDataEx(bool graphics_elements)
-        {
-            if (!PrepareForRender()) return false;
-            //Запрос устройства
-            Device dev = device;
-            if (GetDeviceForRender(dev))
-            {
-                if (!BeginScene(dev)) return false; //Начало отрисовки
-                SetupMatrices(dev);//Установка матриц проекций
-                try
-                {
-                    dev.UpdateTexture(second_texture, texture);
-                    dev.SetTextureStageState(0, TextureStage.ColorOperation, TextureOperation.Modulate);
-                    dev.SetTextureStageState(0, TextureStage.ColorArg1, TextureArgument.Texture);
-                    dev.SetTextureStageState(0, TextureStage.ColorArg2, TextureArgument.Current);
-                    dev.SetTextureStageState(0, TextureStage.AlphaOperation, TextureOperation.Disable);
-                    dev.SetSamplerState(0, SamplerState.MinFilter, TextureFilter.Anisotropic);
-                    dev.SetSamplerState(0, SamplerState.MagFilter, TextureFilter.Anisotropic);
-                    dev.SetSamplerState(0, SamplerState.MipFilter, TextureFilter.Anisotropic);
-                    dev.SetStreamSource(0, vertexBuffer, 0, Utilities.SizeOf<CustomVertex.PositionNormalTextured>());
-                    dev.VertexFormat = CustomVertex.PositionNormalTextured.Format;
-                    int triangles_count = GridSize * 2 * GridSize + GridSize - 1;
-                    dev.DrawPrimitives(PrimitiveType.TriangleStrip, 0, triangles_count);//Sphere
-                    if (graphics_elements)
-                    {
-                        RenderText(dev);    //Отрисовка строк
-                        RenderLines(dev);   //Отрисовка линий
-                    }
-                    //End the scene
-                    dev.EndScene();
-                }
-                catch
-                {
-                    dev.EndScene();
-                    dev.Present();
-                    return false;
-                }
-                // Update the screen
-                try { dev.Present(); }
-                catch { return false; };
-                return true;
-            }
-            return false;
-        }
+        //bool RenderInternalDataEx(bool graphics_elements)
+        //{
+        //    if (!PrepareForRender()) return false;
+        //    //Запрос устройства
+        //    Device dev = device;
+        //    if (GetDeviceForRender(dev))
+        //    {
+        //        if (!BeginScene(dev)) return false; //Начало отрисовки
+        //        SetupMatrices(dev);//Установка матриц проекций
+        //        try
+        //        {
+        //            dev.UpdateTexture(second_texture, texture);
+        //            dev.SetTextureStageState(0, TextureStage.ColorOperation, TextureOperation.Modulate);
+        //            dev.SetTextureStageState(0, TextureStage.ColorArg1, TextureArgument.Texture);
+        //            dev.SetTextureStageState(0, TextureStage.ColorArg2, TextureArgument.Current);
+        //            dev.SetTextureStageState(0, TextureStage.AlphaOperation, TextureOperation.Disable);
+        //            dev.SetSamplerState(0, SamplerState.MinFilter, TextureFilter.Anisotropic);
+        //            dev.SetSamplerState(0, SamplerState.MagFilter, TextureFilter.Anisotropic);
+        //            dev.SetSamplerState(0, SamplerState.MipFilter, TextureFilter.Anisotropic);
+        //            dev.SetStreamSource(0, vertexBuffer, 0, Utilities.SizeOf<CustomVertex.PositionNormalTextured>());
+        //            dev.VertexFormat = CustomVertex.PositionNormalTextured.Format;
+        //            int triangles_count = GridSize * 2 * GridSize + GridSize - 1;
+        //            dev.DrawPrimitives(PrimitiveType.TriangleStrip, 0, triangles_count);//Sphere
+        //            if (graphics_elements)
+        //            {
+        //                RenderText(dev);    //Отрисовка строк
+        //                RenderLines(dev);   //Отрисовка линий
+        //            }
+        //            //End the scene
+        //            dev.EndScene();
+        //        }
+        //        catch
+        //        {
+        //            dev.EndScene();
+        //            dev.Present();
+        //            return false;
+        //        }
+        //        // Update the screen
+        //        try { dev.Present(); }
+        //        catch { return false; };
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
         /// <summary>Подготовка к отрисовке</summary>
         /// <returns>Результат подготовки</returns>

@@ -203,26 +203,19 @@ namespace FramesPlayer
         void obj_VideoPlayer_EventNewFrame(int resX, int resY, int channel_id, byte[] frame, int timestamp)
         {
             //if (this.WindowState == FormWindowState.Minimized) return;
-
             if (this.WindowState == FormWindowState.Minimized) return;
-
             if (GetCameraType(channel_id) == ImageType.Unknown) return;
-
             //Если пришел кадр не от выбранного видеопотока - выход
             if (SelectedChannel.Id != channel_id) return;
-
             //Отображение кадра телевизионной камеры
             if (SelectedChannel.ContentType == "image/jpeg")
-                if (obj_DrawFrames_TK != null && !ProcessResize &&
-                    obj_DrawFrames_TK.ChannelID == channel_id && !obj_DrawFrames_TK.InitState)
+                if (obj_DrawFrames_TK != null && !ProcessResize && obj_DrawFrames_TK.ChannelID == channel_id && !obj_DrawFrames_TK.InitState)
                     DrawJpegFrame(channel_id, frame, timestamp, resX, resY);
 
             //Отображение тепловизионного кадра raw8
             if (SelectedChannel.ContentType == "image/raw8")
-                if (obj_DrawFrames_TV != null && !ProcessResize &&
-                    obj_DrawFrames_TV.ChannelID == channel_id && !obj_DrawFrames_TV.InitState)
+                if (obj_DrawFrames_TV != null && !ProcessResize && obj_DrawFrames_TV.ChannelID == channel_id && !obj_DrawFrames_TV.InitState)
                     obj_DrawFrames_TV.NewFrame(frame);
-
         }
 
         /// <summary>Событие темпа воспроизведения</summary>
@@ -584,18 +577,16 @@ namespace FramesPlayer
         /// <param name="Coeff">КОэффициент исправления искажений</param>
         void CreateDrawFramesTK(int resX, int resY, int id, bool AniFish, int Coeff, int Rotation)
         {
-            Rotation = 0;
+            //Rotation = 90;
             if (obj_DrawFrames_TK == null) obj_DrawFrames_TK = new DrawTelecameraFrames();
-            if (obj_DrawFrames_TK.FrameWidth != resX ||
-                obj_DrawFrames_TK.FrameHeight != resY)
-            {
+            if (obj_DrawFrames_TK.FrameWidth != resX || obj_DrawFrames_TK.FrameHeight != resY) 
                 obj_DrawFrames_TK.Init(resX, resY, pictureBoxVideo, false, AniFish, Coeff);
-            }
+            
             obj_DrawFrames_TK.ChannelID = id;
             if (Rotation == 0) obj_DrawFrames_TK.Rotation = SharpDXVideoRenderer.RotationAngle.deg_0;
-            if (Rotation == 90) obj_DrawFrames_TK.Rotation = SharpDXVideoRenderer.RotationAngle.deg_90;
-            if (Rotation == 180) obj_DrawFrames_TK.Rotation = SharpDXVideoRenderer.RotationAngle.deg_180;
-            if (Rotation == 270) obj_DrawFrames_TK.Rotation = SharpDXVideoRenderer.RotationAngle.deg_270;
+            else if (Rotation == 90) obj_DrawFrames_TK.Rotation = SharpDXVideoRenderer.RotationAngle.deg_90;
+            else if (Rotation == 180) obj_DrawFrames_TK.Rotation = SharpDXVideoRenderer.RotationAngle.deg_180;
+            else if (Rotation == 270) obj_DrawFrames_TK.Rotation = SharpDXVideoRenderer.RotationAngle.deg_270;
             obj_DrawFrames_TK.ShowGraphicElement(GraphicElement.DrawFPS, false);
         }
 

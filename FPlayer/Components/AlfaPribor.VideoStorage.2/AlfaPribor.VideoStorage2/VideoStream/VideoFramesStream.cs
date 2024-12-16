@@ -265,15 +265,15 @@ namespace AlfaPribor.VideoStorage2
                     }
                     offset += bytes_readed;
 
-                    if (video_data != null)
-                    {
-                        using (MemoryStream ms = new MemoryStream(video_data))
-                        {
+                    //if (video_data != null)
+                    //{
+                    //    using (MemoryStream ms = new MemoryStream(video_data))
+                    //    {
                             
-                            Bitmap bmp = new Bitmap(ms);
-                            //bmp.Save(stream, ImageFormat.png);
-                        }
-                    }
+                    //        Bitmap bmp = new Bitmap(ms);
+                    //        //bmp.Save(stream, ImageFormat.png);
+                    //    }
+                    //}
                 }
             }
             catch (IOException)

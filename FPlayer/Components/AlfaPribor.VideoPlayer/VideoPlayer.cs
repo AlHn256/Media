@@ -1463,8 +1463,7 @@ namespace AlfaPribor.VideoPlayer
             if (obj_VideoReader == null) return;
             VideoFrame frame;
             if (obj_VideoReader.ReadFrame(channel_id, (int)timestamp, delta, out frame) == VideoStorageResult.Ok)
-                if (EventNewFrame != null) EventNewFrame(frame.ContentType.Width, frame.ContentType.Height,
-                                                         channel_id, frame.FrameData, frame.TimeStamp);
+                if (EventNewFrame != null) EventNewFrame(frame.ContentType.Width, frame.ContentType.Height, channel_id, frame.FrameData, frame.TimeStamp);
         }
 
         #endregion
