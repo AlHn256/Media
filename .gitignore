@@ -14,7 +14,7 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
+
 
 # Fortran module files
 *.mod
@@ -91,3 +91,11 @@ WaveEdit_src/obj/
 /FPlayer/Components/AlfaPribor.Askin.DataProvider/obj
 /FPlayer/.vs
 /FPlayer/Components/AlfaPribor.AviFile/.vs
+/FPlayer/Components/AlfaPribor.AviFile/AlfaPribor.AviFile/bin
+/FPlayer/Components/AlfaPribor.AviFile/AlfaPribor.AviFile.VideoExtractorDemo/obj
+/FPlayer/Components/AlfaPribor.ASKO.DataProvider/AlfaPribor.ASKO.DataProvider/obj
+/FPlayer/Components/AlfaPribor.VideoStorage.2/AlfaPribor.VideoStorage2.Client.Demo/obj
+/FPlayer/Components/AlfaPribor.SharpDxVideoRender/AlfaPribor.SharpDxVideoRenderer/obj
+/FPlayer/Components/AlfaPribor.ASKO.DataProvider/AlfaPribor.ASKO.DataProvider/bin
+/FPlayer/Components/AlfaPribor.ASKO.Data/AlfaPribor.ASKO.Data/bin
+/FPlayer/Components/AlfaPribor.AviFile/AlfaPribor.AviFile.Demo/obj
