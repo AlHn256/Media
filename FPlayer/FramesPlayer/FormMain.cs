@@ -43,6 +43,8 @@ namespace FramesPlayer
 
         VideoImageExporter _imageExporter;
         ImageSaveResizeSettings _autoSaveSettings;
+        private Bitmap[] dataArray;
+        private FileInfo[] fileList;
 
         #endregion
 
@@ -54,6 +56,8 @@ namespace FramesPlayer
             CreateVideoPlayer();
             this.Text = "FramesPlayer " + Application.ProductVersion;
             if (file != "") OpenFile(file);
+
+            LoadJpegFiles();
         }
 
         void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -258,9 +262,7 @@ namespace FramesPlayer
                     SelectedChannel = info[i];
                 }
             }
-            if (obj_DrawFrames_TK == null || (obj_DrawFrames_TK != null &&
-                SelectedChannel.Width != obj_DrawFrames_TK.FrameWidth ||
-                SelectedChannel.Height != obj_DrawFrames_TK.FrameHeight))
+            if (obj_DrawFrames_TK == null || (obj_DrawFrames_TK != null && SelectedChannel.Width != obj_DrawFrames_TK.FrameWidth || SelectedChannel.Height != obj_DrawFrames_TK.FrameHeight))
                 {
                     //Переинициализация объекта отрисовки
                     CreateDrawFramesTK(SelectedChannel.Width, SelectedChannel.Height, SelectedChannel.Id, false, 0, SelectedChannel.Rotation);
@@ -273,12 +275,10 @@ namespace FramesPlayer
                 }
 
             //Кнопки выбора видеопотоков
-           // tsmiChannels.Visible = true;
+            //tsmiChannels.Visible = true;
             //tsmiChannels.DropDownItems.Clear();
-
             //Параметры видеопотока
             //ShowChannelParams();
-
             //Удаление кнопок выбора видеопотоков с панели
             for (int i = toolStripMain.Items.Count - 1; i > 1; i--)toolStripMain.Items.RemoveAt(i);
 
@@ -381,8 +381,7 @@ namespace FramesPlayer
                 if (index == obj_VideoPlayer.ObjVideoReader.VideoIndex.StreamInfoList[i].Id)
                 {
                     SelectedChannel = obj_VideoPlayer.ObjVideoReader.VideoIndex.StreamInfoList[i];
-                    CreateDrawFramesTK(SelectedChannel.Width, SelectedChannel.Height,
-                                       SelectedChannel.Id, false, 0, SelectedChannel.Rotation);
+                    CreateDrawFramesTK(SelectedChannel.Width, SelectedChannel.Height, SelectedChannel.Id, false, 0, SelectedChannel.Rotation);
                     ShowChannelParams();
                     //Если на паузе - обновить кадры
                     if (obj_VideoPlayer.Paused) obj_VideoPlayer.RefreshFrames();
@@ -495,6 +494,7 @@ namespace FramesPlayer
         void tsbOpen_Click(object sender, EventArgs e)
         {
             открытьToolStripMenuItem_Click(открытьToolStripMenuItem, EventArgs.Empty);
+            loadeFromFile = false;
         }
 
         /// <summary>Закрытие файла</summary>
@@ -540,11 +540,33 @@ namespace FramesPlayer
 
         #endregion
 
+        int N = -1;
+        bool loadeFromFile = false;
         /// <summary>Отрисовка сжатого jpeg кадра</summary>
         /// <param name="channel_id">Идентификатор видеоканала</param>
         /// <param name="frame">Данные кадра</param>
         void DrawJpegFrame(int channel_id, byte[] frame, int timestamp, int resX, int resY)
         {
+            byte[] file = new byte[] { 0x20, 0x20 };
+            if (loadeFromFile)
+            {
+                
+                if (fileList != null)
+                    if (fileList.Length > 0)
+                    {
+                        if (++N >= fileList.Length) N = 0;
+                        file = File.ReadAllBytes(fileList[N].FullName);
+                    }
+            }
+
+            //if (dataArray != null)
+            //    if (dataArray.Length > 0)
+            //        if (dataArray[0].Size.Width != 0 && dataArray[0].Size.Height != 0)
+            //        {
+            //            ImageConverter converter = new ImageConverter();
+            //            var sdf = (byte[])converter.ConvertTo(dataArray[0], typeof(byte[]));
+            //        }
+
             byte[] out_data = new byte[resX * resY * 4];//32 бита
             //Декомпрессия кадра
             if (codec_type == CodecType.VCM)
@@ -553,7 +575,9 @@ namespace FramesPlayer
             }
             if (codec_type == CodecType.WPF)
             {
-                obj_JpegDecoder.DecodeWPF(frame, resX, resY, out_data);
+                
+                if (loadeFromFile) obj_JpegDecoder.DecodeWPF(file, resX, resY, out_data);
+                else obj_JpegDecoder.DecodeWPF(frame, resX, resY, out_data);
                 //Переворачивание кадра относительно горизонтельной оси
                 byte[] img = new byte[out_data.Length];
                 AlfaPribor.IppInterop.IppiSize size;
@@ -566,7 +590,9 @@ namespace FramesPlayer
             int ts = 0;
             if (tsmiTimeStamp.Checked) ts = timestamp;
             if (obj_DrawFrames_TK != null) obj_DrawFrames_TK.NewFrame(out_data, ts);
-            try { _imageExporter.ExportImage(frame, channel_id, timestamp); } catch { }
+            //try { _imageExporter.ExportImage(frame, channel_id, timestamp); } catch { }
+
+            if(SaveFramesChkBox.Checked)SaveCurrentFrame();
         }
 
         /// <summary>Инициализация объекта отрисовки кадров телекамер</summary>
@@ -577,7 +603,7 @@ namespace FramesPlayer
         /// <param name="Coeff">КОэффициент исправления искажений</param>
         void CreateDrawFramesTK(int resX, int resY, int id, bool AniFish, int Coeff, int Rotation)
         {
-            //Rotation = 90;
+            //Rotation = 180;
             if (obj_DrawFrames_TK == null) obj_DrawFrames_TK = new DrawTelecameraFrames();
             if (obj_DrawFrames_TK.FrameWidth != resX || obj_DrawFrames_TK.FrameHeight != resY) 
                 obj_DrawFrames_TK.Init(resX, resY, pictureBoxVideo, false, AniFish, Coeff);
@@ -807,11 +833,11 @@ namespace FramesPlayer
                 }
 
                 obj_DrawFrames_TK.BitmapImage.Save(fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
-                MessageBox.Show("Изображение сохранено");
+                if(!SaveFramesChkBox.Checked) MessageBox.Show("Изображение сохранено");
             }
             catch
             {
-                MessageBox.Show("Ошибка сохранения изображения");
+                if (!SaveFramesChkBox.Checked) MessageBox.Show("Ошибка сохранения изображения");
             }
         }
 
@@ -858,27 +884,30 @@ namespace FramesPlayer
         {
             _autoSaveSettings = e.AutoExportSettings;
         }
-
-        private async void addFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void LoadJpegFiles()
         {
-            string serchingDir = "E:\\ImageArchive\\Exampels\\18";
+            //string serchingDir = "E:\\ImageArchive\\Exampels\\1+";
+            string serchingDir = "E:\\ImageArchive\\TEstJpeg";
+            //string serchingDir = "E:\\ImageArchive\\TEstJpeg2";
+            //string serchingDir = "E:\\ImageArchive\\JPG\\_4_metr";
+            //string serchingDir = "E:\\ImageArchive\\JPG\\_8_metr";
 
-            FileEdit fileEdit = new FileEdit(); 
+            FileEdit fileEdit = new FileEdit();
             var list = fileEdit.SearchFiles(serchingDir);
             var FileList = list.Select(f => f.FullName).ToList();
 
-            FileInfo[] fileList = fileEdit.SearchFiles(serchingDir);
+            fileList = fileEdit.SearchFiles(serchingDir);
             if (fileList.Length == 0) return;
-           
+
             Task<byte[]>[] byteArray = fileList.Select(async x => await ReadAsync(x.FullName)).ToArray();
             var sfsd = byteArray[1];
 
-            Bitmap[] dataArray = fileList.Select(x => { return new Bitmap(x.FullName); }).ToArray();
-            dataArray[0].Save("asd");
+            dataArray = fileList.Select(x => { return new Bitmap(x.FullName); }).ToArray();
+            loadeFromFile = true;
+            //if(dataArray[0].Size.Width!=0 && dataArray[0].Size.Height != 0) dataArray[0].Save("E:\\Video.frames\\111.jpeg");
             //DrawJpegFrame(int channel_id, byte[] frame, int timestamp, int resX, int resY);
         }
-
-
+        private async void addFilesToolStripMenuItem_Click(object sender, EventArgs e) => LoadJpegFiles();
         async Task<byte[]> ReadAsync(string path)
         {
             using (FileStream sourceStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, true))

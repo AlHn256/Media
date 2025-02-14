@@ -233,7 +233,7 @@ namespace FramesPlayer
             }
             try
             {
-                res = obj_DrawFrames.DrawRGB32(frame);
+                //res = obj_DrawFrames.DrawRGB32(frame);
             }
             catch
             {

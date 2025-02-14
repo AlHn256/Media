@@ -43,9 +43,7 @@ namespace AlfaPribor.VideoStorage2
         /// Возникла ошибка при создании потоков ввода/вывода
         /// </exception>
         /// <exception cref="System.ArgumentException">Не задан идентификатор видеозаписи или путь к ней</exception>
-        protected override void OpenStreams(
-            string id, string path, VideoRecordOpenMode mode,
-            out IVideoIndexesStream indexes, out IVideoFramesStream frames)
+        protected override void OpenStreams(string id, string path, VideoRecordOpenMode mode, out IVideoIndexesStream indexes, out IVideoFramesStream frames)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -113,8 +111,7 @@ namespace AlfaPribor.VideoStorage2
         /// Возникла ошибка при чтении информации о видеопотоках
         /// </exception>
         /// <exception cref="System.ArgumentException">Не задан идентификатор видеозаписи или путь к ней</exception>
-        protected override void ReadStreamInfo(
-            IList<VideoStreamInfo> info, IVideoIndexesStream indexes, IVideoFramesStream frames)
+        protected override void ReadStreamInfo(IList<VideoStreamInfo> info, IVideoIndexesStream indexes, IVideoFramesStream frames)
         {
             if (info == null)
             {

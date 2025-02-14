@@ -1497,7 +1497,8 @@ namespace AlfaPribor.SharpDXVideoRenderer
             Vector3 vector_rotate = new Vector3(0.0f, 1.0f, 0.0f);
             //Поворот
             if (rotation_angle == RotationAngle.deg_0) vector_rotate = new Vector3(0.0f, 1.0f, 0.0f);
-            if (rotation_angle == RotationAngle.deg_90) vector_rotate = new Vector3(1.0f, 0.0f, 0.0f);
+           // if (rotation_angle == RotationAngle.deg_90) vector_rotate = new Vector3(1.0f, 0.0f, 0.0f);
+            if (rotation_angle == RotationAngle.deg_90) vector_rotate = new Vector3(-1.0f, 0.0f, 0.0f);
             if (rotation_angle == RotationAngle.deg_180) vector_rotate = new Vector3(0.0f, -1.0f, 0.0f);
             if (rotation_angle == RotationAngle.deg_270) vector_rotate = new Vector3(-1.0f, 0.0f, 0.0f);
 

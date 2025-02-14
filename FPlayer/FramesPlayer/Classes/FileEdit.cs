@@ -1,16 +1,10 @@
 ﻿using System.Text;
 using System.Security.Cryptography;
-using System.Security.AccessControl;
-using System.Security.Principal;
-//using OpenCvSharp;
-using System.Drawing.Imaging;
 using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Drawing;
-//using Newtonsoft.Json;
 using System.Diagnostics;
 using System.ComponentModel;
 
@@ -26,14 +20,12 @@ namespace FramesPlayer
 
         public FileEdit(){}
         public FileEdit(string[] fileFilter ) => FileFilter = fileFilter;
-        
         private bool SetErr(string err)
         {
             IsErr = true;
             ErrText = err;
             return false;
         }
-
         private bool SetErr(Exception e) => SetErr(e.Message);
 
         public bool AutoSave(string[] Info)
@@ -364,6 +356,8 @@ namespace FramesPlayer
             if (Directory.Exists(stitchingDirectory)) return false;
             else return true;
         }
+
+        private static int SaveId = 0;
         public void DeleteResultes(string filter = "")
         {
             FileInfo[] fileList = SearchFiles();
@@ -457,7 +451,6 @@ namespace FramesPlayer
         //    }
         //}
 
-        private static int SaveId = 0;
         //public string SaveImg(Mat rezultImg =null, Image DisplayImage = null)
         //{
         //    if (DisplayImage == null && rezultImg == null)

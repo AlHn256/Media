@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Runtime.InteropServices;
 using System.Windows.Media.Imaging;
-using System.Windows.Media;
 using System.IO;
 
 namespace AlfaPribor.JpegCodec
@@ -201,6 +198,5 @@ namespace AlfaPribor.JpegCodec
             }
             catch { };
         }
-
     }
 }

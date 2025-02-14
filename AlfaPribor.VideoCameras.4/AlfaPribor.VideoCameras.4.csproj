@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F933BA34-B528-4A9E-ADE1-25F86D1126D2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AlfaPribor.VideoCameras4</RootNamespace>
+    <AssemblyName>AlfaPribor.VideoCameras4</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnalogCameras\AnalogTelecamera.cs" />
+    <Compile Include="AnalogCameras\DirectShowClasses\CapDevice.cs" />
+    <Compile Include="AnalogCameras\DirectShowClasses\CapGrabber.cs" />
+    <Compile Include="AnalogCameras\DirectShowClasses\CapInterfaces.cs" />
+    <Compile Include="AnalogCameras\DirectShowClasses\CapStructures.cs" />
+    <Compile Include="AnalogCameras\DirectShowClasses\DsUtils.cs" />
+    <Compile Include="AnalogCameras\DirectShowClasses\FilterInfo.cs" />
+    <Compile Include="AnalogCameras\ThermalCamera.cs" />
+    <Compile Include="WebCameras\BewardRtspCamera.cs" />
+    <Compile Include="WebCameras\BewardVideo\BewardRtspVideo.cs" />
+    <Compile Include="WebCameras\EvidenceVideo\EvidenceVideo.cs" />
+    <Compile Include="WebCameras\EvidenceVideo\EvidenceVideoEventArgs.cs" />
+    <Compile Include="WebCameras\EvidenceVideo\EvidenceVideoStatus.cs" />
+    <Compile Include="WebCameras\EvidenceTelecamera.cs" />
+    <Compile Include="WebCameras\PanasonicTelecamera.cs" />
+    <Compile Include="WebCameras\BewardVideo\BewardVideoEventArgs.cs" />
+    <Compile Include="WebCameras\BewardVideo\BewardVideoStatus.cs" />
+    <Compile Include="WebCameras\BewardVideo\BewardVideo.cs" />
+    <Compile Include="WebCameras\BewardHttpCamera.cs" />
+    <Compile Include="WebCameras\HikVisionTelecamera.cs" />
+    <Compile Include="WebCameras\AxisVideo\AxisVideo.cs" />
+    <Compile Include="WebCameras\AxisVideo\AxisVideoEventArgs.cs" />
+    <Compile Include="WebCameras\AxisVideo\AxisVideoStatus.cs" />
+    <Compile Include="WebCameras\AxisVideo\VapixVersion.cs" />
+    <Compile Include="WebCameras\BaslerVideo\BaslerVideoStatus.cs" />
+    <Compile Include="WebCameras\BaslerVideo\BaslerVideoEventArgs.cs" />
+    <Compile Include="WebCameras\BaslerVideo\BaslerVideo.cs" />
+    <Compile Include="WebCameras\HikVisionVideo\HikVisionVideoEventArgs.cs" />
+    <Compile Include="WebCameras\HikVisionVideo\HikVisionVideoStatus.cs" />
+    <Compile Include="WebCameras\HikVisionVideo\HikVisionVideo.cs" />
+    <Compile Include="WebCameras\PanasonicVideo\PanasonicVideoStatus.cs" />
+    <Compile Include="WebCameras\PanasonicVideo\PanasonicVideoEventArgs.cs" />
+    <Compile Include="WebCameras\PanasonicVideo\PanasonicVideo.cs" />
+    <Compile Include="WebCameras\WebCamCommon\Commands\PnsGetUIDWebCommand.cs" />
+    <Compile Include="WebCameras\WebCamCommon\Commands\PnsMJPegStopWebCommand.cs" />
+    <Compile Include="WebCameras\WebCamCommon\Commands\PnsMJPegWebCommand.cs" />
+    <Compile Include="WebCameras\WebCamCommon\Commands\PnsMJPegWebCommandResult.cs" />
+    <Compile Include="WebCameras\WebCamCommon\Commands\PnsPingWebCommand.cs" />
+    <Compile Include="WebCameras\WebCamCommon\PnsCommunication.cs" />
+    <Compile Include="WebCameras\AxisTelecamera.cs" />
+    <Compile Include="WebCameras\WebCamCommon\AxisCommunication.cs" />
+    <Compile Include="WebCameras\WebCamCommon\CameraCommunication.cs" />
+    <Compile Include="WebCameras\WebCamCommon\Commands\AxisMJpegWebCommand.cs" />
+    <Compile Include="WebCameras\WebCamCommon\Commands\AxisMJPegWebCommandResult.cs" />
+    <Compile Include="WebCameras\WebCamCommon\MJPegWebCommandResult.cs" />
+    <Compile Include="WebCameras\WebCamCommon\Service\Command.cs" />
+    <Compile Include="WebCameras\WebCamCommon\Service\CommandResult.cs" />
+    <Compile Include="WebCameras\WebCamCommon\WebService\WebCommand.cs" />
+    <Compile Include="WebCameras\WebCamCommon\WebService\WebService.cs" />
+    <Compile Include="IVideoCamera.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoCameraBase.cs" />
+    <Compile Include="VideoCameras.cs" />
+    <Compile Include="VideoCameraSettings.cs" />
+    <Compile Include="VideoCameraTypes.cs" />
+    <Compile Include="WebCameras\BaslerTelecamera.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Установщик Windows 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AlfaPribor.RTSP\AlfaPribor.RTSP.Client\AlfaPribor.RTSP.Client.csproj">
+      <Project>{ff08f3e7-00d9-4042-a6f1-84f68493575c}</Project>
+      <Name>AlfaPribor.RTSP.Client</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

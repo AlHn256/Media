@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Text;
 using AlfaPribor.Streams2;
-using System.Drawing;
 
 namespace AlfaPribor.VideoStorage2
 {
@@ -108,15 +107,12 @@ namespace AlfaPribor.VideoStorage2
             }
         }
 
-        /// <summary>Прповеряет величину смещение блока с информацией о потоках 
+        /// <summary>Проверяет величину смещение блока с информацией о потоках 
         /// относительно текущей позиции курсора в потоке</summary>
         void CheckStreamInfoOffset()
         {
             long position = base.Position;
-            if (_StreamInfoOffset < position)
-            {
-                _StreamInfoOffset = position;
-            }
+            if (_StreamInfoOffset < position) _StreamInfoOffset = position;
         }
 
         /// <summary>Читает очередное значение видеокадра из потока</summary>
@@ -1080,9 +1076,8 @@ namespace AlfaPribor.VideoStorage2
             // Длина самих данных с информацией о видеопотоках
             foreach (VideoStreamInfo stream_info in info)
             {
-                result +=
-                    StreamIdField.Length + stream_info.Id.ToString().Length + FieldsBoundary.Length +
-                    ContentTypeField.Length + stream_info.ToString().Length + FieldsBoundary.Length;
+                result += StreamIdField.Length + stream_info.Id.ToString().Length + FieldsBoundary.Length +  ContentTypeField.Length + 
+                    stream_info.ToString().Length + FieldsBoundary.Length;
             }
             // Разделитель
             result += FieldsBoundary.Length;
@@ -1333,9 +1328,7 @@ namespace AlfaPribor.VideoStorage2
             int result = _Boundary.Length;
             result += StreamIdField.Length + Encoding.Default.GetByteCount(Int32.MaxValue.ToString()) + FieldsBoundary.Length;
             result += TimeStampField.Length + Encoding.Default.GetByteCount(Int32.MaxValue.ToString()) + FieldsBoundary.Length;
-            result += 
-                ContentTypeField.Length + 
-                Encoding.Default.GetByteCount("image/raw16; resolution=320x240; rotation=270") + 
+            result += ContentTypeField.Length +  Encoding.Default.GetByteCount("image/raw16; resolution=320x240; rotation=270") + 
                 FieldsBoundary.Length;
             result += ContentLenField.Length + Encoding.Default.GetByteCount(Int32.MaxValue.ToString()) + FieldsBoundary.Length;
             result += HeaderBoundary.Length;

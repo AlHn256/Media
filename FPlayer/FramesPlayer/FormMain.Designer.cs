@@ -41,6 +41,7 @@
             this.tmsiTimeMetric = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWagonSpeed = new System.Windows.Forms.ToolStripMenuItem();
             this.addFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiChannels = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSelectConncetionDB = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTimeStamp = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +63,7 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslRotation = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelPlay = new System.Windows.Forms.Panel();
-            this.saveFrameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveFramesChkBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideo)).BeginInit();
             this.toolStripMain.SuspendLayout();
@@ -174,6 +175,13 @@
             this.addFilesToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
             this.addFilesToolStripMenuItem.Text = "Add Files";
             this.addFilesToolStripMenuItem.Click += new System.EventHandler(this.addFilesToolStripMenuItem_Click);
+            // 
+            // saveFrameToolStripMenuItem
+            // 
+            this.saveFrameToolStripMenuItem.Name = "saveFrameToolStripMenuItem";
+            this.saveFrameToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
+            this.saveFrameToolStripMenuItem.Text = "Save Frame";
+            this.saveFrameToolStripMenuItem.Click += new System.EventHandler(this.saveFrameToolStripMenuItem_Click);
             // 
             // tsmiChannels
             // 
@@ -356,12 +364,15 @@
             this.panelPlay.Size = new System.Drawing.Size(481, 97);
             this.panelPlay.TabIndex = 6;
             // 
-            // saveFrameToolStripMenuItem
+            // SaveFramesChkBox
             // 
-            this.saveFrameToolStripMenuItem.Name = "saveFrameToolStripMenuItem";
-            this.saveFrameToolStripMenuItem.Size = new System.Drawing.Size(292, 22);
-            this.saveFrameToolStripMenuItem.Text = "Save Frame";
-            this.saveFrameToolStripMenuItem.Click += new System.EventHandler(this.saveFrameToolStripMenuItem_Click);
+            this.SaveFramesChkBox.AutoSize = true;
+            this.SaveFramesChkBox.Location = new System.Drawing.Point(389, 4);
+            this.SaveFramesChkBox.Name = "SaveFramesChkBox";
+            this.SaveFramesChkBox.Size = new System.Drawing.Size(85, 17);
+            this.SaveFramesChkBox.TabIndex = 7;
+            this.SaveFramesChkBox.Text = "SaveFrames";
+            this.SaveFramesChkBox.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -369,6 +380,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(481, 495);
+            this.Controls.Add(this.SaveFramesChkBox);
             this.Controls.Add(this.panelPlay);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStripMain);
@@ -429,6 +441,7 @@
         private System.Windows.Forms.ToolStripMenuItem autoSaveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveFrameToolStripMenuItem;
+        private System.Windows.Forms.CheckBox SaveFramesChkBox;
     }
 }
 

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.Serialization;
 
 namespace AlfaPribor.VideoStorage2
@@ -135,14 +132,10 @@ namespace AlfaPribor.VideoStorage2
             {
                 return false;
             }
-            bool result =
-                _CameraId == other._CameraId &&
-                _TimeStamp == other._TimeStamp &&
-                _Content.Equals(other._Content);
-            if (_FrameData == other.FrameData)
-	        {
-                return result;
-	        }
+            bool result = _CameraId == other._CameraId && _TimeStamp == other._TimeStamp && _Content.Equals(other._Content);
+
+            if (_FrameData == other.FrameData) return result;
+	        
             if (result)
             {
                 result = _FrameData != null && other._FrameData != null;
