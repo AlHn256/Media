@@ -1,7 +1,0 @@
-void MoveToFrame(MovingDirection dir) Кнопки Следующий, предыдущий, первый или последний кадр
-public int ReadFrame(out VideoFrame frame)  Читает очередное значение видеокадра из потока
-protected virtual int DoReadFrame(out VideoFrame frame) Читает очередное значение видеокадра из потока
-public event DelegateEventImage EventNewFrame; // Событие кадра
-void DrawJpegFrame( // Отрисовка сжатого jpeg кадра
-bool SetTexture(Device dev, Texture texture_n, bool graphics_elements) //Отрисовать текстуру
-void CreateDrawFramesTK( Rotation Поворот кадра на 90 180 270
